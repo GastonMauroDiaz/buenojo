@@ -1,0 +1,149 @@
+<div>
+    <h2>Courses</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="course.new">
+                    <span class="glyphicon glyphicon-flash"></span>
+                    <span>Crear una nueva entidad Course</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteCourseConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(course.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="clear()">&times;</button>
+                        <h4 class="modal-title">Confirmar borrado</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Estás seguro de querer borrar este Course?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;
+                            <span>Cancelar</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;
+                            <span>Eliminar</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 pull-right">
+            <form>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </div>
+
+                        <input type="text" class="form-control" placeholder="Buscar por nombre" ng-model="searchFilter">
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        <a href="#/courses" ng-click="sortType = 'id'; sortReverse = !sortReverse">
+                            ID
+                            <span ng-show="sortType == 'id' && !sortReverse" class="glyphicon glyphicon-menu-down"></span>
+                            <span ng-show="sortType == 'id' && sortReverse" class="glyphicon glyphicon-menu-up"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="#/courses" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                            Nombre
+                            <span ng-show="sortType == 'name' && !sortReverse" class="glyphicon glyphicon-menu-down"></span>
+                            <span ng-show="sortType == 'name' && sortReverse" class="glyphicon glyphicon-menu-up"></span>
+                        </a>
+                    </th>
+
+                    <th>
+                        <a href="#/courses" ng-click="sortType = 'description'; sortReverse = !sortReverse">
+                            Descripci&oacute;n
+                            <span ng-show="sortType == 'description' && !sortReverse" class="glyphicon glyphicon-menu-down"></span>
+                            <span ng-show="sortType == 'description' && sortReverse" class="glyphicon glyphicon-menu-up"></span>
+                        </a>
+                    </th>
+
+                    <th>
+                        <a href="#/courses" ng-click="sortType = 'startDate'; sortReverse = !sortReverse">
+                            Fecha de Inicio
+                            <span ng-show="sortType == 'startDate' && !sortReverse" class="glyphicon glyphicon-menu-down"></span>
+                            <span ng-show="sortType == 'startDate' && sortReverse" class="glyphicon glyphicon-menu-up"></span>
+                        </a>
+
+                    </th>
+                    <th>
+                        <a href="#/courses" ng-click="sortType = 'endDate'; sortReverse = !sortReverse">
+                            Fecha de finalizaci&oacute;n
+                            <span ng-show="sortType == 'endDate' && !sortReverse" class="glyphicon glyphicon-menu-down"></span>
+                            <span ng-show="sortType == 'endDate' && sortReverse" class="glyphicon glyphicon-menu-up"></span>
+                        </a>
+
+                    </th>
+
+                    <th>Curso Abierto</th>
+                    <th>banner</th>
+                    <th>
+                        <a href="#/courses" ng-click="sortType = 'priority'; sortReverse = !sortReverse">
+                            Prioridad
+                            <span ng-show="sortType == 'priority' && !sortReverse" class="glyphicon glyphicon-menu-down"></span>
+                            <span ng-show="sortType == 'priority' && sortReverse" class="glyphicon glyphicon-menu-up"></span>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="course in courses | orderBy:sortType:sortReverse | filter:searchFilter track by course.id">
+                    <td>
+                        <a ui-sref="course.detail({id:course.id})">{{course.id}}</a>
+                    </td>
+                    <td>{{course.name}}</td>
+                    <td>{{course.description}}</td>
+                    <td>{{course.startDate | date:'medium'}}</td>
+                    <td>{{course.endDate | date:'medium'}}</td>
+                    <td><span ng-show="course.courseOpen" class="glyphicon glyphicon-ok-circle"></span>
+                        <span ng-show="course.courseOpen == false" class="glyphicon glyphicon-ban-circle"></span>
+                      </td>
+                    <td>
+                        <a ui-sref="imageResource.detail({id:course.banner})">{{course.banner}}</a>
+                    </td>
+                    <td>{{course.priority}}</td>
+                    <td>
+                        <button type="submit" ui-sref="course.detail({id:course.id})" class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;
+                            <span>
+                                Ver</span>
+                        </button>
+                        <button type="submit" ui-sref="course.edit({id:course.id})" class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;
+                            <span>
+                                Editar</span>
+                        </button>
+                        <button type="submit" ng-click="delete(course.id)" class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;
+                            <span>
+                                Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

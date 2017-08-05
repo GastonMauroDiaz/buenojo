@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span>PhotoLocationBeacon</span> {{photoLocationBeacon.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>X</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{photoLocationBeacon.x}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Y</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{photoLocationBeacon.y}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Tolerance</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{photoLocationBeacon.tolerance}}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

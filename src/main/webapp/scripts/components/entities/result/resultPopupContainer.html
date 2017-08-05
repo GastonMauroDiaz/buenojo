@@ -1,0 +1,7 @@
+
+    <div ng-show="showDialog && transition.courseFinished">
+      <section ng-include="'scripts/components/entities/result/courseFinished.html'" ng-controller="CourseFinishedController"></section>
+    </div>
+    <div ng-show="showDialog && !transition.courseFinished">
+      <section ng-include="'scripts/components/entities/result/exerciseFinished.html'" ng-controller="ExerciseFinishedController"></section>
+    </div>

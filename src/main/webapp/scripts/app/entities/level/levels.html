@@ -1,0 +1,56 @@
+<div>
+    <h2>Levels</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="level.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear una nueva entidad Level</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>course</th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="level in levels track by level.id">
+                    <td><a ui-sref="level.detail({id:level.id})">{{level.id}}</a></td>
+                    <td>{{level.name}}</td>
+                    <td>{{level.description}}</td>
+                    <td>
+                        <a ui-sref="course.detail({id:level.course.id})">{{level.course.name}}</a>
+                    </td>
+
+                    <td>
+                        <button type="submit"
+                                ui-sref="level.detail({id:level.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="level.edit({id:level.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="level.delete({id:level.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

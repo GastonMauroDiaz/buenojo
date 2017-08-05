@@ -1,0 +1,46 @@
+<div>
+    <h2>MultipleChoiceQuestionImageResources</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="multipleChoiceQuestionImageResource.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear una nueva entidad MultipleChoiceQuestionImageResource</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="multipleChoiceQuestionImageResource in multipleChoiceQuestionImageResources track by multipleChoiceQuestionImageResource.id">
+                    <td><a ui-sref="multipleChoiceQuestionImageResource.detail({id:multipleChoiceQuestionImageResource.id})">{{multipleChoiceQuestionImageResource.id}}</a></td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="multipleChoiceQuestionImageResource.detail({id:multipleChoiceQuestionImageResource.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="multipleChoiceQuestionImageResource.edit({id:multipleChoiceQuestionImageResource.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="multipleChoiceQuestionImageResource.delete({id:multipleChoiceQuestionImageResource.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

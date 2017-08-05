@@ -1,0 +1,84 @@
+<div>
+    <h2>PhotoLocationExtraImages</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="photoLocationExtraImage.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear una nueva entidad PhotoLocationExtraImage</span>
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="photoLocationExtraImage.upload">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear imágenes extra desde CSV</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deletePhotoLocationExtraImageConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(photoLocationExtraImage.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title">Confirme eliminación</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Est&aacute; seguro de querer eliminar estePhotoLocationExtraImage?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Eliminar</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>image</th>
+                    <th>course</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="photoLocationExtraImage in photoLocationExtraImages track by photoLocationExtraImage.id">
+                    <td><a ui-sref="photoLocationExtraImage.detail({id:photoLocationExtraImage.id})">{{photoLocationExtraImage.id}}</a></td>
+                    <td>
+                        <a ui-sref="photoLocationImage.detail({id:photoLocationExtraImage.image.id})">{{photoLocationExtraImage.image.image.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="course.detail({id:photoLocationExtraImage.course.id})">{{photoLocationExtraImage.course.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="photoLocationExtraImage.detail({id:photoLocationExtraImage.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="photoLocationExtraImage.edit({id:photoLocationExtraImage.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(photoLocationExtraImage.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

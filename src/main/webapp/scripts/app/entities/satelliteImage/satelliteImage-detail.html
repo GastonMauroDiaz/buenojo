@@ -1,0 +1,87 @@
+
+<div>
+    <h2><span>SatelliteImage</span> {{satelliteImage.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Meters</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{satelliteImage.meters}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Lon</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{satelliteImage.lon}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Lat</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{satelliteImage.lat}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Resolution</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{satelliteImage.resolution}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{satelliteImage.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Image</span>
+                </td>
+                <td>
+                    <img src="{{satelliteImage.image.hiResImagePath}}" style="max-width: 100%;" ng-if="satelliteImage.image"/>
+                    <div>{{satelliteImage.imageContentType}}  {{byteSize(satelliteImage.image)}}</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Copyright</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{satelliteImage.copyright}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>ImageType</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'buenOjoApp.SatelliteImageType.' + satelliteImage.imageType}}">{{satelliteImage.imageType}}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

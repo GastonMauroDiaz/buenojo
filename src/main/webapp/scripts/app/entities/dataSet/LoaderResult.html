@@ -1,0 +1,18 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="close()">&times;</button>
+            <h4 class="modal-title">¡Carga {{title(resultDTO)}}!</h4>
+        </div>
+
+        <div class="modal-body">
+            <h3 ng-show="resultDTO.result && resultDTO.result!=='Done'">{{subtitle(resultDTO)}}</h3>
+            <p>{{resultDTO.message}}</p>
+        </div>
+        <div ng-show="resultDTO.result && resultDTO.result!=='Done'" class="modal-footer">
+            <span>{{message()}}</span>
+        </div>
+
+    </div>
+</div>

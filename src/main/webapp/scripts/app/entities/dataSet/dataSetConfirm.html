@@ -1,0 +1,51 @@
+
+    <form name="editForm" role="form" novalidate ng-submit="save(false)" show-validation>
+        <div ng-show="!result">
+
+            <h4 class="modal-title" id="mydatasetLabel">Agragar un dataset a un curso</h4>
+            <p class="help-block">
+                Importante: Editar los ejercicios desde ImageCompletionExercise y PhotoLocationExercise respectivamente
+            </p>
+
+
+            <jh-alert-error></jh-alert-error>
+            <div class="form-group">
+                <label for="field_level">Curso</label>
+                <select required class="form-control" id="field_curse" name="course" ng-model="selectedCourse" ng-options="course as course.id+' '+course.name for course in courses track by course.id"></select>
+            </div>
+
+            <div ng-show="selectedCourse">
+                <h3> Estas a punto de agregar el dataset {{dataset.name}} al curso {{selectedCourse.name}}.<br>¿est&aacute;s seguro?</h3>
+                <p class="help-block">
+                    (*)Esta acci&oacute;n no se puede deshacer.
+                </p>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <label for="field_courseOpen">cargar recursos adicionales</label>
+          <input type="checkbox" class="form-control" name="loadExtraResources" id="loadExtraResources"
+                  ng-model="loadExtraResources"
+                   />
+          <button type="button"  class="btn btn-primary" ng-click="save(true)">
+              <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Test</span>
+          </button>
+            <button type="button" class="btn btn-default" ng-click="clear()">
+                <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+            </button>
+            <!-- ng-disabled="editForm.$invalid || editForm.$submitted" -->
+            <button type="submit"  class="btn btn-primary">
+                <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Cargar</span>
+            </button>
+        </div>
+    </form>
+
+<div>
+
+
+
+    <p>{{resultDTO}}</p>
+
+
+</div>

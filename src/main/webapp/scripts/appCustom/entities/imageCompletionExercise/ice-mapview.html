@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-lg-6">
+        <openlayers ng-show="center.lat" ol-center="center" ol-defaults="defaults" ol-controls="controls" height="133px" width="115px">
+          <!-- <ol-control name="{{ control.name }}" ng-repeat="control in controls|filter: {active: true}"></ol-control> -->
+          <ol-marker ol-marker-properties="marker" ></ol-marker>
+        </openlayers>
+    </div>
+    <div class="col-lg-6">
+        <div class="btn-group score-menu pull-right">
+            <button ng-click="showScore()" class="btn btn-primary score-button center no-padding">PUNTAJE
+            </button>
+        </div>
+
+    </div>
+
+</div>

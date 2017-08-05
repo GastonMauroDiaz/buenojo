@@ -1,0 +1,150 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="mySatelliteImageLabel">Crear o Editar un SatelliteImage</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="satelliteImage.id" readonly />
+        </div>
+        <div class="form-group">
+            <label for="field_meters">Meters</label>
+            <input type="number" class="form-control" name="meters" id="field_meters"
+                    ng-model="satelliteImage.meters"
+                    required />
+            <div ng-show="editForm.meters.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.meters.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.meters.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_lon">Lon</label>
+            <input type="number" class="form-control" name="lon" id="field_lon"
+                    ng-model="satelliteImage.lon"
+                    required />
+            <div ng-show="editForm.lon.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.lon.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.lon.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_lat">Lat</label>
+            <input type="number" class="form-control" name="lat" id="field_lat"
+                    ng-model="satelliteImage.lat"
+                    required />
+            <div ng-show="editForm.lat.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.lat.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.lat.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_resolution">Resolution</label>
+            <input type="number" class="form-control" name="resolution" id="field_resolution"
+                    ng-model="satelliteImage.resolution"
+                    required />
+            <div ng-show="editForm.resolution.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.resolution.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.resolution.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="satelliteImage.name"
+                    required />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required">
+                    Este campo es obligatorio.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_image">Image</label>
+            <div>
+                   <select class="form-control" id="field_image" name="image" ng-model="satelliteImage.image" ng-options="image as image.name for image in imageResources track by image.id"></select>
+            </div>
+            <input type="hidden" class="form-control" name="image" id="field_image"
+                    ng-model="satelliteImage.image"
+                    required />
+            <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
+                    ng-model="satelliteImage.imageContentType" />
+            <div ng-show="editForm.image.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.image.$error.required">
+                    Este campo es obligatorio.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_copyright">Copyright</label>
+            <input type="text" class="form-control" name="copyright" id="field_copyright"
+                    ng-model="satelliteImage.copyright"
+                    required />
+            <div ng-show="editForm.copyright.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.copyright.$error.required">
+                    Este campo es obligatorio.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_imageType">ImageType</label>
+            <select class="form-control" name="imageType" ng-model="satelliteImage.imageType" id="field_imageType" required>
+                <option value="LandsatCR">LandsatCR</option>
+                <option value="LandsatFC">LandsatFC</option>
+                <option value="SpotMS">SpotMS</option>
+                <option value="SpotPS">SpotPS</option>
+                <option value="Bing">Bing</option>
+                <option value="BingInv">BingInv</option>
+                <option value="EsriTopo">EsriTopo</option>
+               
+            </select>
+            <div ng-show="editForm.imageType.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.imageType.$error.required">
+                    Este campo es obligatorio.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Cargar</span>
+        </button>
+    </div>
+</form>

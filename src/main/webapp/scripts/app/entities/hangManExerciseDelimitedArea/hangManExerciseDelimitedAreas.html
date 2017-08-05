@@ -1,0 +1,56 @@
+<div>
+    <h2>HangManExerciseDelimitedAreas</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="hangManExerciseDelimitedArea.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear una nueva entidad HangManExerciseDelimitedArea</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>X</th>
+                    <th>Y</th>
+                    <th>Radius</th>
+                    <th>hangManExercise</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="hangManExerciseDelimitedArea in hangManExerciseDelimitedAreas track by hangManExerciseDelimitedArea.id">
+                    <td><a ui-sref="hangManExerciseDelimitedArea.detail({id:hangManExerciseDelimitedArea.id})">{{hangManExerciseDelimitedArea.id}}</a></td>
+                    <td>{{hangManExerciseDelimitedArea.x}}</td>
+                    <td>{{hangManExerciseDelimitedArea.y}}</td>
+                    <td>{{hangManExerciseDelimitedArea.radius}}</td>
+                    <td>
+                        <a ui-sref="hangManExercise.detail({id:hangManExerciseDelimitedArea.hangManExercise.id})">{{hangManExerciseDelimitedArea.hangManExercise.id}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="hangManExerciseDelimitedArea.detail({id:hangManExerciseDelimitedArea.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="hangManExerciseDelimitedArea.edit({id:hangManExerciseDelimitedArea.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="hangManExerciseDelimitedArea.delete({id:hangManExerciseDelimitedArea.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

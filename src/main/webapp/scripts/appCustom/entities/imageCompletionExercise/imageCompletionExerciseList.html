@@ -1,0 +1,31 @@
+<div>
+    <h2>Arrastrar y Soltar </h2>
+    <jh-alert></jh-alert>
+
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="imageCompletionExercise in imageCompletionExercises track by imageCompletionExercise.id">
+                    <td> {{imageCompletionExercise.id}} </td>
+                    <td>{{imageCompletionExercise.name}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="imageCompletionExerciseGame({id:imageCompletionExercise.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-play"></span>&nbsp;<span> Jugar</span>
+                        </button>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

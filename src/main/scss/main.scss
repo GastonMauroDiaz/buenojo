@@ -1,0 +1,301 @@
+$icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+@import "custom-bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,700italic,400italic,300italic);
+
+// bower:scss
+// endbower
+
+body {
+    background: #ffffff;
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+    color: #333;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+
+.profile-icon-frame {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.navbar-version {
+    font-size: 10px;
+    color: #ccc
+}
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+.hero-unit {
+    margin: 50px auto 0 auto;
+    width: 300px;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    background-color: #eee;
+    border-radius: 6px;
+    padding: 60px;
+}
+
+.hero-unit h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.error {
+    color: white;
+    background-color: red;
+}
+
+.hipster {
+    display: inline-block;
+    width: 347px;
+    height: 497px;
+    background: url("../images/hipster.png") no-repeat center top;
+    background-size: contain;
+}
+
+.pad {
+    padding: 10px;
+}
+
+/* wait autoprefixer update to allow simple generation of high pixel density media query */
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) {
+    .hipster {
+        background: url("../images/hipster2x.png") no-repeat center top;
+        background-size: contain;
+    }
+}
+
+/* make sure browsers use the pointer cursor for anchors, even with no href */
+a:hover {
+  cursor: pointer;
+}
+
+.hand {
+    cursor: pointer;
+}
+
+#threadDump .popover, #healthCheck .popover {
+    top: inherit;
+    display: block;
+    font-size: 10px;
+    max-width: 1024px;
+}
+
+#healthCheck .popover {
+    margin-left: -50px;
+}
+
+.health-details {
+    min-width: 400px;
+}
+
+.alert .popover pre {
+    font-size: 10px;
+}
+
+/* start Password strength bar style */
+ul#strength {
+    display:inline;
+    list-style:none;
+    margin:0;
+    margin-left:15px;
+    padding:0;
+    vertical-align:2px;
+}
+
+.point:last {
+    margin:0 !important;
+}
+.point {
+    background:#DDD;
+    border-radius:2px;
+    display:inline-block;
+    height:5px;
+    margin-right:1px;
+    width:20px;
+}
+/* end Password strength bar style */
+/* Custom alerts for notification */
+.alerts .alert{
+    text-overflow: ellipsis;
+}
+.alert pre{
+    background: none;
+    border: none;
+    font: inherit;
+    color: inherit;
+    padding: 0;
+    margin: 0;
+}
+/* end of Custom alerts for notification */
+
+
+#nav-bar-buenojo {
+	background-color: #1f2556;
+  margin-bottom: 0px;
+  border: none;
+  border-radius: 0px;
+  z-index:100;
+
+}
+#jumbo-buen-ojo {
+  margin-top: -53px;
+  margin-bottom: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+.nav-logo {
+  margin-top: -10px;
+  height: 40px;
+}
+
+.logo{
+
+	height: 70px;
+}
+
+.blue-white-row {
+  background-color: #2A3567;
+  height: 123px;
+  color: white;
+  padding-top: 10px;
+
+
+}
+.sponsors-message {
+
+  color: #2A3567;
+}
+
+.blue-color {
+  color: #2A3567
+}
+$buenojo-gray-color: #A9AAA9 !default;
+
+// main palette
+$buenojo-main-color: #2A3567 !default;
+$buenojo-black-color: #001E4F !default;
+$buenojo-orange-color:  #B46214 !default;
+$buenojo-dark-blue-color: #2A3567 !default;
+$buenojo-light-gray-color: #EBEBEA !default;
+// progress bars and gauges
+$buenojo-red-color: #BF0411 !default;
+$buenojo-yellow-color: #C2A91B !default;
+$buenojo-green-color: #568D3A !default;
+
+.buenojo-caption-slide {
+  position: absolute;
+  z-index:10;
+  max-width: 25%;
+  height: auto;
+  bottom: 100px;
+  left: 170px;
+}
+#buenojo-slide-3 {
+  max-width: 60%;
+}
+.buenojo-navbar-Button {
+  color: white;
+  height: 50px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 15px;
+  margin-right: 15px;
+
+}
+.carousel-control-main{
+    width:10%;
+  	filter:none;
+
+}
+
+.carousel-control.left {
+  background-image: none;
+}
+.carousel-control.right {
+  background-image: none;
+}
+.buenojo-carousel-control-img {
+
+  width: 54px;
+  height: 54px;
+
+}
+
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+.no-margin {
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+
+.no-padding {
+	padding: 0px;
+	padding-top: 0px;
+	padding-right:0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+.low-bordered {
+	border-bottom: 1px;
+	border-bottom-width: 1px;
+	border-bottom-color: #9D9D9D;
+	border-bottom-style: solid;
+	margin-bottom: 10px;
+	padding-right: 0px;
+}
+.compensate-low-bordered {
+  margin-top: -10px;
+}
+.no-padding-left {
+  padding-left: 0px;
+
+}
+.no-padding-right {
+  padding-right: 0px;
+
+}
+.no-dragging {
+  -webkit-user-drag: none !important;
+}
+
+.badge {
+	position: 	absolute;
+	right: 		0px;
+	top: 		2px;
+	z-index:	1;
+	color:		white;
+	width:		20px;
+	height:		20px;
+}
+
+
+
+@import "ice-game";
+@import "ice-exerciseTip";
+@import "ice-map-view";
+@import "pl-game";
+@import "carousel-vertical";
+@import "courses-list";

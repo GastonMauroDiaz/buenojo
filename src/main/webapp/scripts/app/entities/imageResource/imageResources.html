@@ -1,0 +1,117 @@
+<div>
+    <h2>ImageResources</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="imageResource.new">
+                    <span class="glyphicon glyphicon-flash"></span>
+                    <span>Crear una nueva entidad ImageResource</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="deleteImageResourceConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(imageResource.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="clear()">&times;</button>
+                        <h4 class="modal-title">Confirmar borrado</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Estás seguro de querer borrar este ImageResource?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;
+                            <span>Cancelar</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;
+                            <span>Eliminar</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 pull-right">
+            <form>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </div>
+
+                        <input type="text" class="form-control" placeholder="Buscar por nombre" ng-model="searchFilter">
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        <a href="#/imageResources" ng-click="sortType = 'id'; sortReverse = !sortReverse">
+                            ID
+                            <span ng-show="sortType == 'id' && !sortReverse" class="glyphicon glyphicon-menu-down"></span>
+                            <span ng-show="sortType == 'id' && sortReverse" class="glyphicon glyphicon-menu-up"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="#/imageResources" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                            Nombre
+                            <span ng-show="sortType == 'name' && !sortReverse" class="glyphicon glyphicon-menu-down"></span>
+                            <span ng-show="sortType == 'name' && sortReverse" class="glyphicon glyphicon-menu-up"></span>
+                        </a>
+                    </th>
+
+                    <th>LoResImage</th>
+                    <th>HiResImage</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="imageResource in imageResources | orderBy:sortType:sortReverse | filter:searchFilter track by imageResource.id ">
+                    <td>
+                        <a ui-sref="imageResource.detail({id:imageResource.id})">{{imageResource.id}}</a>
+                    </td>
+                    <td>{{imageResource.name}}</td>
+                    <td>
+                        <img src="{{imageResource.loResImagePath}}" style="max-height: 30px;" ng-if="imageResource.loResImagePath"/>
+                        {{imageResource.loResImageContentType}}
+                    </td>
+                    <td>
+                        <img data-ng-src="{{imageResource.hiResImagePath}}" style="max-height: 30px;" ng-if="imageResource.hiResImagePath"/>
+                        {{imageResource.hiResImageContentType}}
+                    </td>
+                    <td>
+                        <button type="submit" ui-sref="imageResource.detail({id:imageResource.id})" class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;
+                            <span>
+                                Ver</span>
+                        </button>
+                        <button type="submit" ui-sref="imageResource.edit({id:imageResource.id})" class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;
+                            <span>
+                                Editar</span>
+                        </button>
+                        <button type="submit" ng-click="delete(imageResource.id)" class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;
+                            <span>
+                                Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

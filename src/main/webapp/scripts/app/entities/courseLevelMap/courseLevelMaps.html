@@ -1,0 +1,60 @@
+<div>
+    <h2>CourseLevelMaps</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="courseLevelMap.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear una nueva entidad CourseLevelMap</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>course</th>
+                    <th>level</th>
+                    <th>parent</th>
+                    <th>thresold</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="courseLevelMap in courseLevelMaps track by courseLevelMap.id">
+                    <td><a ui-sref="courseLevelMap.detail({id:courseLevelMap.id})">{{courseLevelMap.id}}</a></td>
+                    <td>
+                        <a ui-sref="course.detail({id:courseLevelMap.course.id})">{{courseLevelMap.course.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="level.detail({id:courseLevelMap.level.id})">{{courseLevelMap.level.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="level.detail({id:courseLevelMap.parent.id})">{{courseLevelMap.parent.name}}</a>
+                    </td>
+                    <td>{{courseLevelMap.threshold}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="courseLevelMap.detail({id:courseLevelMap.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="courseLevelMap.edit({id:courseLevelMap.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="courseLevelMap.delete({id:courseLevelMap.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

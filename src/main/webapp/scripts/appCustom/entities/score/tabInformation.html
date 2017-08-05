@@ -1,0 +1,24 @@
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 text-center">
+			<h1>{{courseInformation.exerciseCount}}</h1>
+			<br />
+			<h4>EJERCICIOS REALIZADOS</h4>
+		</div>
+		<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 text-center">
+
+		<donut-chart-spec ng-if="showDonut" percentage="donutPercentage"></donut-chart-spec>
+
+
+			<h4>EJERCICIOS APROBADOS</h4>
+
+		</div>
+		<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 text-center">
+			<h1>{{courseInformation.currentStage-1}}/{{courseInformation.courseStages}}</h1>
+			<br />
+			<h4>ETAPAS SUPERADAS</h4>
+
+		</div>
+	</div>
+</div>

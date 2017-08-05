@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span>TagPool</span> {{tagPool.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Similarity</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{tagPool.similarity}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>tag</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="tag.detail({id:tagPool.tag.id})">{{tagPool.tag.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>similarTag</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="tag.detail({id:tagPool.similarTag.id})">{{tagPool.similarTag.name}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

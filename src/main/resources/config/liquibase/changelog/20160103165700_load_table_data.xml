@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+  <changeSet author="jhipser" id="loadData-all">
+
+    <!-- Course -->
+      <loadData encoding="UTF-8"
+                file="config/liquibase/course.csv"
+                separator=";"
+                tableName="course">
+       <column name="start_date" type="timestamp"  />
+          <column name="end_date" type="timestamp" />
+          <column name="course_open" type="boolean"/>
+           <column name="banner_id" type="numeric"/>
+      </loadData>
+
+  </changeSet>
+
+</databaseChangeLog>

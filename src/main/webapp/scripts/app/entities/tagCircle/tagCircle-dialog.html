@@ -1,0 +1,116 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myTagCircleLabel">Crear o Editar un TagCircle</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="tagCircle.id" readonly />
+        </div>
+        <div class="form-group">
+            <label for="field_number">Number</label>
+            <input type="number" class="form-control" name="number" id="field_number"
+                    ng-model="tagCircle.number"
+                    required min="0" max="8" />
+            <div ng-show="editForm.number.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.number.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.number.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.number.$error.max" translate-value-max="8">
+                    This field cannot be more than 6.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.number.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_y">Y</label>
+            <input type="number" class="form-control" name="y" id="field_y"
+                    ng-model="tagCircle.y"
+                    required min="0" />
+            <div ng-show="editForm.y.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.y.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.y.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.y.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_x">X</label>
+            <input type="number" class="form-control" name="x" id="field_x"
+                    ng-model="tagCircle.x"
+                    required min="0" />
+            <div ng-show="editForm.x.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.x.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.x.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.x.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_radioPx">RadioPx</label>
+            <input type="number" class="form-control" name="radioPx" id="field_radioPx"
+                    ng-model="tagCircle.radioPx"
+                    required min="0" />
+            <div ng-show="editForm.radioPx.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.radioPx.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.radioPx.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.radioPx.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_imageCompletionExercise">imageCompletionExercise</label>
+            <select class="form-control" id="field_imageCompletionExercise" name="imageCompletionExercise" ng-model="tagCircle.imageCompletionExercise" ng-options="imageCompletionExercise as imageCompletionExercise.id for imageCompletionExercise in imagecompletionexercises track by imageCompletionExercise.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Cargar</span>
+        </button>
+    </div>
+</form>

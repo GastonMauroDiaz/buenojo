@@ -1,0 +1,5 @@
+id;number;satellite_x;satellite_y;satellite_tolerance;terrain_x;terrain_y;terrain_tolerance;exercise_id
+1451;1;390;370;23;486;370;25;1377
+1452;2;538;225;35;875;225;25;1377
+1453;3;310;386;23;317;386;20;1377
+1454;4;408;470;35;471;470;30;1377

@@ -1,0 +1,67 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myUserProfileLabel">Create or edit a UserProfile</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="userProfile.id" readonly />
+        </div>
+        <div class="form-group">
+            <label for="field_phones">Phones</label>
+            <input type="text" class="form-control" name="phones" id="field_phones"
+                    ng-model="userProfile.phones"
+                     />
+        </div>
+        <div class="form-group">
+            <label for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                    ng-model="userProfile.address"
+                     />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="setPicture($file, userProfile)" ngf-pattern="'image/*'">
+            <label for="field_picture">Picture</label>
+            <div>
+                <img data-ng-src="{{'data:' + userProfile.pictureContentType + ';base64,' + userProfile.picture}}" style="max-height: 100px;" ng-if="userProfile.picture"/>
+                <div class="help-block clearfix">
+                    <span class="pull-left">{{userProfile.pictureContentType}} {{byteSize(userProfile.picture)}}</span>
+                    <button ng-click="userProfile.picture=null;userProfile.pictureContentType=null;"
+                            ng-if="userProfile.picture"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="setPicture($file, userProfile)" accept="image/*">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="picture" id="field_picture"
+                    ng-model="userProfile.picture"
+                     />
+            <input type="hidden" class="form-control" name="pictureContentType" id="field_pictureContentType"
+                    ng-model="userProfile.pictureContentType" />
+        </div>
+
+        <div class="form-group">
+            <label for="field_user">user</label>
+            <select class="form-control" id="field_user" name="user" ng-model="userProfile.user" ng-options="user as user.id for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

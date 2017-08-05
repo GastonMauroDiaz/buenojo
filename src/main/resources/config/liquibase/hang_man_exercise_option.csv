@@ -1,0 +1,97 @@
+id;text;is_correct;hang_man_exercise_id
+1;Cordillera;t;1
+2;Desierto;f;1
+3;Océano;f;1
+4;Selva;f;1
+5;Legua de Glaciar;t;2
+6;Cordillera;t;3
+7;No;t;4
+8;Caminos;t;5
+9;Ñire bajo;t;6
+10;Lenga;t;6
+11;Ñire;t;6
+12;Vegetación mayor a 7 m de altura;t;7
+13;50 m;f;7
+14;80 m;f;7
+15;200 m;f;7
+16;0 m;f;7
+17;Lenga;t;8
+18;Si;t;9
+19;3;t;10
+20;9;f;10
+21;10;f;10
+22;5;f;10
+23;20;f;10
+24;2;f;10
+25;4;f;10
+26;1;f;10
+27;No puede saberse sólo con esta información;t;11
+28;50 años;f;11
+29;100 años;f;11
+30;se estiman 300 años;f;11
+31;10 años;f;11
+32;80 años;f;11
+33;Araucaria;t;12
+34;Lenga;t;12
+35;Ñire;t;12
+36;Araucaria;t;13
+37;Coihue;t;13
+38;Hielo / Nieve;t;14
+39;Cumbre de Motaña;t;14
+40;Ladera alta;t;15
+41;Pendiente fuerte;t;15
+42;Nor-Oeste;t;16
+43;Cañadón;t;17
+44;Arroyos temporales;t;17
+45;Coihue;t;18
+46;Ecotono;t;19
+47;Límite Bosque-Estepa;t;20
+48;Cultivos;t;21
+49;Infraestructura;t;21
+50;Forestaciones;t;21
+51;40 Años;t;22
+52;Estepa;t;23
+53;Sombras;t;24
+54;Cárcavas;t;24
+55;Suelo desnudo en los surcos;t;24
+56;Sur-Este;t;25
+57;además de los de la forestación;t;26
+58;Si;t;26
+59;si/no;f;26
+60;Ciprés;t;27
+61;3 m;t;28
+62;20 m;f;28
+63;5 m;f;28
+64;8 m;f;28
+65;1 m;f;28
+66;10 m;f;28
+67;4 m;f;28
+68;15 m;f;28
+69;Si;t;29
+70;Zona húmeda;t;30
+71;Pendientes suaves;t;30
+72;Presencia de caminos;t;30
+73;Vegetación de altura media;t;30
+74;Poco variables;t;31
+75;Muy variables;f;31
+76;No varían;f;31
+77;Homogéneos;f;31
+78;Valle;t;32
+79;Agua;t;33
+80;Sequía;t;34
+81;Sigue siendo agua;f;34
+82;Quemado;f;34
+83;Cultivo en verano;f;34
+84;Otros humedales;t;35
+85;Cordillera;t;36
+86;Boscoso;t;36
+87;Lenga achaparrada;t;37
+88;Araucaria;t;37
+89;Coihue;t;37
+90;Lenga;t;37
+91;Ñire;t;37
+92;Forestaciones;t;38
+93;Caminos;t;38
+94;Forestaciones;t;39
+95;Si;t;40
+96;Araucaria;t;41

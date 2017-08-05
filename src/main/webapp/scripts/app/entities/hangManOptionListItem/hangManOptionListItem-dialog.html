@@ -1,0 +1,64 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myHangManOptionListItemLabel">Crear o Editar un HangManOptionListItem</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="hangManOptionListItem.id" readonly />
+        </div>
+        <div class="form-group">
+            <label for="field_optionGroup">OptionGroup</label>
+            <input type="text" class="form-control" name="optionGroup" id="field_optionGroup"
+                    ng-model="hangManOptionListItem.optionGroup"
+                    required />
+            <div ng-show="editForm.optionGroup.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.optionGroup.$error.required">
+                    Este campo es obligatorio.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_optionType">OptionType</label>
+            <input type="text" class="form-control" name="optionType" id="field_optionType"
+                    ng-model="hangManOptionListItem.optionType"
+                     />
+        </div>
+        <div class="form-group">
+            <label for="field_optionText">OptionText</label>
+            <input type="text" class="form-control" name="optionText" id="field_optionText"
+                    ng-model="hangManOptionListItem.optionText"
+                    required ng-minlength="2" ng-maxlength="25" />
+            <div ng-show="editForm.optionText.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.optionText.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.optionText.$error.minlength" translate-value-min="2">
+                    Este campo es obligatorio to be at least 2 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.optionText.$error.maxlength" translate-value-max="25">
+                    This field cannot be longer than 25 characters.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Cargar</span>
+        </button>
+    </div>
+</form>

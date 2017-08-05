@@ -1,0 +1,48 @@
+
+<div>
+    <h2><span>ImageResource</span> {{imageResource.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{imageResource.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>LoResImage</span>
+                </td>
+                <td>
+                    <img src="{{imageResource.loResImagePath}}" style="max-width: 50%;" ng-if="imageResource.loResImagePath"/>
+                    <div ng-if="imageResource.loResImagePath">{{imageResource.loResImageContentType}}</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>HiResImage</span>
+                </td>
+                <td>
+                    <img src="{{imageResource.hiResImagePath}}" style="max-width: 50%;" ng-if="imageResource.hiResImagePath"/>
+                    <div ng-if="imageResource.hiResImagePath">{{imageResource.hiResImageContentType}}  {{byteSize(imageResource.hiResImagePath)}}</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

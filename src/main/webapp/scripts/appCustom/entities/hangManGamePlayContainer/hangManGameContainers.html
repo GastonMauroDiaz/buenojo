@@ -1,0 +1,39 @@
+<div>
+    <h2>Ejercicios</h2>
+    <jh-alert></jh-alert>
+    
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="hangManGameContainer in hangManGameContainers track by hangManGameContainer.id">
+                    <td><a ui-sref="hangManGameContainer.detail({id:hangManGameContainer.id})" >{{hangManGameContainer.id}}</a></td>
+                    <td>{{hangManGameContainer.name}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="hangManGameContainer.exercises({id:hangManGameContainer.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span>Preguntas</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="hangManGamePlayContainer({id:hangManGameContainer.id})"
+                                ui-sref-opts="{location: false}"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Play</span>
+                        </button>
+                       
+                        
+                        
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

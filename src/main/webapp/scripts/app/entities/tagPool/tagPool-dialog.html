@@ -1,0 +1,54 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myTagPoolLabel">Crear o Editar un TagPool</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="tagPool.id" readonly />
+        </div>
+        <div class="form-group">
+            <label for="field_similarity">Similarity</label>
+            <input type="number" class="form-control" name="similarity" id="field_similarity"
+                    ng-model="tagPool.similarity"
+                    required />
+            <div ng-show="editForm.similarity.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.similarity.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.similarity.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_tag">tag</label>
+            <select class="form-control" id="field_tag" name="tag" ng-model="tagPool.tag" ng-options="tag as tag.name for tag in tags track by tag.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_similarTag">similarTag</label>
+            <select class="form-control" id="field_similarTag" name="similarTag" ng-model="tagPool.similarTag" ng-options="tag as tag.id for tag in tags track by tag.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Cargar</span>
+        </button>
+    </div>
+</form>

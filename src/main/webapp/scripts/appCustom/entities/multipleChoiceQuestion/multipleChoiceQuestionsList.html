@@ -1,0 +1,53 @@
+<div>
+    <h2>MultipleChoiceQuestions</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="multipleChoiceQuestion.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear una nueva entidad MultipleChoiceQuestion</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Question</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="multipleChoiceQuestion in multipleChoiceQuestions track by multipleChoiceQuestion.id">
+                    <td><a ui-sref="multipleChoiceQuestion.detail({id:multipleChoiceQuestion.id})">{{multipleChoiceQuestion.id}}</a></td>
+                    <td>{{multipleChoiceQuestion.question}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="multipleChoiceQuestionPlay({id:multipleChoiceQuestion.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-play"></span>&nbsp;<span> Play</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="multipleChoiceQuestion.detail({id:multipleChoiceQuestion.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="multipleChoiceQuestion.edit({id:multipleChoiceQuestion.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="multipleChoiceQuestion.delete({id:multipleChoiceQuestion.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

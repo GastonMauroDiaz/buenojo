@@ -1,0 +1,77 @@
+<div class="low-bordered">
+<h2>Panel de Administrador de Cursos</h2>
+</div>
+<jh-alert></jh-alert>
+
+<div class="container-fluid">
+
+  <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>nombre</th>
+										<th>Descripci&oacute;n</th>
+                    <th>Fecha de apertura</th>
+                    <th>Fecha de cierre</th>
+										<th>Estado</th>
+										<th>Prioridad en pantalla</th>
+										<th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="course in courses track by course.id">
+                    <td>{{course.id}}</td>
+                    <td>{{course.name}}</td>
+                    <td>{{course.description}}</td>
+                    <td>{{course.startDate}}</td>
+										<td>{{course.endDate}}</td>
+										<td>{{statusForCourse(course)}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="coursePanel({id: course.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-wrench"></span>&nbsp;<span> Administrar</span>
+                        </button>
+                        <button type="submit"
+																ng-if="course.courseOpen == false"
+																ng-click="openCourse(course)"
+                                class="btn btn-success btn-sm">
+                            <span class="glyphicon glyphicon-open"></span>&nbsp;<span> Abrir</span>
+                        </button>
+                        <button ng-if="course.courseOpen == true" type="submit"
+                                ng-click="closeCourse(course)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Cerrar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+		<div class="modal fade" id="closeCourseConfirmation">
+				<div class="modal-dialog">
+						<div class="modal-content">
+								<form name="deleteForm" ng-submit="confirmClose(course)">
+										<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+																ng-click="clear()">&times;</button>
+												<h4 class="modal-title">Confirmar cierre</h4>
+										</div>
+										<div class="modal-body">
+												<p>¿Estás seguro de querer cerrar este Curso?</p>
+										</div>
+										<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+														<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+												</button>
+												<button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+														<span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Cerrar Curso</span>
+												</button>
+										</div>
+								</form>
+						</div>
+				</div>
+		</div>
+
+</div>

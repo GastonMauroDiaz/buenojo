@@ -1,0 +1,50 @@
+<div>
+    <h2>HangManExerciseImageResources</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="hangManExerciseImageResource.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear una nueva entidad HangManExerciseImageResource</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>hangManExercise</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="hangManExerciseImageResource in hangManExerciseImageResources track by hangManExerciseImageResource.id">
+                    <td><a ui-sref="hangManExerciseImageResource.detail({id:hangManExerciseImageResource.id})">{{hangManExerciseImageResource.id}}</a></td>
+                    <td>
+                        <a ui-sref="hangManExercise.detail({id:hangManExerciseImageResource.hangManExercise.id})">{{hangManExerciseImageResource.hangManExercise.id}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="hangManExerciseImageResource.detail({id:hangManExerciseImageResource.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="hangManExerciseImageResource.edit({id:hangManExerciseImageResource.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="hangManExerciseImageResource.delete({id:hangManExerciseImageResource.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

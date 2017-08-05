@@ -1,0 +1,39 @@
+<div ng-if="exerciseTip" class="col-lg-12 low-bordered tip-image-container center">
+
+    <div class="tip-text center" ng-show="!currentImageUrl">
+        {{exerciseTip.detail}}
+    </div>
+    <div class="img-close center" ng-click="closeTip()" ng-if="!currentImageUrl"><div class="center">X</div></div>
+    <div class="tip-image" ng-show="currentImageUrl">
+
+      <div class="img-close center" ng-click="closeImage()" ng-if="currentImageUrl"><div class="center">X</div></div>
+
+      <img class="tip-image img-responsive" ng-src="{{currentImageUrl}}"></img>
+    </div>
+</div>
+<div ng-if="exerciseTip" class="col-lg-12 no-padding low-bordered">
+
+    <div class="carousel slide" data-interval="false" data-wrap="false" id="myCarousel">
+
+        <!-- Carousel items -->
+        <div class="carousel-inner .carousel-inner-tip">
+            <div ng-class="[item, center-block, $first?'active':'']" ng-if="$index%itemsPerRow==0" ng-repeat="image in exerciseTip.images track by image.id">
+                <div class="row">
+                    <div ng-class="['col-sm-3', 'no-padding', 'tip-thumbnail',(offset==0)?'first':''] " ng-repeat="offset in range($index,itemsPerRow-1)">
+
+                        <a ng-show="exerciseTip.images[offset]" ng-click="showImage(offset)"><img  alt="Image" class="img-responsive" ng-src="{{exerciseTip.images[offset].loResImagePath}}"></a>
+                    </div>
+
+                </div>
+                <!--/row-->
+            </div>
+            <!--/item-->
+
+        </div>
+        <!--/carousel-inner-->
+        <a class="left carousel-control .carousel-control-tip center" data-slide="prev" href="#myCarousel" ng-show="showControls">‹</a>
+
+        <a class="right carousel-control .carousel-control-tip center" data-slide="next" href="#myCarousel" ng-show="showControls">›</a>
+    </div>
+    <!--/myCarousel-->
+</div>

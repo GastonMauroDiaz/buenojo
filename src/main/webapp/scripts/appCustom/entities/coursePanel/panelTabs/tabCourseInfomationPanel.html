@@ -1,0 +1,84 @@
+
+<div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Nombre</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{course.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Descripci&oacute;n</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{course.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Fecha de apertura:</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{course.startDate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Fecha de cierre:</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{course.endDate | date:'medium'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Estado</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{statusForCourse(course)}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Prioridad</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{course.priority}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Vista Previa</span>
+                </td>
+                <td>
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                      <div class="jumbotron courseSubTitle" ng-style="{'background-image' : 'url({{course.banner.hiResImagePath}})'}">
+
+                      <button ng-if="course.courseOpen" ng-disabled="true" type="button" class="btn-rect btn-course pull-right" ng-click="startCourse(course.id);">
+                        {{translateEnrollmentStatusToAction(undefined)}}
+                        </button>
+                        <button  ng-if="course.courseOpen==false" disabled="disabled" type="button" class="btn-rect btn-course pull-right">
+                        PR&Oacute;XIMAMENTE</button>
+                      </div>
+
+                      <h4>{{course.name}}</h4>
+                      <hr class="courseSubTitle" />
+                          <h4><small>
+                          {{course.description}}
+                          </small></h4>
+                  </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

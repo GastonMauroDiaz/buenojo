@@ -1,0 +1,138 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myImageCompletionExerciseLabel">Crear o Editar un ImageCompletionExercise</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="imageCompletionExercise.id" readonly />
+        </div>
+        <div class="form-group">
+            <label for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="imageCompletionExercise.name"
+                    required>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required">
+                    Este campo es obligatorio.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="imageCompletionExercise.description"
+                    required>
+            <div ng-show="editForm.description.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.description.$error.required">
+                    Este campo es obligatorio.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_totalScore">TotalScore</label>
+            <input type="number" class="form-control" name="totalScore" id="field_totalScore"
+                    ng-model="imageCompletionExercise.totalScore"
+                    required min="0">
+            <div ng-show="editForm.totalScore.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.totalScore.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.totalScore.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.totalScore.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+		  <div class="form-group">
+            <label for="field_level">level</label>
+            <select class="form-control" id="field_level" name="level" ng-model="imageCompletionExercise.level" ng-options="level as level.name for level in levels track by level.id"></select>
+        </div>
+        <div class="form-group">
+            <label for="field_imageCompletionSolution">imageCompletionSolution</label>
+            <select class="form-control" id="field_imageCompletionSolution" name="imageCompletionSolution" ng-model="imageCompletionExercise.imageCompletionSolution" ng-options="imageCompletionSolution as imageCompletionSolution.id for imageCompletionSolution in imagecompletionsolutions | orderBy:'id' track by imageCompletionSolution.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_tag">tag</label>
+            <select class="form-control" id="field_tag" multiple name="tag" ng-model="imageCompletionExercise.tags" ng-options="tag as (tag.number+' '+tag.name) for tag in tags track by tag.id"></select>
+        </div>
+        <div class="form-group">
+            <label for="field_SatelliteImage">SatelliteImage</label>
+            <select class="form-control" id="field_SatelliteImage" multiple name="SatelliteImage" ng-model="imageCompletionExercise.satelliteImages" ng-options="satelliteImage as satelliteImage.name for satelliteImage in satelliteimages track by satelliteImage.id"></select>
+        </div>
+        
+        <div class="form-group" ng-show="imageCompletionExercise.id">
+        	<button type="submit"
+                    ui-sref="tagCircle.edit({id:tagCircle.id})"
+                    class="btn btn-primary btn-sm">
+                <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Add Circles</span>
+            </button>
+	        <div class="table-responsive">
+		        <table class="table table-striped">
+		            <thead>
+		                <tr>
+		                    <th>ID</th>
+		                    <th>Number</th>
+		                    <th>Y</th>
+		                    <th>X</th>
+		                    <th>RadioPx</th>
+
+		                    <th></th>
+		                </tr>
+		            </thead>
+		            <tbody>
+		                <tr ng-repeat="tagCircle in imageCompletionExercise.tagCircles track by tagCircle.id">
+		                    <td><a ui-sref="tagCircle.detail({id:tagCircle.id})">{{tagCircle.id}}</a></td>
+		                    <td>{{tagCircle.number}}</td>
+		                    <td>{{tagCircle.y}}</td>
+		                    <td>{{tagCircle.x}}</td>
+		                    <td>{{tagCircle.radioPx}}</td>
+		                    <td>{{tagCircle.imageCompletionExercise}}</td>
+		                   
+		                    <td>
+		                        <button type="submit"
+		                                ui-sref="tagCircle.detail({id:tagCircle.id})"
+		                                class="btn btn-info btn-sm">
+		                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+		                        </button>
+		                        <button type="submit"
+		                                ui-sref="tagCircle.edit({id:tagCircle.id})"
+		                                class="btn btn-primary btn-sm">
+		                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+		                        </button>
+		                        <button type="submit"
+		                                ng-click="delete(tagCircle.id)"
+		                                class="btn btn-danger btn-sm">
+		                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+		                        </button>
+		                    </td>
+		                </tr>
+		            </tbody>
+		        </table>
+	   		</div>
+        </div> 
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Cargar</span>
+        </button>
+    </div>
+</form>

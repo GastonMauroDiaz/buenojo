@@ -1,0 +1,83 @@
+<div>
+    <h2>Exercises</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="exercise.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear una nueva entidad Exercise</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteExerciseConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(exercise.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title">Confirmar borrado</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Estás seguro de querer borrar este Exercise?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Eliminar</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>TotalScore</th>
+                    <th>Level</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="exercise in exercises track by exercise.id">
+                    <td><a ui-sref="exercise.detail({id:exercise.id})">{{exercise.id}}</a></td>
+                    <td>{{exercise.name}}</td>
+                    <td>{{exercise.description}}</td>
+                    <td>{{exercise.totalScore}}</td>
+                    <td>
+                        
+                         <a class="form-control-static" ui-sref="level.detail({id: {{level.id}}})">{{level.id}}</a>
+                        
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="exercise.detail({id:exercise.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="exercise.edit({id:exercise.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(exercise.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

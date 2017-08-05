@@ -1,0 +1,68 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myPhotoLocationBeaconLabel">Crear o Editar un PhotoLocationBeacon</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="photoLocationBeacon.id" readonly />
+        </div>
+        <div class="form-group">
+            <label for="field_x">X</label>
+            <input type="number" class="form-control" name="x" id="field_x"
+                    ng-model="photoLocationBeacon.x"
+                     />
+        </div>
+        <div class="form-group">
+            <label for="field_y">Y</label>
+            <input type="number" class="form-control" name="y" id="field_y"
+                    ng-model="photoLocationBeacon.y"
+                    required />
+            <div ng-show="editForm.y.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.y.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.y.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_tolerance">Tolerance</label>
+            <input type="number" class="form-control" name="tolerance" id="field_tolerance"
+                    ng-model="photoLocationBeacon.tolerance"
+                    required min="0" />
+            <div ng-show="editForm.tolerance.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.tolerance.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.tolerance.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.tolerance.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

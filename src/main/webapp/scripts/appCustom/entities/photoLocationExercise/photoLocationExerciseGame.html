@@ -1,0 +1,338 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 low-bordered no-margin">
+            <div ng-click="quitExercise()" class="no-padding pull-right">
+                Salir del ejercio &nbsp;
+                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-10 pl-left-panel no-padding">
+            <div class="col-lg-12 low-bordered pull-left vcenter compensate-low-bordered no-padding">
+                <div class="col-lg-9 no-padding">
+                    <h3>Consigna:
+                        {{consigna}}</h3>
+                </div>
+                <div class="col-lg-3 pl-tab-control no-padding" ng-show="currentState===PhotoLocationState.PHOTO_LOCATION || currentState === PhotoLocationState.DEFEAT">
+                    <div class="tab-align right pull-right align-bottom">
+                        <ul class="nav nav-tabs tab-align right pl-nav-tabs">
+                            <li ng-click="tabChanged($index)" role="presentation" ng-repeat="satelliteImage in exercise.satelliteImages" ng-class="{active: $first}">
+                                <a data-toggle="tab" showtab="" href="{{'#tab-'+($index+1)}}">{{'Imagen '+($index+1)}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="currentState===PhotoLocationState.PAIR_IMAGE || currentState === PhotoLocationState.PAIR_IMAGE_DEFEAT">
+                <div id="pl-photo-panel-pair"class="col-lg-7 pl-photo-panel">
+
+                    <div class="col-lg-12 no-padding pl-carousel-control center pl-control-up" ng-show="!showPairingResult">
+                        <!-- up -->
+                        <a id="photo-control-up" class="right carousel-control pl-carousel-control" data-target="#carousel-photo-location" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <!-- foto -->
+                    <div class="col-lg-12 no-padding pl-photo-item">
+
+                        <div id="carousel-photo-location" class="carousel slide" data-ride="carousel" data-interval="false">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators pl-indicators left" ng-show="!showPairingResult">
+                                <li ng-repeat="photo in exercise.terrainSlides track by photo.id" data-target="#carousel-photo-location" data-slide-to="{{$index}}" ng-class="{active : $first}"></li>
+
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div id="pl-tarrain-slides-carrousel" class="pl-photo-item carousel-inner vertical" role="listbox">
+                                <div id="{{'photo-'+$index}}" ng-repeat="tPhoto in exercise.terrainSlides track by tPhoto.id" ng-class="{item : true, active: $first}">
+                                    <img id="{{'terrainSlide-'+$index}}"ng-src="{{tPhoto.image.hiResImagePath}}" class="img-responsive" image-did-load="imgLoaded()"/>
+
+                                </div>
+                                <div class="pl-result-overlay pl-overlay-wrong center" ng-show="showPairingResult && !pairResultOk">
+                                    <div class="pl-overlay-sign pl-wrong center">
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                                <div class="pl-result-overlay pl-overlay-correct center" ng-show="showPairingResult && pairResultOk">
+                                    <div class="pl-overlay-sign pl-correct center">
+                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-12 no-padding pl-carousel-control center pl-control-down" ng-show="!showPairingResult">
+                        <a id="photo-control-down" class="left carousel-control pl-carousel-control" data-target="#carousel-photo-location" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5 no-padding pl-satellite-image-panel">
+                    <!-- satelite -->
+                    <div class="col-lg-12 no-padding pl-carousel-control center pl-control-up" ng-show="!showPairingResult">
+                        <!-- up -->
+                        <a class="right carousel-control pl-carousel-control" data-target="#carousel-photo-location-2" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <!-- foto -->
+                    <div class="col-lg-12 no-padding ">
+
+                        <div id="carousel-photo-location-2" class="carousel slide" data-ride="carousel" data-interval="false">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators pl-indicators right" ng-show="!showPairingResult">
+                                <li ng-repeat="photo in exercise.satelliteSlides track by photo.id" data-target="#carousel-photo-location-2" data-slide-to="{{$index}}" ng-class="{active : $first}"></li>
+
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+
+                              <div id="pl-satellite-slides-carrousel" class="carousel-inner vertical" role="listbox">
+                                  <div id="{{'satellite-'+$index}}" ng-repeat="sPhoto in exercise.satelliteSlides track by sPhoto.id" ng-class="{item : true, active : $first , 'pl-satellite-image' : true}">
+
+                                      <img ng-src="{{sPhoto.satelliteImage.image.hiResImagePath}}" image-did-load="imgLoaded()"/>
+                                      <div ng-if="showScales"class="pl-compass">
+                                          <img src="assets/images/compass_4.png" class="img-responsive" image-did-load="imgLoaded()"/>
+
+                                      </div>
+                                      <div class="scale-meter">
+                                          <scale-meter ng-if="showScales" id="{{'satellite-scale-'+$index}}" properties="sPhoto.scaleProperties" width="394" height="20"></scale-meter>
+                                      </div>
+                                  </div>
+                                  <div class="pl-result-overlay pl-overlay-wrong center" ng-show="showPairingResult && !pairResultOk">
+                                      <div class="pl-overlay-sign pl-wrong center">
+                                          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                      </div>
+                                  </div>
+                                  <div class="pl-result-overlay pl-overlay-correct center" ng-show="showPairingResult && pairResultOk">
+                                      <div class="pl-overlay-sign pl-correct center">
+                                          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                      </div>
+                                  </div>
+
+                              </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-lg-12 no-padding pl-carousel-control center pl-control-down" ng-show="!showPairingResult">
+                        <a class="left carousel-control pl-carousel-control" data-target="#carousel-photo-location-2" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="currentState===PhotoLocationState.PHOTO_LOCATION">
+                <div id="pl-photo-panel-locate" class="col-lg-7 pl-photo-panel">
+
+                    <!-- foto -->
+                    <div class="col-lg-12 no-padding pl-photo-item">
+
+                        <!-- Wrapper for slides -->
+
+                        <div class="pl-photo-container" id="pl-photo-item-left">
+                            <img id="terrainImage" ng-src="{{exercise.terrainPhoto.image.hiResImagePath}}" class="pl-photo img-responsive" image-did-load="imgLoaded()"/>
+
+                        </div>
+                        <div class="pl-sight-overlay">
+                            <div draggable="false" id="{{'pl-sight-terrain-'+$index}}" ng-class="sightImages[$index]" class="pl-sight no-dragging" ng-repeat="sightPair in exercise.sightPairs" ng-click="sightClicked(sightPair)" ng-style="sightPair.terrainSightCSSStyle">
+
+                                <!-- <img draggable="false" class="img-responsive no-dragging" ng-src="{{'assets/images/photolocation/'+sightImages[$index]}}"></img> -->
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-lg-5 no-padding pl-satellite-image-panel">
+                    <!-- satelite -->
+
+                    <!-- Wrapper for slides -->
+
+
+                    <div class="col-lg-12 no-padding tab-content pl-tab-content">
+                      <div class="pl-compass" ng-if="showScales">
+                          <img src="assets/images/compass_4.png" class="img-responsive" image-did-load="imgLoaded()"/>
+
+                      </div>
+                        <div id="{{'tab-'+($index+1)}}" ng-repeat="sPhoto in exercise.satelliteImages track by sPhoto.id" ng-class="['tab-pane' ,  'pl-satellite-image' , $first? 'active' : '']">
+
+                            <img id="{{'satelliteImage-'+$index}}" ng-src="{{sPhoto.satelliteImage.image.hiResImagePath}}" class="img-responsive" image-did-load="imgLoaded()"/>
+
+                            <div class="scale-meter">
+                                <scale-meter ng-if="showScales" id="{{'satelliteImage-scale-'+$index}}" properties="sPhoto.scaleProperties" width="394" height="20"></scale-meter>
+                            </div>
+                        </div>
+                        <div id="pl-sight-satellite-overlay" class="pl-sight-overlay" jqyoui-droppable="{multiple: true,  onDrop: 'elementDropped(sightPair)'}" data-drop="true">
+                            <div id="{{'pl-sight-satellite-'+$index}}" class="pl-sight" ng-repeat="sightPair in exercise.sightPairs" ng-style="sightPair.satelliteSightCSSStyle" ng-show="sightPair.satelliteSightCSSStyle" ng-model="sightPair" ng-class="[sightImages[$index], (sightPair.showBadge && sightPair.ok)?'pl-badge-correct':'pl-badge-incorrect']" jqyoui-draggable="{index: $index, placeholder: false, animate: true, beforeDrop: 'sightShouldDrop(sightPair)'}" data-drag="!sightPair.showBadge" data-jqyoui-options="{revert: false, cursorAt: {left: 25}}" draggable>
+                                <div class="badge center" ng-show="sightPair.showBadge">
+                                    <span ng-class="[sightPair.ok?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove']" aria-hidden="true"></span>
+                                </div>
+
+                            </div>
+                            <div id="pl-beacon" ng-class="['pl-beacon',exercise.beacon.ok?'pl-badge-correct':'pl-badge-incorrect']" ng-style="exercise.beacon.beaconCSSStyle" ng-show="exercise.beacon.beaconCSSStyle">
+                                <div ng-class="['badge', 'center']" ng-show="exercise.beacon.showBadge">
+                                    <span ng-class="[exercise.beacon.ok?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove']" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-lg-2 no-padding pl-right-panel">
+            <!-- panel -->
+            <div class="col-lg-12 no-padding">
+                <!-- boton puntaje -->
+                <div class="btn-group score-menu pull-right">
+                    <button ui-sref="photoLocationScore({experience: 10, percentage: 25, currentCount: 1 })" class="btn btn-primary score-button center no-padding">PUNTAJE
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-12 no-padding center">
+                <div class="pl-timer-circle center">
+                    <timer ng-if="showCountdown" autostart="false" interval="1000" finish-callback="timeUp()" countdown="countdown">{{mminutes}}:{{sseconds}}</timer>
+                </div>
+            </div>
+            <div class="col-lg-12 no-padding" id="pl-camera-control-container">
+
+                <div class="col-lg-12" id="pl-camera-control" ng-show="currentState === PhotoLocationState.PHOTO_LOCATION && !hideCameraControl" jqyoui-draggable="{index: $index, placeholder: 'keep', animate: true, onDrop: 'cameraDropped()', beforeDrop: 'cameraShouldDrop()'}" data-drag="true" ng-model="exercise.beacon" data-jqyoui-options="{revert: true, cursorAt: {left: 25}}" draggable></div>
+
+            </div>
+            <div class="col-lg-12 no-padding center">
+                <button ng-show="currentState != PhotoLocationState.PAIR_IMAGE && bailCount>0" ng-click="bail(currentState,bailCount)" type="button" id="pl-exchange-button" class="btn btn-primary score-button pl-button pl-exchange-button center no-padding">CANJE
+                </button>
+            </div>
+            <div class="col-lg-12 no-padding center">
+                <button ng-click="accept()" type="button" class="btn btn-primary score-button pl-button center">{{acceptBtnMsg}}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-style="{height : 30}"></div>
+    <div class="row">
+        <div  class="col-lg-12 copyright center  pl-copyright-margin">
+          <span ng-show="exercise.satelliteSlides && currentState!==PhotoLocationState.PHOTO_LOCATION">  (c)CIEFAP -
+            {{exercise.satelliteSlides[currentSatelliteImage].satelliteImage.copyright}}</span>
+            <span ng-show="exercise.satelliteImages && currentState===PhotoLocationState.PHOTO_LOCATION">  (c)CIEFAP -
+              {{exercise.satelliteImages[currentTabIndex].satelliteImage.copyright}}</span>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exitExerciseConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="exitForm" ng-submit="confirmQuit()">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancelQuit()">&times;</button>
+                        <h4 class="modal-title">Salir del ejercicio</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿estas seguro que quieres salir del ejercicio?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn  btn-success" data-dismiss="modal" ng-click="cancelQuit()">
+                            <!-- 	<span class="glyphicon glyphicon-ban-circle"></span>&nbsp; -->
+                            <span>No, seguir aprendiendo</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;
+                            <span>Si, deseo salir</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exerciseFailedDialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="exitForm" ng-submit="confirmQuit()">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title">Ejercicio no resuelto!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Tuviste más de una respuesta incorrecta.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn  btn-success" data-dismiss="modal" ng-click="keepLearning()">
+                            <!-- <span class="glyphicon glyphicon-ban-circle"></span>&nbsp; -->
+                            <span>seguir aprendiendo</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;
+                            <span>deseo salir</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exerciseSolvedDialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="exitForm" ng-submit="confirmQuit()">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title">Ejercicio resuelto!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>¡Felicitaciones! resolviste el ejecicio sin errores.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn  btn-success" data-dismiss="modal" ng-click="keepLearning()">
+                            <span class="glyphicon glyphicon-ok"></span>&nbsp;
+                            <span>seguir aprendiendo</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;
+                            <span>deseo salir</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exerciseSolvedWithErrorsDialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="exitForm" ng-submit="confirmQuit()">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title">Ejercicio resuelto!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>¡Felicitaciones! resolviste el ejercicio con un error</p>
+                        <p>¡Estuviste cerca! Los tips te ayudarán a mejorar</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="keepLearning()">
+                            <span class="glyphicon glyphicon-ok"></span>&nbsp;
+                            <span>seguir aprendiendo</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;
+                            <span>deseo salir</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+id;login;PASSWORD;first_name;last_name;email;activated;lang_key;created_by
+1;system;$2a$10$mE.qmcV0mFU5NcKh73TZx.z4ueI/.bDWbj0T1BYyqP481kGGarKLG;System;System;system@localhost;true;en;system
+2;anonymousUser;$2a$10$j8S5d7Sr7.8VTOYNviDPOeWX8KcYILUVJBsYV83Y5NtECayypx9lO;Anonymous;User;anonymous@localhost;true;en;system
+3;admin;$2a$10$gSAhZrxMllrbgj/kkK9UceBPpChGWJA7SYIb1Mqo.n5aNLq1/oRrC;Administrator;Administrator;admin@localhost;true;en;system
+4;user;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;User;User;user@localhost;true;en;system
+5;courseadmin;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;User;User;courseAdmin@localhost;true;en;system
+6;coursestudent;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;User;User;courseStudent@localhost;true;en;system
+1000;demouser;$2a$10$Qen97K2pZvuu7YsStJlGtez.F3y9QyFel8keD9E3t3vv29Zl3TvpO;;;demouser@localhost;t;en;60036732519515315018;;anonymousUser;2016-06-17 15:31:21.418;;admin;2016-06-17 15:32:18.982

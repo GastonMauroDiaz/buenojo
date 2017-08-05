@@ -1,0 +1,346 @@
+<style>
+.blink_me {
+	animation: blinker 1s linear infinite;
+	background-color: black;
+}
+
+@
+keyframes blinker { 50% {
+	opacity: 0.8;
+}
+
+;
+}
+.overlay {
+	background-color: transparent;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	z-index: 1000;
+}
+
+input[type=checkbox] {
+	display: none;
+}
+
+input[type=checkbox]+label {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-image:
+		url("assets/images/Juego_2-Ahorcado/solucion_vacia.png"); // colour or
+	image height : 16px;
+	display: inline-block;
+	padding: 0 0 0 20px;
+}
+
+input[type=checkbox]:checked+label {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-image:
+		url("assets/images/Juego_2-Ahorcado/solucion_punto.png"); // colour or
+	image height : 16px;
+	display: inline-block;
+	padding: 0 0 0 20px;
+}
+
+input[type=checkbox]:checked.bien+label {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-image:
+		url("assets/images/Juego_2-Ahorcado/solucion_tilde.png"); // colour or
+	image height : 16px;
+	display: inline-block;
+	padding: 0 0 0 20px;
+}
+
+input[type=checkbox].mal+label {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-image:
+		url("assets/images/Juego_2-Ahorcado/solucion_cruz.png"); // colour or
+	image height : 16px;
+	display: inline-block;
+	padding: 0 0 0 20px;
+}
+</style>
+<div>
+	<div class="container-fluid">
+		<div class="row" ng-switch on="questionSelected">
+
+			<div class="text-right">
+				<a href="#">Salir del ejercicio <span
+					class="glyphicon glyphicon-remove"></span></a>
+				<hr />
+			</div>
+		</div>
+		<div class="row" id="tooltipContainer">
+			<div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+				<div width="512px" height="512px">
+					<svg class="pull-right" width="512px" height="512px" version="1.1"
+						xmlns="http://www.w3.org/2000/svg"
+						xmlns:xlink="http://www.w3.org/1999/xlink"
+						ng-if="($index+1) == questionSelected"
+						ng-repeat="hangManExercise in hangManExercises track by hangManExercise.id">
+				<image style="width: 512px; height: 512px" xlink:href
+							ng-href="{{hangManExercisesImages[hangManExercise.id]}}"
+							imageonload />
+			<image
+							ng-if="hangManExercisesImagesHighLight[hangManExercise.id]!=null"
+							style="width: 512px; height: 512px" xlink:href
+							ng-href="{{hangManExercisesImagesHighLight[hangManExercise.id]}}"
+							opacity="0.1" imageonload />
+			<image xlink:href ng-href="/assets/images/compass_2.png" x="477px"
+							y="5px" width="30px" height="30px" imageonload />
+
+			<circle
+							ng-if="(hangManExerciseDelimitedArea[$parent.hangManExercise.id]!=null)&&(hangManExerciseDelimitedArea[$parent.hangManExercise.id].radius<20)"
+							ng-attr-cx="{{hangManExerciseDelimitedArea[$parent.hangManExercise.id].x}}"
+							ng-attr-cy="{{hangManExerciseDelimitedArea[$parent.hangManExercise.id].y}}"
+							ng-attr-r="{{hangManExerciseDelimitedArea[$parent.hangManExercise.id].radius}}"
+							class="blink_me" stroke="black" stroke-width="1px"
+							fill="transparent">
+
+			</circle>
+			<image
+							ng-if="(hangManExerciseDelimitedArea[$parent.hangManExercise.id]!=null)"
+							ng-attr-x="{{hangManExerciseDelimitedArea[$parent.hangManExercise.id].x - hangManExerciseDelimitedArea[$parent.hangManExercise.id].radius}}"
+							ng-attr-y="{{hangManExerciseDelimitedArea[$parent.hangManExercise.id].y -hangManExerciseDelimitedArea[$parent.hangManExercise.id].radius}}"
+							ng-attr-Height="{{hangManExerciseDelimitedArea[$parent.hangManExercise.id].radius*2}}"
+							ng-attr-Width="{{hangManExerciseDelimitedArea[$parent.hangManExercise.id].radius*2}}"
+							xlink:href="/assets/images/Juego_2-Ahorcado/areadelimitada_negro.png"
+							class="blink_me">
+
+			</image>
+
+
+
+		  	 <image
+							ng-repeat="n in getHintsNumbers($parent.hangManExercise.id)"
+							ng-attr-x="{{getHintsByExerciseId($parent.hangManExercise.id)[n].x-15}}"
+							ng-attr-y="{{getHintsByExerciseId($parent.hangManExercise.id)[n].y-15}}"
+							height="30px" width="30px"
+							xlink:href="/assets/images/Juego_2-Ahorcado/lupa_blanco.png"
+							popoverHtml="{{getHintsByExerciseId($parent.hangManExercise.id)[n].text.toString()}}"
+							popover-placement="auto" popover-label=""
+							popoverInject="{{getReferenceHintsByExerciseId($parent.hangManExercise.id)+'['+n+']'}}"
+							ng-if="(getHintsByExerciseId($parent.hangManExercise.id)[n].visible || failedAttemp[$parent.hangManExercise.id]==true)"
+							id="{{'svg_img_'+$parent.hangManExercise.id+'_'+n}}"
+							custom-popover
+							ng-init="getHangManExerciseHint($parent.hangManExercise.id)[n].show='image#svg_img_'+$parent.hangManExercise.id+'_'+n;"
+							imageonload>
+
+			</image>
+
+				 <circle
+							ng-repeat="n in getHintsNumbers($parent.hangManExercise.id)"
+							ng-attr-cx="{{getHintsByExerciseId($parent.hangManExercise.id)[n].x}}"
+							ng-attr-cy="{{getHintsByExerciseId($parent.hangManExercise.id)[n].y}}"
+							ng-if="(!getHintsByExerciseId($parent.hangManExercise.id)[n].visible && failedAttempt[$parent.hangManExercise.id]==true)"
+							r="18" stroke="red" stroke-width="3px" fill="transparent"
+							ng-click="getHintsByExerciseId($parent.hangManExercise.id)[n].visible=true;incrementError();">
+
+			</circle>
+
+
+
+
+
+
+			</svg>
+				</div>
+
+			</div>
+			<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-6 col-xs-6 col-md-6 col-lg-6 text-left">
+							<span>CONSIGNAS </span>
+
+						</div>
+						<div class="col-sm-6 col-xs-6 col-md-6 col-lg-6 text-right">
+							<a ng-style="getStyle($index+1)" href
+								ng-click="changeSelected($index+1)"
+								ng-repeat="hangManExercise in hangManExercises track by hangManExercise.id"
+								ng-bind="$index+1"
+								style="margin-left: 5px; padding-left: 2px; padding-right: 2px"></a>
+
+
+						</div>
+
+						<hr />
+					</div>
+
+
+					<div class="row">
+						<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 text-left"
+							style="background-color: #F4F4F4; font-size: medium;">
+							<span ng-if="($index+1) == questionSelected"
+								ng-repeat="hangManExercise in hangManExercises track by hangManExercise.id"
+								ng-bind-html="hangManExercise.task"
+								ng-bind-html="hangManExercise.task"></span>
+
+						</div>
+					</div>
+				</div>
+				<div class="cotainer-fluid">
+					<div class="row">
+						<div ng-if="($index+1) == questionSelected"
+							ng-repeat="hangManExercise in hangManExercises track by hangManExercise.id"
+							class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+							<div
+								ng-if="(!(failedAttempt[$parent.hangManExercise.id]==true&&incorrectPool.indexOf($parent.hangManExercise.id+'_'+ n.id)!=-1))&&(!(successAttempt[$parent.hangManExercise.id]==true && correctPool.indexOf($parent.hangManExercise.id+'_'+ n.id)==-1))"
+								ng-repeat="n in getOptionsByExerciseId($parent.hangManExercise.id)">
+								<input id="{{'C_'+($index+1)+'_'+n.id}}" type="checkbox"
+									ng-model="checkboxModel[$parent.hangManExercise.id].value[$index]"
+									ng-true-value="{{n.id}}" ng-false-value=""
+									ng-class="optionClass[($parent.$parent.$index+1)+'_' +n.id]" />
+								<label ng-bind-html="n.text" for="{{'C_'+($index+1)+'_'+n.id}}">
+
+								</label>
+
+							</div>
+
+						</div>
+
+
+					</div>
+				</div>
+
+
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-6 col-xs-6 col-md-6 col-lg-6 text-left"
+							style="padding-left: 0px">PISTAS:</div>
+
+						<div class="col-sm-6 col-xs-6 col-md-6 col-lg-6 text-right"
+							style="padding-right: 0px">
+							<div ng-if="($index+1) == questionSelected"
+								ng-repeat="hangManExercise in hangManExercises track by hangManExercise.id">
+								<a href
+									ng-click="changeHintSelected(n, $parent.hangManExercise.id)"
+									ng-style="getStyleHint(n)"
+									ng-repeat="n in getHintsNumbers($parent.hangManExercise.id)"
+									ng-if="getHintsByExerciseId($parent.hangManExercise.id)[n].visible">
+									&#9899; </a>
+							</div>
+						</div>
+						<hr />
+						<div ng-if="($index+1) == questionSelected"
+							ng-repeat="hangManExercise in hangManExercises track by hangManExercise.id">
+							<div ng-if="(($index+1) == hintSelected)"
+								ng-repeat="n in getHintsNumbers($parent.hangManExercise.id)">
+								{{getHintsByExerciseId($parent.hangManExercise.id)[n].text}}</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+			<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2">
+				<div class="container-fluid">
+
+					<div class="row">
+						<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 text-right">
+							<button type="button" class="btn btn-primary"
+								style="background-color: rgb(31, 37, 86)">
+								PUNTAJE <span class="glyphicon glyphicon-chevron-right"></span>
+							</button>
+						</div>
+					</div>
+					<div class="row" style="margin-top: 20px">
+						<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+
+							<div class="center-block"
+								style="border-color: rgb(31, 37, 86); border-width: 3px; border-style: solid; height: 50px; width: 50px; border-radius: 50%; text-align: center; padding-top: 10px">
+								<timer interval="1000" countdown="600"
+									ng-style="getClockColor()" finish-callback="endGame()"
+									id="clockTimer" autostart="false" id="hangManTimer">{{mminutes}}:{{sseconds}}</timer>
+							</div>
+						</div>
+					</div>
+					<div class="row" style="margin-top: 20px">
+						<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+							<svg class="center-block" version="1.1" id="Capa_1"
+								xmlns="http://www.w3.org/2000/svg"
+								xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								width="125.077px" height="168.769px"
+								viewBox="0 0 125.077 168.769"
+								enable-background="new 0 0 125.077 168.769" xml:space="preserve"
+								style="background-color: #F4F4F4;">
+					<g>
+<line fill="none" stroke="#002148" stroke-width="2"
+									stroke-miterlimit="10" x1="31.366" y1="80.747" x2="42.71"
+									y2="104.591" id="hangManRightFeet" ng-if="errorCount>5" />
+<line fill="none" stroke="#002148" stroke-width="2"
+									stroke-miterlimit="10" x1="31.366" y1="80.747" x2="20.021"
+									y2="104.591" id="hangManRightFeet" ng-if="errorCount>4" />
+<line fill="none" stroke="#002148" stroke-width="2"
+									stroke-miterlimit="10" x1="31.378" y1="39.234" x2="45.817"
+									y2="53.676" id="hangManLeftArm" ng-if="errorCount>3" />
+<line fill="none" stroke="#002148" stroke-width="2"
+									stroke-miterlimit="10" x1="31.378" y1="39.234" x2="16.935"
+									y2="53.676" id="hangManRightArm" ng-if="errorCount>2" />
+<line fill="none" stroke="#002148" stroke-width="2"
+									stroke-miterlimit="10" x1="31.294" y1="38.676" x2="31.294"
+									y2="80.895" id="hangManBackBone" ng-if="errorCount>1" />
+<g>
+	<polyline fill="none" stroke="#002148" stroke-miterlimit="10"
+									points="89.89,162.977 89.89,7.007 31.376,7.007" />
+	<polyline fill="none" stroke="#002148" stroke-miterlimit="10"
+									points="31.376,7.007 31.376,20.043" id="hangManLoop"
+									ng-if="errorCount>6" />
+
+
+						<line fill="none" stroke="#002148" stroke-miterlimit="10"
+									x1="70.51" y1="162.977" x2="109.271" y2="162.977" />
+</g>
+<g>
+	<circle fill="none" stroke="#011D4D" stroke-width="2"
+									stroke-miterlimit="10" cx="31.378" cy="29.355" r="9.607"
+									id="hangManHead" ng-if="errorCount>0" />
+</g>
+</g>
+</svg>
+						</div>
+					</div>
+					<div class="row" style="margin-top: 20px">
+						<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+
+
+							<button type="submit" class="center-block btn btn-primary"
+								style="background-color: rgb(31, 37, 86)"
+								ng-click="finalize(hangManExercises[questionSelected-1].id)"
+								ng-if="stop==false && wait==false">FINALIZAR</button>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Modal -->
+		<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel">
+			<div class="modal-dialog modal-sm" role="document">
+				<div class="modal-content">
+					<div class="modal-body text-center" ng-if="wellCompleted==false">
+						No completaste el ejercicio. <br /> No te
+						desanimes...&iexcl;Segu&iacute; intentando!
+					</div>
+					<div class="modal-body text-center" ng-if="wellCompleted!=false">
+						Completaste el ejercicio. <br /> &iexcl;Felicidades!
+					</div>
+
+				</div>
+			</div>
+		</div> -->
+
+	</div>
+</div>
+<div class="overlay" ng-if="(wait==true)"
+	ng-click="afterFinalize($event)" ng-Keydown="afterFinalize($event)"
+	xng-focus="(wait==true)"></div>

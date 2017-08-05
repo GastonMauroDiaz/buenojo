@@ -1,0 +1,80 @@
+
+<div>
+    <h2><span>ImageCompletionExercise</span> {{imageCompletionExercise.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            	<td>
+            		<span>level</span>
+            	</td>
+            	<td>
+            		<a class="form-control-static" ui-sref="level.detail({id:imageCompletionExercise.level.id})">{{imageCompletionExercise.level.id}}</a>
+            	</td>
+            </tr>
+            <tr>
+                <td>
+                    <span>imageCompletionSolution</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="imageCompletionSolution.detail({id:imageCompletionExercise.imageCompletionSolution.id})">{{imageCompletionExercise.imageCompletionSolution.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>tags</span>
+                </td>
+                <td>
+                    <span ng-repeat="tag in imageCompletionExercise.tags">
+                        <a class="form-control-static" ui-sref="tag.detail({id: {{tag.id}}})">{{tag.id}}</a>{{$last ? '' : ', '}}
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>SatelliteImage</span>
+                </td>
+                <td>
+                    <span ng-repeat="satelliteImage in imageCompletionExercise.satelliteImages">
+                        <a class="form-control-static" ui-sref="satelliteImage.detail({id: {{satelliteImage.id}}})">{{satelliteImage.id}}</a>{{$last ? '' : ', '}}
+                    </span>
+                </td>
+            </tr>
+            <tr ng-show="imageCompletionExercise.tags">
+            	<td>
+            		<span>Tag Cloud</span>
+            	</td>
+            	<td>
+	            	 <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="generateTagCloud()">
+	                            Generate!
+	                </button>
+	            </td>
+            </tr>
+            <tr ng-show="imageCompletionExercise.tagCloud">
+            	<td>
+            		<span>Auto Generated Tag Cloud</span>
+            	</td>
+            	<td>
+                    <span ng-repeat="tag in imageCompletionExercise.tagCloud">
+                        <a class="form-control-static" ui-sref="tag.detail({id: {{tag.id}}})">{{tag.name}}</a>{{$last ? '' : ', '}}
+                    </span>
+
+            	</td>	
+            </tr>
+            
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

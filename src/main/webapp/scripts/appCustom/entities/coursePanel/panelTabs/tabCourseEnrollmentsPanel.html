@@ -1,0 +1,100 @@
+<div class="table-responsive">
+  <div class="row">
+      <div class="col-md-3 pull-right">
+          <form>
+              <div class="form-group">
+                  <div class="input-group">
+                      <div class="input-group-addon">
+                          <i class="glyphicon glyphicon-search"></i>
+                      </div>
+
+                      <input type="text" class="form-control" placeholder="Buscar por nombre" ng-model="searchFilter">
+
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>
+                      <a href="" ng-click="sortType = 'lastName'; sortReverse = !sortReverse">
+                          Apellido
+                          <span ng-show="sortType == 'lastName' && !sortReverse" class="glyphicon glyphicon-menu-down"></span>
+                          <span ng-show="sortType == 'lastName' && sortReverse" class="glyphicon glyphicon-menu-up"></span>
+                      </a>
+                  </th>
+                  <th>
+                      <a href="" ng-click="sortType = 'firstName'; sortReverse = !sortReverse">
+                          Nombre
+                          <span ng-show="sortType == 'firstName' && !sortReverse" class="glyphicon glyphicon-menu-down"></span>
+                          <span ng-show="sortType == 'firstName' && sortReverse" class="glyphicon glyphicon-menu-up"></span>
+                      </a>
+                  </th>
+                  <th>
+                      <a href="" ng-click="sortType = 'status'; sortReverse = !sortReverse">
+                          Estado
+                          <span ng-show="sortType == 'status' && !sortReverse" class="glyphicon glyphicon-menu-down"></span>
+                          <span ng-show="sortType == 'status' && sortReverse" class="glyphicon glyphicon-menu-up"></span>
+                      </a>
+                  </th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="enrollment in enrollments | orderBy:sortType:sortReverse | filter:searchFilter track by enrollment.id">
+                  <td><a>{{enrollment.id}}</a></td>
+
+                  <td>
+                      <a ng-click="openProfile(enrollment.user.id)">{{enrollment.user.firstName}}</a>
+                  </td>
+                  <td>
+                      <a ng-click="openProfile(enrollment.user.id)">{{enrollment.user.lastName}}</a>
+                  </td>
+                  <td translate="{{'buenOjoApp.EnrollmentStatus.' + enrollment.status}}">{{enrollment.status}}</td>
+                  <td>
+                      <button type="submit"
+                              ui-sref="coursePanel.enrollment({userId: enrollment.user.id, courseId:enrollment.course.id})"
+                              class="btn btn-info btn-sm">
+                          <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                      </button>
+
+                      <button type="submit"
+                              ui-sref="enrollment.delete({id:enrollment.id})"
+                              class="btn btn-danger btn-sm">
+                          <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Desinscribir</span>
+                      </button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+
+  <div class="modal fade" id="deleteEnrollmentConfirmation">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <form name="deleteForm" ng-submit="confirmDelete(enrollment.id)">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                              ng-click="clear()">&times;</button>
+                      <h4 class="modal-title">Confirmar desuscripci&oacute;n</h4>
+                  </div>
+                  <div class="modal-body">
+                      <p>¿Estás seguro de querer borrar la inscripción de este usuario al curso?</p>
+                      <p class="help-block"> Esta acci&oacute;n no se puede deshacer.</p>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                          <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+                      </button>
+                      <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                          <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>borrar</span>
+                      </button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>

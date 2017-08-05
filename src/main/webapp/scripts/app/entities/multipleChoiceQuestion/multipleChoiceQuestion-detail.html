@@ -1,0 +1,78 @@
+
+<div>
+    <h2><span>MultipleChoiceQuestion</span> {{multipleChoiceQuestion.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Question</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{multipleChoiceQuestion.question}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>InteractionType</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'buenOjoApp.MultipleChoiceInteractionTypeEnum.' + multipleChoiceQuestion.interactionType}}">{{multipleChoiceQuestion.interactionType}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>ExerciseId</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{multipleChoiceQuestion.exerciseId}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Source</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{multipleChoiceQuestion.source}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>multipleChoiceExerciseContainer</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="multipleChoiceExerciseContainer.detail({id:multipleChoiceQuestion.multipleChoiceExerciseContainer.id})">{{multipleChoiceQuestion.multipleChoiceExerciseContainer.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>imageResource</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="imageResource.detail({id:multipleChoiceQuestion.imageResource.id})">{{multipleChoiceQuestion.imageResource.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>multipleChoiceSubjectSpecific</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="multipleChoiceSubjectSpecific.detail({id:multipleChoiceQuestion.multipleChoiceSubjectSpecific.id})">{{multipleChoiceQuestion.multipleChoiceSubjectSpecific.text}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

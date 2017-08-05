@@ -1,0 +1,90 @@
+<div>
+    <h2>ActivityTraces</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="activityTrace.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear una nueva entidad ActivityTrace</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteActivityTraceConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(activityTrace.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title">Confirme eliminación</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Est&aacute; seguro de querer eliminar esteActivityTrace?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Eliminar</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Activity</th>
+                    <th>Enrollment</th>
+                    <th>StartDate</th>
+                    <th>EndDate</th>
+                    <th>Score</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="activityTrace in activityTraces track by activityTrace.id">
+                    <td><a ui-sref="activityTrace.detail({id:activityTrace.id})">{{activityTrace.id}}</a></td>
+                    <td><a ui-sref="activity.detail({id:activityTrace.activity})">{{activityTrace.activity}}</a></td>
+                    <td><a ui-sref="enrollment.detail({id:activityTrace.enrollment.id})">{{activityTrace.enrollment.id}}</a></td>
+
+                    <td>{{activityTrace.startDate}}</td>
+                    <td>{{activityTrace.endDate}}</td>
+                    <td>{{activityTrace.score}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="activityTrace.detail({id:activityTrace.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="activityTrace.edit({id:activityTrace.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(activityTrace.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <nav>
+            <ul class="pager">
+                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a href="">&lt;&lt;</a></li>
+                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a href="">&lt;</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a href="">&gt;</a></li>
+                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a href="">&gt;&gt;</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

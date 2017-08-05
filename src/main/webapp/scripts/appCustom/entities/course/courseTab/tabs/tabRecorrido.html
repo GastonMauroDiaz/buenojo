@@ -1,0 +1,58 @@
+<div>
+
+    <svg id="svg-canvas" width=960 height=600></svg>
+
+    <!-- <div>
+        <h2>CourseLevelSessions</h2>
+        <jh-alert></jh-alert>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-primary" ng-click="enforceEnrollment()">
+                        <span class="glyphicon glyphicon-flash"></span>
+                        <span>Clear</span>
+                    </button>
+                    <button class="btn btn-primary" ng-click="enforceEnrollmentRandom()">
+                        <span class="glyphicon glyphicon-flash"></span>
+                        <span>Random</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div> -->
+    <div class="table-responsive">
+        <table ng-show="activityTraces" class="table table-striped">
+            <thead>
+                <tr>
+
+                    <th>Actividad</th>
+                    <th>tiempo</th>
+                    <th>Resultado</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="activityTrace in activityTraces track by activityTrace.id">
+
+                    <td>{{describe(activityTrace)}}</a></td>
+                    <td>{{activityTrace.duration}}</td>
+                    <td>
+                        <span ng-if="activityTrace.passed" class="label label-success">Aprobada</span>
+                        <span ng-if="!activityTrace.passed && !activityTrace.endDate" class="label label-warning">Incompleta</span>
+                        <span ng-if="!activityTrace.passed && activityTrace.endDate" class="label label-danger">Reprobada</span>
+                    </td>
+
+
+                </tr>
+            </tbody>
+        </table>
+        <nav>
+            <ul class="pager">
+                <li ng-show="links['first'] > 0" ng-click="loadPage(links['first'])"><a href="">&lt;&lt;</a></li>
+                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a href="">&lt;</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a href="">&gt;</a></li>
+                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a href="">&gt;&gt;</a></li>
+            </ul>
+        </nav>
+</div>

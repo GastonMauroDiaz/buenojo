@@ -1,0 +1,49 @@
+
+<div>
+    <h2><span>PhotoLocationImage</span> {{photoLocationImage.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <td>
+                      <span>Course</span>
+                  </td>
+                  <td>
+                      <a class="form-control-static" ui-sref="course.detail({id:photoLocationImage.course.id})">{{photoLocationImage.course.name}}</a>
+                  </td>
+              </tr>
+            <tr>
+                <td>
+                    <span>image</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="imageResource.detail({id:photoLocationImage.image.id})">{{photoLocationImage.image.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>keyword</span>
+                </td>
+                <td>
+                    <span ng-repeat="keyword in photoLocationImage.keywords">
+                        <a class="form-control-static" ui-sref="photoLocationKeyword.detail({id: {{keyword.id}}})">{{keyword.name}}</a>{{$last ? '' : ', '}}
+                    <span>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

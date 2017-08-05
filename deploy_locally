@@ -1,0 +1,66 @@
+#!/usr/bin/env ruby
+
+def usage
+ return "\n Usage: \n deploy_locally --tomcat tomcat_dir [--back-up-dir back_up_dir] --app webapp_name --packageDir package_dir [--verbose \n webapp_name: ROOT for /"
+end
+
+def deploy_locally
+  system('pushd')
+
+  isVerbose = ARGV.index('--verbose') != nil
+  tomcat_index = ARGV.index('--tomcat')
+  raise ArgumentError, "Missing --tomcat parameter" if !tomcat_index
+  tomcat_path = ARGV[tomcat_index+1]
+
+  app_index = ARGV.index('--app')
+  raise ArgumentError, "Missing --app parameter" if !app_index
+  webapp_name = ARGV[app_index+1]
+
+  package_index = ARGV.index('--packageDir')
+  raise ArgumentError, "Missing --packageDir parameter" if !package_index
+
+  package_dir = ARGV[package_index+1]
+
+  package_path = "#{Dir.pwd}/target/#{package_dir}"
+
+  backup_dir_index = ARGV.index('--back-up-dir')
+  backup_dir = ARGV[backup_dir_index]
+
+  if (isVerbose)
+    puts("tomcat path: #{tomcat_path}")
+    puts("app_name: #{webapp_name}")
+    puts("package_dir: #{package_dir}")
+    puts("package_path: #{package_path}")
+    puts("back_up_dir: #{backup_dir}")
+  end
+
+  system("cp -R #{tomcat_path}/#{webapp_name} #{backup_dir}") if backup_dir_index > 0
+
+  Dir.chdir(tomcat_path)
+
+  puts("CHANGING DIR: #{Dir.pwd}") if isVerbose
+
+  #stop tomcat
+
+  puts("\n ------------\n   SHUTTING DOWN TOMCAT \n ------------")
+
+  system('sh bin/shutdown.sh')
+
+  #remove app
+  puts("\n ------------\n   REMOVING APP #{webapp_name} \n ------------")
+  system("rm -rf webapps/#{webapp_name}")
+
+  puts("\n ------------\n   COPYING APP #{webapp_name} from #{package_path} to webapps \n ------------")
+  system("cp -R #{package_path} webapps/#{webapp_name}")
+
+  #start tomcat
+
+  puts("\n ------------\n   STARTING UP TOMCAT \n ------------")
+  system('sh bin/startup.sh')
+
+  system("popd")
+
+
+end
+
+deploy_locally()

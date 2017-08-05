@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql,oracle"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle"/>
+
+    <!--
+        Added the entity ImageCompletionExercise.
+    -->
+    <changeSet id="20151121212946" author="jhipster">
+        <createTable tableName="image_completion_exercise">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="image_completion_solution_id" type="bigint"/>
+
+
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="image_completion_solution_id"
+                                 baseTableName="image_completion_exercise"
+                                 constraintName="fk_imagecompletionexercise_imagecompletionsolution_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="image_completion_solution"/>
+
+        <createTable tableName="image_completion_exercise_tag">
+            <column name="tags_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="image_completion_exercises_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="image_completion_exercises_id, tags_id" tableName="image_completion_exercise_tag"/>
+
+        <addForeignKeyConstraint baseColumnNames="image_completion_exercises_id"
+                                 baseTableName="image_completion_exercise_tag"
+                                 constraintName="fk_imagecompletionexercise_tag_tag_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="image_completion_exercise"/>
+
+        <addForeignKeyConstraint baseColumnNames="tags_id"
+                                 baseTableName="image_completion_exercise_tag"
+                                 constraintName="fk_tag_tag_imagecompletionexercise_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tag"/>
+
+        <createTable tableName="image_completion_exercise_satellite_image">
+            <column name="satellite_images_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="image_completion_exercises_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <addPrimaryKey columnNames="image_completion_exercises_id, satellite_images_id" tableName="image_completion_exercise_satellite_image"/>
+
+        <addForeignKeyConstraint baseColumnNames="image_completion_exercises_id"
+                                 baseTableName="image_completion_exercise_satellite_image"
+                                 constraintName="fk_imagecompletionexercise_satelliteimage_satelliteimage_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="image_completion_exercise"/>
+
+        <addForeignKeyConstraint baseColumnNames="satellite_images_id"
+                                 baseTableName="image_completion_exercise_satellite_image"
+                                 constraintName="fk_satelliteimage_satelliteimage_imagecompletionexercise_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="satellite_image"/>
+
+       <!-- <loadData encoding="UTF-8"
+                 file="config/liquibase/image_completion_exercises.csv"
+                 separator=";"
+                 tableName="image_completion_exercise">
+       </loadData>
+       <loadData encoding="UTF-8"
+                  file="config/liquibase/image_completion_exercise_tag.csv"
+                  separator=";"
+                  tableName="image_completion_exercise_tag">
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/image_completion_exercise_satellite_image.csv"
+                  separator=";"
+                  tableName="image_completion_exercise_satellite_image">
+        </loadData> -->
+
+    </changeSet>
+</databaseChangeLog>

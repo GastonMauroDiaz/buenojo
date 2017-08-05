@@ -1,0 +1,570 @@
+<nav class="navbar navbar-default" role="navigation" id="nav-bar-buenojo">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="home">
+                <img class="nav-logo center" src="assets/images/logo_blanco.png" id="buenojo-logo"></img>
+            </a>
+
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="isAuthenticated()">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li ng-switch-when="false">
+                    <p class="navbar-btn buenojo-navbar-Button center" ng-click="registerUser()">
+                        <span class="hidden-sm">
+                            REGISTRATE</span>
+                    </p>
+                </li>
+                <li ng-switch-when="false">
+                    <p class="navbar-btn buenojo-navbar-Button center" ng-click="loginUser()">
+                            INICIAR SESI&Oacute;N</span>
+                    </p>
+                </li>
+                <!-- <li ui-sref-active="active" ng-switch-when="false">
+                    <a ui-sref="register" data-toggle="collapse" data-target=".navbar-collapse.in">
+
+                        <span class="hidden-sm">REGISTRATE</span>
+                    </a>
+                </li> -->
+                <!-- <li ui-sref-active="active" ng-switch-when="false">
+                    <a ui-sref="login" data-toggle="collapse" data-target=".navbar-collapse.in">
+
+                        <span class="hidden-sm">INICIAR SESI&Oacute;N</span>
+                    </a>
+                </li> -->
+
+                <li class="dropdown pointer"
+               ui-sref-active="active" has-authority="ROLE_COURSE_ADMIN" ng-switch-when="true">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
+
+                        <span class="glyphicon glyphicon-home"></span>
+                        <span>Administraci&oacute;n de Cursos</span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header" has-authority="ROLE_COURSE_ADMIN" ui-sref="controlPanel">Panel de Control</li>
+              		</ul>
+
+
+                </li>
+                <li ui-sref-active="active" has-authority="ROLE_COURSE_STUDENT" ng-switch-when="true">
+                    <a ui-sref="courseslist">
+                        <span class="glyphicon glyphicon-book"></span>
+                        <span>CURSOS</span>
+                    </a>
+                </li>
+                <li ui-sref-active="active" has-any-authority="ROLE_COURSE_STUDENT, ROLE_DEMO_USER" ng-switch-when="true">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                        <span>
+                            <span class="glyphicon glyphicon-knight"></span>
+                            <span class="hidden-sm">
+                                JUEGOS
+                            </span>
+                            <b class="caret"></b>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header" has-any-authority="ROLE_COURSE_STUDENT, ROLE_DEMO_USER">Arrastrar y Soltar</li>
+                        <li ui-sref-active="active" has-any-authority="ROLE_COURSE_STUDENT, ROLE_DEMO_USER">
+                            <a ui-sref="imageCompletionExerciseList" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-list"></span>
+                                &#xA0;
+                                <span>Ejercicios de prueba</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-header" has-any-authority="ROLE_COURSE_STUDENT">Fotolocalización</li>
+                        <li ui-sref-active="active" has-any-authority="ROLE_COURSE_STUDENT">
+                            <a ui-sref="photoLocationExerciseList" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-list"></span>
+                                &#xA0;
+                                <span>Ejercicio de prueba</span>
+                            </a>
+                        </li>
+
+                        <li class="dropdown-header" has-any-authority="ROLE_COURSE_STUDENT, ROLE_DEMO_USER">Multiple Choice</li>
+                        <li ui-sref-active="active" has-any-authority="ROLE_COURSE_STUDENT, ROLE_DEMO_USER">
+                            <a ui-sref="multipleChoiceExerciseContainerList" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-list"></span>
+                                &#xA0;
+                                <span >Seleccionar Pregunta</span>
+                            </a>
+                        </li>
+
+                        <li class="dropdown-header" has-any-authority="ROLE_COURSE_STUDENT">Ahorcado</li>
+                        <li ui-sref-active="active" has-any-authority="ROLE_COURSE_STUDENT">
+                            <a ui-sref="hangManGamePlayContainerList" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-list"></span>
+                                &#xA0;
+                                <span >Seleccionar Ejercicio</span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+                <li>
+                  <p class="navbar-btn buenojo-navbar-Button center" ng-click="dataset()" ng-switch-when="true" has-authority="ROLE_ADMIN">
+                    <span class="glyphicon glyphicon-import"> </span>
+                      <span class="hidden-sm">
+                           DATASETS</span>
+                  </p>
+                </li>
+                <li ui-sref-active="active" ng-switch-when="true" class="dropdown pointer" has-authority="ROLE_ADMIN">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                        <span>
+                            <span class="glyphicon glyphicon-th-list"></span>
+                            <span class="hidden-sm">
+                                Entities
+                            </span>
+                            <b class="caret"></b>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">Generales</li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="satelliteImage" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >satelliteImage</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="courseLevelMap" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >courseLevelMap</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="courseLevelSession" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >courseLevelSession</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="userProfile" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >userProfile</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="course" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >course</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="imageResource" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >imageResource</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="exercise" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >exercise</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="level" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >level</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="enrollment" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >enrollment</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" ><a ui-sref="activity" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                        &#xA0;<span >activity</span></a></li>
+                        <li ui-sref-active="active" ><a ui-sref="activityTrace" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                        &#xA0;<span >activityTrace</span></a></li>
+                        <li class="dropdown-header">Arrastrar y Soltar</li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="imageCompletionExercise" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >imageCompletionExercise</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="exerciseTip" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >exerciseTip</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="tag" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >tag</span>
+                            </a>
+                        </li>
+
+                        <li ui-sref-active="active">
+                            <a ui-sref="imageCompletionSolution" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >imageCompletionSolution</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="tagPair" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >tagPair</span>
+                            </a>
+                        </li>
+
+                        <li ui-sref-active="active">
+                            <a ui-sref="tagPool" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >tagPool</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="tagCircle" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >tagCircle</span>
+                            </a>
+                        </li>
+
+                        <li ui-sref-active="active">
+                            <a ui-sref="currentSession" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >currentSession</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-header">Ahorcado</li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="hangManOptionListItem" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >hangManOptionListItem</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="hangManGameContainer" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >hangManGameContainer</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="hangManExercise" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >hangManExercise</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="hangManExerciseDelimitedArea" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >hangManExerciseDelimitedArea</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="hangManExerciseHint" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >hangManExerciseHint</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="hangManExerciseOption" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >hangManExerciseOption</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="hangManExerciseImageResource" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >hangManExerciseImageResource</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-header">Multiple Choice</li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="multipleChoiceQuestion" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >multipleChoiceQuestion</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="multipleChoiceAnswer" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >multipleChoiceAnswer</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="multipleChoiceExerciseContainer" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >multipleChoiceExerciseContainer</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="multipleChoiceQuestionImageResource" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >multipleChoiceQuestionImageResource</span>
+                            </a>
+                        </li>
+
+                        <li ui-sref-active="active">
+                            <a ui-sref="multipleChoiceContainer" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >multipleChoiceContainer</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="multipleChoiceSubject" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >multipleChoiceSubject</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="multipleChoiceSubjectSpecific" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span >multipleChoiceSubjectSpecific</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-header">Fotolocalizaci&oacute;n</li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="photoLocationExercise" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span>photoLocationExercise</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="photoLocationImage" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span>photoLocationImage</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="photoLocationSatelliteImage" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span>photoLocationSatelliteImage</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="photoLocationBeacon" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span>photoLocationBeacon</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="photoLocationKeyword" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span>photoLocationKeyword</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="photoLocationSightPair" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-asterisk"></span>
+                                &#xA0;
+                                <span>photoLocationSightPair</span>
+                            </a>
+                        </li>
+
+                        <li ui-sref-active="active" ><a ui-sref="photoLocationExtraImage" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                        &#xA0;<span >photoLocationExtraImage</span></a></li>
+                        <li ui-sref-active="active" ><a ui-sref="photoLocationExtraSatelliteImage" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                        &#xA0;<span >photoLocationExtraSatelliteImage</span></a></li>
+
+                        <li ui-sref-active="active" ><a ui-sref="userProfile" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                        &#xA0;<span >userProfile</span></a></li>
+                        <li ui-sref-active="active" ><a ui-sref="loaderTrace" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                        &#xA0;<span >loaderTrace</span></a></li>
+                        <li ui-sref-active="active" ><a ui-sref="loadedExercise" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                        &#xA0;<span >loadedExercise</span></a></li>
+                        <!-- JHipster will add entities to the menu here -->
+                    </ul>
+                </li>
+                <li class="dropdown pointer" ng-switch-when="true">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                        <span>
+
+                            <span class="hidden-sm">
+                                Hola,
+                                {{ (!account.firstName==="") ? account.login : account.firstName}}
+                            </span>
+
+                            <span class="glyphicon glyphicon-user"></span>
+                            <b class="caret"></b>
+                        </span>
+                    </a>
+                    <!-- <div class="profile-icon-frame">
+                      <img data-ng-src="{{'data:' + userProfile.pictureContentType + ';base64,' + userProfile.picture}}" style="max-height: 40px;" ng-if="userProfile.picture"/>
+                    </div> -->
+                    <ul class="dropdown-menu">
+
+                        <li ui-sref-active="active" has-any-authority="ROLE_ADMIN, ROLE_DEMO_USER, ROLE_USER">
+                            <a ui-sref="settings" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-wrench"></span>
+                                &#xA0;
+                                <span>Configuraci&oacute;n</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" has-any-authority="ROLE_ADMIN, ROLE_DEMO_USER, ROLE_USER, ROLE_COURSE_STUDENT, ROLE_COURSE_ADMIN">
+                            <a ui-sref="password" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-lock"></span>
+                                &#xA0;
+                                <span>Contrase&ntilde;a</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" has-any-authority="ROLE_DEMO_USER, ROLE_USER, ROLE_COURSE_STUDENT, ROLE_COURSE_ADMIN">
+                            <a ui-sref="myProfile" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-cloud"></span>
+                                &#xA0;
+                                <span>Mi Perfil</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" has-any-authority="ROLE_ADMIN">
+                            <a ui-sref="currentSessionCustom" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-cloud"></span>
+                                &#xA0;
+                                <span>Sesi&oacute;n Actual</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" href="">
+                            <a data-toggle="collapse" data-target=".navbar-collapse.in" ng-click="logout()" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-log-out"></span>
+                                <span class="hidden-sm">Salir</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <!-- <li  ng-class="{active: $state.includes('account')}" class="dropdown pointer" ng-switch-when="true" has-authority="ROLE_ADMIN">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                        <span>
+                            <span class="glyphicon glyphicon-user"></span>
+                            <span class="hidden-sm">
+                                Account
+                            </span>
+                            <b class="caret"></b>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu">
+
+
+                        <li ui-sref-active="active" ><a ui-sref="settings" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-wrench"></span>
+                            &#xA0;<span>Settings</span></a></li>
+                        <li ui-sref-active="active"><a ui-sref="password" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-lock"></span>
+                            &#xA0;<span>Password</span></a></li>
+                        <li ui-sref-active="active"><a ui-sref="sessions" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-cloud"></span>
+                            &#xA0;<span>Sessions</span></a></li>
+                        <li ui-sref-active="active"><a href="" ng-click="logout()" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-out"></span>
+                            &#xA0;<span>Sign out</span></a></li>
+                        <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="login" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-in"></span>
+                            &#xA0;<span>Sign in</span></a></li>
+                        <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="register" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-plus-sign"></span>
+                            &#xA0;<span>Register</span></a></li>
+                    </ul>
+                </li> -->
+                <li ng-switch-when="true" has-authority="ROLE_ADMIN" class="dropdown pointer">
+                    <!--  ng-class="{active: $state.includes('admin')}" -->
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                        <span>
+                            <span class="glyphicon glyphicon-tower"></span>
+                            <span class="hidden-sm">Administration</span>
+                            <b class="caret"></b>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ui-sref-active="active">
+                            <a ui-sref="user-management" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-user"></span>
+                                &#xA0;
+                                <span>User management</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="tracker" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                &nbsp;
+                                <span>User tracker</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="metrics" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-dashboard"></span>
+                                &#xA0;
+                                <span>Metrics</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="health" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-heart"></span>
+                                &#xA0;
+                                <span>Health</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="configuration" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                &#xA0;
+                                <span>Configuration</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="audits" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-bell"></span>
+                                &#xA0;
+                                <span>Audits</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="logs" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-tasks"></span>
+                                &#xA0;
+                                <span>Logs</span>
+                            </a>
+                        </li>
+                        <li ng-hide="inProduction" ui-sref-active="active">
+                            <a ui-sref="docs" data-toggle="collapse" data-target=".navbar-collapse.in">
+                                <span class="glyphicon glyphicon-book"></span>
+                                &#xA0;
+                                <span>API</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,81 @@
+<div>
+    <h2>TagPools</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="tagPool.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear una nueva entidad TagPool</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteTagPoolConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(tagPool.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title">Confirmar borrado</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Estás seguro de querer borrar este TagPool?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Eliminar</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Similarity</th>
+                    <th>tag</th>
+                    <th>similarTag</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="tagPool in tagPools track by tagPool.id">
+                    <td><a ui-sref="tagPool.detail({id:tagPool.id})">{{tagPool.id}}</a></td>
+                    <td>{{tagPool.similarity}}</td>
+                    <td>
+                        <a ui-sref="tag.detail({id:tagPool.tag.id})">{{tagPool.tag.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="tag.detail({id:tagPool.similarTag.id})">{{tagPool.similarTag.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="tagPool.detail({id:tagPool.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="tagPool.edit({id:tagPool.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(tagPool.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div>
+    <h2>HangManExerciseOptions</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="hangManExerciseOption.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear una nueva entidad HangManExerciseOption</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Text</th>
+                    <th>IsCorrect</th>
+                    <th>hangManExercise</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="hangManExerciseOption in hangManExerciseOptions track by hangManExerciseOption.id">
+                    <td><a ui-sref="hangManExerciseOption.detail({id:hangManExerciseOption.id})">{{hangManExerciseOption.id}}</a></td>
+                    <td>{{hangManExerciseOption.text}}</td>
+                    <td>{{hangManExerciseOption.isCorrect}}</td>
+                    <td>
+                        <a ui-sref="hangManExercise.detail({id:hangManExerciseOption.hangManExercise.id})">{{hangManExerciseOption.hangManExercise.task}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="hangManExerciseOption.detail({id:hangManExerciseOption.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="hangManExerciseOption.edit({id:hangManExerciseOption.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="hangManExerciseOption.delete({id:hangManExerciseOption.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

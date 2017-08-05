@@ -1,0 +1,56 @@
+
+
+<div class="col-lg-6">
+  <h3> Tiempo promedio de resoluci&oacute;n</h3>
+
+  <div class="table-responsive">
+      <table class="table table-striped">
+          <thead>
+            <tr>
+            <th>
+            <span>Tipo de Ejercicio</span>
+          </th>
+          <th>  <span>Tiempo (mm:ss)</span> </th>
+        </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="time in timeByExercise">
+              <td>
+                  <span class="form-control-static">{{describe(time.exerciseType)}}</span>
+              </td>
+              <td>
+                  <span class="form-control-static">{{inMinutes(time.duration)}}</span>
+              </td>
+          </tr>
+
+          </tbody>
+      </table>
+  </div>
+</div>
+<div class="col-lg-6">
+  <h3> Puntaje promedio de resoluci&oacute;n</h3>
+  <div class="table-responsive">
+      <table class="table table-striped">
+          <thead>
+            <tr>
+            <th>
+            <span>Tipo de Ejercicio</span>
+          </th>
+          <th>  <span>puntaje</span> </th>
+        </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="s in scoreByExercise">
+              <td>
+                  <span class="form-control-static">{{describe(s.exerciseType)}}</span>
+              </td>
+              <td>
+                  <span class="form-control-static">{{s.score}}</span>
+              </td>
+          </tr>
+
+          </tbody>
+      </table>
+  </div>
+</div>
+</div>

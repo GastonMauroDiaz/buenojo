@@ -1,0 +1,154 @@
+
+<div>
+    <h2><span>PhotoLocationExercise</span> {{photoLocationExercise.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                  <td>
+                      <span>Nombre</span>
+                  </td>
+                  <td>
+                      <span class="form-control-static">{{photoLocationExercise.name}}</span>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <span>Descripci&ouacute;n</span>
+                  </td>
+                  <td>
+                      <span class="form-control-static">{{photoLocationExercise.description}}</span>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <span>Curso</span>
+                  </td>
+                  <td>
+                      <a class="form-control-static" ui-sref="course.detail({id: photoLocationExercise.course.id})">{{photoLocationExercise.course.id}}</a>
+                  </td>
+              </tr>
+            <tr>
+                <td>
+                    <span>TotalScore</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{photoLocationExercise.totalScore}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>TotalTimeInSeconds</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{photoLocationExercise.totalTimeInSeconds}}</span>
+                </td>
+            </tr>
+
+             <tr>
+                <td>
+                    <span>Lower Level</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{photoLocationExercise.lowerLevel}}</span>
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    <span>higher level</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{photoLocationExercise.higherLevel}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>difficulty</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{photoLocationExercise.difficulty}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>beacon</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="photoLocationBeacon.detail({id:photoLocationExercise.beacon.id})">{{photoLocationExercise.beacon.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>landscapeKeyword</span>
+                </td>
+                <td>
+                    <span ng-repeat="landscapeKeyword in photoLocationExercise.landscapeKeywords">
+                        <a class="form-control-static" ui-sref="photoLocationKeyword.detail({id: {{landscapeKeyword.id}}})">{{landscapeKeyword.name}}</a>{{$last ? '' : ', '}}
+                    <span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>terrainPhoto</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="photoLocationImage.detail({id:photoLocationExercise.terrainPhoto.id})">{{photoLocationExercise.terrainPhoto.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>satelliteImage</span>
+                </td>
+                <td>
+                    <span ng-repeat="satelliteImage in photoLocationExercise.satelliteImages">
+                        <a class="form-control-static" ui-sref="photoLocationSatelliteImage.detail({id: {{satelliteImage.id}}})">{{satelliteImage.id}}</a>{{$last ? '' : ', '}}
+                    <span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Number</th>
+                    <th>SatelliteX</th>
+                    <th>SatelliteY</th>
+                    <th>SatelliteTolerance</th>
+                    <th>TerrainX</th>
+                    <th>TerrainY</th>
+                    <th>TerrainTolerance</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="photoLocationSightPair in photoLocationExercise.sightPairs track by photoLocationSightPair.id">
+                    <td><a ui-sref="photoLocationSightPair.detail({id:photoLocationSightPair.id})">{{photoLocationSightPair.id}}</a></td>
+                    <td>{{photoLocationSightPair.number}}</td>
+                    <td>{{photoLocationSightPair.satelliteX}}</td>
+                    <td>{{photoLocationSightPair.satelliteY}}</td>
+                    <td>{{photoLocationSightPair.satelliteTolerance}}</td>
+                    <td>{{photoLocationSightPair.terrainX}}</td>
+                    <td>{{photoLocationSightPair.terrainY}}</td>
+                    <td>{{photoLocationSightPair.terrainTolerance}}</td>
+
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

@@ -1,0 +1,35 @@
+ <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myLevelLabel">Puntaje Actual</h4>
+    </div>
+    <div class="modal-body">
+ 
+    <div class="container-fluid">
+		<div class="row" ng-if="levelNumber>0">
+		Nivel {{levelNumber}} &nbsp; &nbsp; {{levelNumber}} 
+		</div>
+
+		<div class="row">
+			<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 text-center">
+				<h1>{{count}}</h1>
+				<br />
+				<h4>EJERCICIOS REALIZADOS</h4>
+			</div>
+			<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 text-center">
+	
+				<div donut-chart-spec></div>
+	
+	
+				<h4>EJERCICIOS APROBADOS</h4>
+	
+			</div>
+			<div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 text-center">
+				<h1>{{experience}}</h1>
+				<br />
+				<h4>EXPERIENCIA ACUMULADA</h4>
+	
+			</div>
+	</div>
+</div>
+    </div>

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+  <changeSet author="jhipser" id="loadData-all">
+
+    <!-- Course -->
+      <loadData encoding="UTF-8"
+                file="config/liquibase/course.csv"
+                separator=";"
+                tableName="course">
+       <column name="start_date" type="timestamp"  />
+          <column name="end_date" type="timestamp" />
+          <column name="course_open" type="boolean"/>
+           <column name="banner_id" type="numeric"/>
+      </loadData>
+
+    <!-- imageResource -->
+
+    <loadData encoding="UTF-8"
+             file="config/liquibase/image_resource.csv"
+             separator=";"
+             tableName="image_resource">
+   </loadData>
+
+
+
+
+    <!-- level -->
+
+    <loadData encoding="UTF-8"
+            file="config/liquibase/level.csv"
+            separator=";"
+            tableName="level">
+   </loadData>
+
+    <!-- exercise -->
+    <loadData encoding="UTF-8"
+               file="config/liquibase/exercise.csv"
+               separator=";"
+               tableName="exercise">
+     </loadData>
+
+
+
+
+      <!-- satellite_image -->
+      <loadData encoding="UTF-8"
+                 file="config/liquibase/satellite_image.csv"
+                 separator=";"
+                 tableName="satellite_image">
+        </loadData>
+
+     <!-- course_level_map -->
+     <loadData encoding="UTF-8"
+               file="config/liquibase/courseLevelMap.csv"
+               separator=";"
+               tableName="course_level_map">
+     </loadData>
+
+     <!-- image_completion_solution -->
+     <loadData encoding="UTF-8"
+               file="config/liquibase/image_completion_solution.csv"
+               separator=";"
+               tableName="image_completion_solution">
+   </loadData>
+
+   <!-- tag -->
+   <loadData encoding="UTF-8"
+                file="config/liquibase/tag.csv"
+                separator=";"
+                tableName="tag">
+    </loadData>
+
+    <!-- tag_pair -->
+    <loadData encoding="UTF-8"
+                  file="config/liquibase/tag_pair.csv"
+                  separator=";"
+                  tableName="tag_pair">
+    </loadData>
+
+    <!-- tag_pool -->
+    <loadData encoding="UTF-8"
+                  file="config/liquibase/tag_pool.csv"
+                  separator=";"
+                  tableName="tag_pool">
+    </loadData>
+
+
+     <!-- image completion exercise -->
+
+     <loadData encoding="UTF-8"
+               file="config/liquibase/image_completion_exercise.csv"
+               separator=";"
+               tableName="image_completion_exercise">
+     </loadData>
+     <loadData encoding="UTF-8"
+                file="config/liquibase/image_completion_exercise_tag.csv"
+                separator=";"
+                tableName="image_completion_exercise_tag">
+      </loadData>
+      <loadData encoding="UTF-8"
+                file="config/liquibase/image_completion_exercise_satellite_image.csv"
+                separator=";"
+                tableName="image_completion_exercise_satellite_image">
+      </loadData>
+      <!-- tag_circle -->
+      <loadData encoding="UTF-8"
+                    file="config/liquibase/tag_circle.csv"
+                    separator=";"
+                    tableName="tag_circle">
+     </loadData>
+
+
+     <!-- exerciseTip -->
+
+     <loadData encoding="UTF-8"
+                 file="config/liquibase/exercise_tip.csv"
+                 separator=";"
+                 tableName="exercise_tip">
+       </loadData>
+      <loadData encoding="UTF-8"
+                 file="config/liquibase/tip_satellite_image_type.csv"
+                 separator=";"
+                 tableName="tip_satellite_image_type">
+       </loadData>
+
+       <loadData encoding="UTF-8"
+                 file="config/liquibase/tip_region.csv"
+                 separator=";"
+                 tableName="tip_region">
+       </loadData>
+       <loadData encoding="UTF-8"
+                 file="config/liquibase/exercise_tip_image_resource.csv"
+                 separator=";"
+                 tableName="exercise_tip_image_resource">
+       </loadData>
+
+
+              <!-- HangMan Option List Item -->
+         <loadData encoding="UTF-8"
+                   file="config/liquibase/hang_man_option_list_item.csv"
+                   separator=";"
+                   tableName="hang_man_option_list_item" >
+         </loadData>
+
+         <loadData encoding="UTF-8"
+                   file="config/liquibase/hang_man_game_container.csv"
+                   separator=";"
+                   tableName="hang_man_game_container" >
+         </loadData>
+
+         <loadData encoding="UTF-8"
+                   file="config/liquibase/hang_man_exercise.csv"
+                   separator=";"
+                   tableName="hang_man_exercise" >
+         </loadData>
+
+         <loadData encoding="UTF-8"
+                   file="config/liquibase/hang_man_exercise_delimited_area.csv"
+                   separator=";"
+                   tableName="hang_man_exercise_delimited_area" >
+         </loadData>
+         <loadData encoding="UTF-8"
+                   file="config/liquibase/hang_man_exercise_hint.csv"
+                   separator=";"
+                   tableName="hang_man_exercise_hint" >
+         </loadData>
+         <loadData encoding="UTF-8"
+                   file="config/liquibase/hang_man_exercise_image_resource.csv"
+                   separator=";"
+                   tableName="hang_man_exercise_image_resource" >
+         </loadData>
+         <loadData encoding="UTF-8"
+                   file="config/liquibase/hang_man_exercise_option.csv"
+                   separator=";"
+                   tableName="hang_man_exercise_option" >
+        </loadData>
+
+        <loadData encoding="UTF-8"
+                   file="config/liquibase/multiple_choice_exercise_container.csv"
+                   separator=";"
+                   tableName="multiple_choice_exercise_container" >
+        </loadData>
+        <loadData encoding="UTF-8"
+                   file="config/liquibase/multiple_choice_subject.csv"
+                   separator=";"
+                   tableName="multiple_choice_subject" >
+        </loadData>
+        <loadData encoding="UTF-8"
+                   file="config/liquibase/multiple_choice_subject_specific.csv"
+                   separator=";"
+                   tableName="multiple_choice_subject_specific" >
+        </loadData>
+        <loadData encoding="UTF-8"
+                   file="config/liquibase/multiple_choice_question.csv"
+                   separator=";"
+                   tableName="multiple_choice_question" >
+        </loadData>
+        <loadData encoding="UTF-8"
+                   file="config/liquibase/multiple_choice_answer.csv"
+                   separator=";"
+                   tableName="multiple_choice_answer" >
+        </loadData>
+
+         <!--  PhotoLocationExercise-->
+
+         <loadData encoding="UTF-8"
+                     file="config/liquibase/photo_location_beacon.csv"
+                     separator=";"
+                     tableName="photo_location_beacon" >
+         </loadData>
+         <loadData encoding="UTF-8"
+                     file="config/liquibase/photo_location_image.csv"
+                     separator=";"
+                     tableName="photo_location_image" >
+         </loadData>
+         <loadData encoding="UTF-8"
+                      file="config/liquibase/photo_location_exercise.csv"
+                      separator=";"
+                      tableName="photo_location_exercise" >
+         </loadData>
+        <loadData encoding="UTF-8"
+                   file="config/liquibase/photo_location_keyword.csv"
+                   separator=";"
+                   tableName="photo_location_keyword" >
+        </loadData>
+
+        <loadData encoding="UTF-8"
+                     file="config/liquibase/photo_location_extra_image.csv"
+                     separator=";"
+                     tableName="photo_location_extra_image" >
+        </loadData>
+
+
+       <loadData encoding="UTF-8"
+                  file="config/liquibase/photo_location_exercise_landscape_keyword.csv"
+                  separator=";"
+                  tableName="photo_location_exercise_landscape_keyword" >
+      </loadData>
+      <loadData encoding="UTF-8"
+                 file="config/liquibase/photo_location_satellite_image.csv"
+                 separator=";"
+                 tableName="photo_location_satellite_image" >
+      </loadData>
+      <loadData encoding="UTF-8"
+                 file="config/liquibase/photo_location_exercise_satellite_image.csv"
+                 separator=";"
+               tableName="photo_location_exercise_satellite_image" >
+     </loadData>
+         <loadData encoding="UTF-8"
+               file="config/liquibase/photo_location_extra_satellite_image.csv"
+               separator=";"
+               tableName="photo_location_extra_satellite_image" >
+     </loadData>
+
+    <loadData encoding="UTF-8"
+               file="config/liquibase/photo_location_image_keyword.csv"
+               separator=";"
+               tableName="photo_location_image_keyword" >
+    </loadData>
+
+
+    <loadData encoding="UTF-8"
+                file="config/liquibase/photo_location_satellite_image_keyword.csv"
+                separator=";"
+                tableName="photo_location_satellite_image_keyword" >
+    </loadData>
+    <loadData encoding="UTF-8"
+               file="config/liquibase/photo_location_sight_pair.csv"
+               separator=";"
+               tableName="photo_location_sight_pair" >
+    </loadData>
+    <loadData encoding="UTF-8"
+               file="config/liquibase/activity.csv"
+               separator=";"
+               tableName="activity" >
+    </loadData>
+
+  </changeSet>
+
+</databaseChangeLog>

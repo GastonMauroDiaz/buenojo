@@ -1,0 +1,37 @@
+
+<div class="container-fluid">
+	<jh-alert></jh-alert>
+	<h2>{{course.name}}</h2>
+	<hr />
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" showtab="" href="#tab1">INFORMACI&Oacute;N</a></li>
+  <li ><a  data-toggle="tab" showtab="" href="#tab2">ETAPAS</a></li>
+  <li ><a data-toggle="tab" showtab="" href="#tab3">PROGRESO</a></li>
+    <!-- <li ><a data-toggle="tab" showtab="" href="#tab4">JUEGOS</a></li> -->
+</ul>
+<div>
+	<h2>Descripci&oacute;n del curso: {{course.description}}</h2>
+</div>
+<div class="tab-content">
+  <div id="tab1" class="tab-pane fade in active" >
+     <section  ng-include="'scripts/appCustom/entities/course/courseTab/tabs/tabInformation.html'" ng-controller="tabInformationController"  ></section >
+   </div>
+  <div id="tab2" class="tab-pane fade" >
+     <section ng-include="'scripts/appCustom/entities/course/courseTab/tabs/tabEtapas.html'" ng-controller="tabEtapasController"></section>
+    </div>
+  <div id="tab3" class="tab-pane fade" >
+        <section ng-include="'scripts/appCustom/entities/course/courseTab/tabs/tabRecorrido.html'" ng-controller="tabRecorridoController"></section>
+    </div>
+    <!-- <div id="tab4" class="tab-pane fade" >
+        <section ng-include="'scripts/appCustom/entities/course/courseTab/tabs/tabList.html'" ng-controller="tabListController"></section>
+    </div> -->
+</div>
+<div class="row" ng-style="{height : '10px'}"></div>
+<div class="row">
+	<div class="col-lg-12 center">
+		<button ng-click="start()" class="btn btn-primary score-button center no-padding" style="width:300px">{{startButtonText}}
+		</button>
+	</div>
+</div>
+
+</div>

@@ -1,0 +1,39 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="clear()">&times;</button>
+    <h4 class="modal-title" id="myLevelLabel"><h1>Curso Finalizado!</h1></h4>
+</div>
+<div class="modal-body">
+    <div class="container-fluid">
+
+            
+
+        <div class="row">
+            <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 text-center">
+                <h1>{{courseInformation.exerciseCount}}</h1>
+                <br/>
+                <h4>EJERCICIOS REALIZADOS</h4>
+            </div>
+            <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 text-center">
+
+                <div donut-chart-spec></div>
+
+                <h4>EJERCICIOS APROBADOS</h4>
+
+            </div>
+            <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 text-center">
+                <h1>{{courseInformation.passedStages}}</h1>
+                <br/>
+                <h4>ETAPAS SUPERADAS</h4>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 center">
+            <button ng-click="finish()" class="btn btn-primary score-button center no-padding" style="width:300px">Volver Mis Cursos
+            </button>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div>
+    <h2>HangManExerciseHints</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="hangManExerciseHint.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear una nueva entidad HangManExerciseHint</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Text</th>
+                    <th>X</th>
+                    <th>Y</th>
+                    <th>hangManExercise</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="hangManExerciseHint in hangManExerciseHints track by hangManExerciseHint.id">
+                    <td><a ui-sref="hangManExerciseHint.detail({id:hangManExerciseHint.id})">{{hangManExerciseHint.id}}</a></td>
+                    <td>{{hangManExerciseHint.text}}</td>
+                    <td>{{hangManExerciseHint.x}}</td>
+                    <td>{{hangManExerciseHint.y}}</td>
+                    <td>
+                        <a ui-sref="hangManExercise.detail({id:hangManExerciseHint.hangManExercise.id})">{{hangManExerciseHint.hangManExercise.id}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="hangManExerciseHint.detail({id:hangManExerciseHint.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="hangManExerciseHint.edit({id:hangManExerciseHint.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="hangManExerciseHint.delete({id:hangManExerciseHint.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

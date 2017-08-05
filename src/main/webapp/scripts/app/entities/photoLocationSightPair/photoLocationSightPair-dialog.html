@@ -1,0 +1,172 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myPhotoLocationSightPairLabel">Crear o Editar un PhotoLocationSightPair</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="photoLocationSightPair.id" readonly />
+        </div>
+        <div class="form-group">
+            <label for="field_number">Number</label>
+            <input type="number" class="form-control" name="number" id="field_number"
+                    ng-model="photoLocationSightPair.number"
+                    required min="0" />
+            <div ng-show="editForm.number.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.number.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.number.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.number.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_satelliteX">SatelliteX</label>
+            <input type="number" class="form-control" name="satelliteX" id="field_satelliteX"
+                    ng-model="photoLocationSightPair.satelliteX"
+                    required min="0" />
+            <div ng-show="editForm.satelliteX.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.satelliteX.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.satelliteX.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.satelliteX.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_satelliteY">SatelliteY</label>
+            <input type="number" class="form-control" name="satelliteY" id="field_satelliteY"
+                    ng-model="photoLocationSightPair.satelliteY"
+                    required min="0" />
+            <div ng-show="editForm.satelliteY.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.satelliteY.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.satelliteY.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.satelliteY.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_satelliteTolerance">SatelliteTolerance</label>
+            <input type="number" class="form-control" name="satelliteTolerance" id="field_satelliteTolerance"
+                    ng-model="photoLocationSightPair.satelliteTolerance"
+                    required min="0" />
+            <div ng-show="editForm.satelliteTolerance.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.satelliteTolerance.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.satelliteTolerance.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.satelliteTolerance.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_terrainX">TerrainX</label>
+            <input type="number" class="form-control" name="terrainX" id="field_terrainX"
+                    ng-model="photoLocationSightPair.terrainX"
+                    required min="0" />
+            <div ng-show="editForm.terrainX.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.terrainX.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.terrainX.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.terrainX.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_terrainY">TerrainY</label>
+            <input type="number" class="form-control" name="terrainY" id="field_terrainY"
+                    ng-model="photoLocationSightPair.terrainY"
+                    required min="0" />
+            <div ng-show="editForm.terrainY.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.terrainY.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.terrainY.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.terrainY.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_terrainTolerance">TerrainTolerance</label>
+            <input type="number" class="form-control" name="terrainTolerance" id="field_terrainTolerance"
+                    ng-model="photoLocationSightPair.terrainTolerance"
+                    required min="0" />
+            <div ng-show="editForm.terrainTolerance.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.terrainTolerance.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.terrainTolerance.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.terrainTolerance.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_exercise">exercise</label>
+            <select class="form-control" id="field_exercise" name="exercise" ng-model="photoLocationSightPair.exercise" ng-options="photoLocationExercise as photoLocationExercise.id for photoLocationExercise in photolocationexercises track by photoLocationExercise.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

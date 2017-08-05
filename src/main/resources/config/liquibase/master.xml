@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+        <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20150920175508_added_entity_UserProfile.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20161203130700_added_picture_to_entity_UserProfile.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20151016012926_added_entity_Course.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20161009121200_added_order_to_entity_Course.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20161008143400_added_banner_to_entity_Course.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20151016012926_added_entity_ImageResource.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20151121212946_added_entity_SatelliteImage.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20151016012926_added_entity_Level.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20151016012926_added_entity_Exercise.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20161015183400_remove_exercise_foreign_key.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20151021175956_added_entity_Enrollment.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20161017133100_added_currentLevel_column_to_enrollment.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20151115202540_added_entity_CourseLevelMap.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20161015160300_added_threshold_to_entity_CourseLevelMap.xml" relativeToChangelogFile="false"/>
+
+        <include file="config/liquibase/changelog/20151016012926_added_entity_ExerciseTip.xml" relativeToChangelogFile="false"/>
+
+        <include file="config/liquibase/changelog/20151121212946_added_entity_Tag.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20151121212946_added_entity_ImageCompletionSolution.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20151121212946_added_entity_ImageCompletionExercise.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20161016002100_added_course_column_to_exercise.xml" relativeToChangelogFile="false"/>
+
+
+        <include file="config/liquibase/changelog/20151121212946_added_entity_TagPair.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20151130235755_added_entity_TagPool.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20151204024539_added_entity_TagCircle.xml" relativeToChangelogFile="false"/>
+
+        <include file="config/liquibase/changelog/20151127202447_added_entity_CourseLevelSession.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20151208211026_added_entity_CurrentSession.xml" relativeToChangelogFile="false"/>
+
+        <include file="config/liquibase/changelog/20160116122349_added_entity_HangManOptionListItem.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20160116123226_added_entity_HangManGameContainer.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20160116124420_added_entity_HangManExercise.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20160116131501_added_entity_HangManExerciseDelimitedArea.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20160116133346_added_entity_HangManExerciseHint.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20160116220824_added_entity_HangManExerciseOption.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20160208165935_added_entity_HangManExerciseImageResource.xml" relativeToChangelogFile="false"/>
+
+        <include file="config/liquibase/changelog/20160307153131_added_entity_MultipleChoiceSubject.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20160307153303_added_entity_MultipleChoiceSubjectSpecific.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20151228204519_added_entity_MultipleChoiceExerciseContainer.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20160310020311_added_entity_MultipleChoiceQuestion.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20151203040716_added_entity_MultipleChoiceAnswer.xml" relativeToChangelogFile="false"/>
+
+        <include file="config/liquibase/changelog/20160525225318_added_entity_PhotoLocationKeyword.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20160525230319_added_entity_PhotoLocationImage.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20160526001802_added_entity_PhotoLocationSatelliteImage.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20160525222233_added_entity_PhotoLocationBeacon.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20160530234023_added_entity_PhotoLocationExercise.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20160525224253_added_entity_PhotoLocationSightPair.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20160703182215_added_entity_PhotoLocationExtraImage.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20160703184448_added_entity_PhotoLocationExtraSatelliteImage.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20161013002451_added_entity_Activity.xml" relativeToChangelogFile="false"/>
+        <include file="config/liquibase/changelog/20161013011215_added_entity_ActivityTrace.xml" relativeToChangelogFile="false"/>
+
+
+
+        <include file="config/liquibase/changelog/20161225203618_added_entity_LoaderTrace.xml" relativeToChangelogFile="false"/>
+        <include file="classpath:config/liquibase/changelog/20170625231111_added_entity_LoadedExercise.xml" relativeToChangelogFile="false"/>
+        <!-- JHipster will add liquibase changelogs here -->
+
+        <!-- load data -->
+        <include file="config/liquibase/changelog/20160103165700_load_table_data.xml" relativeToChangelogFile="false"/>
+
+    </databaseChangeLog>

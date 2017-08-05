@@ -1,0 +1,47 @@
+<div>
+    <h2>Sets De datos</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-primary pull-right" ui-sref="loaderTrace">
+                    <span class="glyphicon glyphicon-flash"></span> <span>ver historial de cargas</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+
+                    <th>Name</th>
+                    <th>Tipo</th>
+                    <th>ruta</th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="dataSet in dataSets track by $index">
+
+                    <td>{{dataSet.name}}</td>
+                    <td>{{describe(dataSet.type)}}</td>
+                    <td>{{dataSet.path}}</td>
+
+                    <td>
+                        <button type="submit"
+                                ng-click="generate(dataSet)"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-cog"></span>&nbsp;<span> procesar</span>
+                        </button>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

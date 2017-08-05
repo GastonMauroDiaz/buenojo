@@ -1,0 +1,60 @@
+<div>
+    <h2>Enrollments</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="enrollment.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear una nueva entidad Enrollment</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Estado</th>
+                    <th>Curso</th>
+                    <th>Usuario</th>
+                    <th>Nivel actual</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="enrollment in enrollments track by enrollment.id">
+                    <td><a ui-sref="enrollment.detail({id:enrollment.id})">{{enrollment.id}}</a></td>
+                    <td translate="{{'buenOjoApp.EnrollmentStatus.' + enrollment.status}}">{{enrollment.status}}</td>
+                    <td>
+                        <a ui-sref="course.detail({id:enrollment.course.id})">{{enrollment.course.name}}</a>
+                    </td>
+                    <td>
+                        {{enrollment.user.login}}
+                    </td>
+                    <td>
+                        <a ui-sref="level.detail({id:enrollment.currentLevel.id})">{{enrollment.currentLevel.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="enrollment.detail({id:enrollment.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="enrollment.edit({id:enrollment.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="enrollment.delete({id:enrollment.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

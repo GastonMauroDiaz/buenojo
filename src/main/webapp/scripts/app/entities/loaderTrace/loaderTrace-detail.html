@@ -1,0 +1,70 @@
+
+<div>
+    <h2><span>LoaderTrace</span> {{loaderTrace.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>LoaderResult</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'buenOjoApp.LoaderResult.' + loaderTrace.loaderResult}}">{{loaderTrace.loaderResult}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Author</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{loaderTrace.author}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>LoaderType</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'buenOjoApp.LoaderType.' + loaderTrace.loaderType}}">{{loaderTrace.loaderType}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Date</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{loaderTrace.date}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>ResultLog</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{loaderTrace.resultLog}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>DatasetName</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{loaderTrace.datasetName}}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

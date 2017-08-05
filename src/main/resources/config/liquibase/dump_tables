@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+def usage
+  return "\n Usage: \n dump_tables -U PSQL_USER_NAME -d database_name table_one table_two....\n received arguments: #{ARGV}"
+end
+
+raise ArgumentError, "Too few arguments\n #{usage()}" if ARGV.length < 5
+
+
+def dump_tables
+
+  userIndex = ARGV.index("-U")
+  raise ArgumentError, "Missing -U parameter" if !userIndex
+  user = ARGV[userIndex+1]
+
+  dbIndex = ARGV.index("-d")
+  dbName  = ARGV[dbIndex+1]
+  raise ArgumentError, "Missing -d parameter" if !dbIndex
+
+
+  tables = ARGV[4..ARGV.length]
+  puts("Dumping tables #{tables}");
+  tables.each {|table|
+    puts("running: "+"psql -U #{user} -W -d #{dbName} -c \"COPY #{table} TO stdout DELIMITER ';' CSV HEADER;\" > #{table}.csv")
+    result = system("psql -U #{user} -W -d #{dbName} -c \"COPY #{table} TO stdout DELIMITER ';' CSV HEADER;\" > #{table}.csv")
+
+    raise ArgumentError, "Error dumping table #{table}"  if !result
+
+  }
+end
+dump_tables()

@@ -1,0 +1,219 @@
+<style>
+input[type=checkbox] {
+	display: none;
+}
+
+.overlay {
+	background-color: transparent;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	z-index: 1000;
+}
+
+
+input[type=checkbox]+label {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-image:
+		url("assets/images/Juego4MultipleChoice/opcion.png");
+	display: inline-block;
+	padding: 0 0 0 20px;
+	height: 16px;
+}
+
+input[type=checkbox]:checked+label {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-image:
+		url("assets/images/Juego4MultipleChoice/opcion_tildada.png");
+	height: 16px;
+	display: inline-block;
+	padding: 0 0 0 20px;
+}
+
+input[type=checkbox]:checked.bien+label {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-image:
+		url("assets/images/Juego4MultipleChoice/opcion_correcta.png");
+	height: 16px;
+	display: inline-block;
+	padding: 0 0 0 20px;
+}
+
+input[type=checkbox].mal+label {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-image:
+		url("assets/images/Juego4MultipleChoice/opcion_incorrecta.png");
+	height: 16px;
+	display: inline-block;
+	padding: 0 0 0 20px;
+}
+</style>
+<div>
+	<div class="container-fluid">
+		<div class="row">
+<br/>
+			<div class="text-right">
+				<a href="#" ui-sref="multipleChoiceExerciseContainerList">Salir del ejercicio <span
+					class="glyphicon glyphicon-remove"></span></a>
+				<hr />
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div
+			class="col-md-2 col-xs-2 col-sm-2 col-lg-2 col-md-offset-10 col-xs-offset-10 col-sm-offset-10 col-lg-offset-10">
+			<div class="center">
+			<button type="button" class="btn btn-primary"
+				style="background-color: rgb(31, 37, 86)" ui-sref="multipleChoiceScore({experience: currentExperience(), percentage: currentPercentage(), count: currentCount()})" >
+				PUNTAJE <span class="glyphicon glyphicon-chevron-right"></span>
+			</button>
+			</div>
+			<br/>
+			<div class="center">
+			<div 
+				style="border-color: rgb(31, 37, 86); border-width: 3px; border-style: solid; height: 50px; width: 50px; border-radius: 50%; text-align: center; padding-top: 10px">
+				<timer interval="1000" countdown="600" ng-style="getClockColor()"
+					finish-callback="endGame()" autostart="false" id="multipleChoiceTimer">{{mminutes}}:{{sseconds}}</timer>
+			
+			</div>
+			</div>	
+		</div>
+	</div>
+</div>
+
+	<div class="container" style="position:relative;top:-80px" >
+	
+		<div class="row">
+
+			<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12" >
+				<div>
+
+					<p style="font-size: 20px">
+						{{multipleChoiceQuestions[currentQuestion].multipleChoiceSubjectSpecific.multipleChoiceSubject.text
+						+ "-"
+						+multipleChoiceQuestions[currentQuestion].multipleChoiceSubjectSpecific.text}}
+					</p>
+					<p>{{multipleChoiceQuestions[currentQuestion].question}}</p>
+
+				</div>
+				<hr />
+			</div>
+		</div>
+		<div class="row"
+			ng-if="multipleChoiceQuestions[currentQuestion].interactionType=='Type2'">
+			<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3"
+				ng-repeat="multipleChoiceAnswer in getAnswersByQuestion(multipleChoiceQuestions[currentQuestion].id) track by multipleChoiceAnswer.id">
+				<svg class="pull-right" width="250px" height="250px" version="1.1"
+					xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink">
+		<image style="width: 250px; height: 250px" xlink:href
+						ng-href="{{multipleChoiceAnswer.imageResource.name}}" imageonload onclick="evt.currentTarget.parentNode.childNodes[3].childNodes[1].click();"/>
+				  <foreignObject x="230" y="230" width="20" height="20">
+     
+     	<input type="checkbox" id="{{'C_'+multipleChoiceAnswer.id}}"
+						ng-model="checkboxModel[multipleChoiceQuestions[currentQuestion].id+'_'+multipleChoiceAnswer.id].value"
+						ng-class="getCheckClass(multipleChoiceQuestions[currentQuestion].id, multipleChoiceAnswer.id)"
+						ng-true-value="'checked'" ng-false-value=""
+						ng-init="checkboxModel[multipleChoiceQuestions[currentQuestion].id+'_'+multipleChoiceAnswer.id].value=''" />
+          <label for="{{'C_'+multipleChoiceAnswer.id}}">
+
+								</label>
+  </foreignObject>
+						</svg>
+
+			</div>
+		</div>
+		<div class="row" style="margin-top: 20px"
+			ng-if="multipleChoiceQuestions[currentQuestion].interactionType=='Type2'">
+			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+
+
+				<button type="submit" class="center-block btn btn-primary"
+					style="background-color: rgb(31, 37, 86)" ng-click="finalize()">
+					{{finalizarOSiguiente();}}</button>
+			</div>
+		</div>
+		<div class="row"
+			ng-if="multipleChoiceQuestions[currentQuestion].interactionType=='Type1'">
+			<div class="col-md-10 col-xs-10 col-sm-10 col-lg-10">
+				<svg class="pull-right" version="1.1" width="1024px" height="576px"
+					xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink">
+	<image style="width: 1024px; height: 576px" xlink:href
+						ng-href="{{multipleChoiceQuestions[currentQuestion].imageResource.name}}"
+						imageonload />
+							</svg>
+
+			</div>
+			<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+				<div class="container-fluid">
+					<div class="row"
+						ng-repeat="multipleChoiceAnswer in getAnswersByQuestion(multipleChoiceQuestions[currentQuestion].id) track by multipleChoiceAnswer.id">
+						<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+							<input type="checkbox" id="{{'C_'+multipleChoiceAnswer.id}}"
+								ng-model="checkboxModel[multipleChoiceQuestions[currentQuestion].id+'_'+multipleChoiceAnswer.id].value"
+						ng-class="getCheckClass(multipleChoiceQuestions[currentQuestion].id, multipleChoiceAnswer.id)"
+						ng-true-value="'checked'" ng-false-value=""
+						ng-init="checkboxModel[multipleChoiceQuestions[currentQuestion].id+'_'+multipleChoiceAnswer.id].value=''" />
+							<label ng-bind-html="multipleChoiceAnswer.answer"
+								for="{{'C_'+multipleChoiceAnswer.id}}"> </label>
+
+						</div>
+
+					</div>
+						<div class="row" style="margin-top: 20px"
+			ng-if="multipleChoiceQuestions[currentQuestion].interactionType=='Type1'">
+			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+
+
+				<button type="submit" class="center-block btn btn-primary"
+					style="background-color: rgb(31, 37, 86)" ng-click="finalize()">
+					{{finalizarOSiguiente();}}</button>
+			</div>
+		</div>
+				</div>
+
+			</div>
+
+		</div>
+
+
+
+	</div>
+
+
+
+
+			<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel">
+			<div class="modal-dialog modal-sm" role="document">
+				<div class="modal-content">
+					<div class="modal-body text-center" ng-if="getResults()=='Complete'">
+						Resuelto Completo!!!
+						<br/>
+						{{getGoodCount()}} / {{multipleChoiceQuestions.length}}
+					</div>
+					<div class="modal-body text-center" ng-if="getResults()=='CompleteWithFailures'">
+						Resuelto con fallos<br/>
+						{{getGoodCount()}} / {{multipleChoiceQuestions.length}}
+					</div>
+					<div class="modal-body text-center" ng-if="getResults()=='Unresolved'">
+						No Resuelto<br/>
+						{{getGoodCount()}} / {{multipleChoiceQuestions.length}}
+					</div>
+
+				</div>
+			</div>
+		</div>
+	
+	<div class="overlay" ng-if="(wait==true)"
+	ng-click="afterFinalize($event)" ng-Keydown="afterFinalize($event)"
+	xng-focus="(wait==true)"></div>
+	

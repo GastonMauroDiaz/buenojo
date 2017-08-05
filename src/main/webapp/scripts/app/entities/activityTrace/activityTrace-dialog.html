@@ -1,0 +1,89 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myActivityTraceLabel">Crear o Editar un ActivityTrace</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="activityTrace.id" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="field_enrollment">enrollment</label>
+            <select class="form-control" id="field_enrollment" name="enrollment" ng-model="activityTrace.enrollmentId" ng-options="enrollment.id as enrollment.id+' '+enrollment.name for enrollment in enrollments track by enrollment.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_startDate">StartDate</label>
+            <input type="datetime-local" class="form-control" name="startDate" id="field_startDate"
+                    ng-model="activityTrace.startDate" ng-model-options="{timezone: 'UTC'}"
+                    required>
+            <div ng-show="editForm.startDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.startDate.$error.required">
+                    Este campo es obligatorio
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.startDate.$error.datetimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_endDate">EndDate</label>
+            <input type="datetime-local" class="form-control" name="endDate" id="field_endDate"
+                    ng-model="activityTrace.endDate" ng-model-options="{timezone: 'UTC'}"
+                    >
+            <div ng-show="editForm.endDate.$invalid">
+
+                <p class="help-block"
+                    ng-show="editForm.endDate.$error.datetimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_score">Score</label>
+            <input type="number" class="form-control" name="score" id="field_score"
+                    ng-model="activityTrace.score"
+                     min="0">
+            <div ng-show="editForm.score.$invalid">
+
+                <p class="help-block"
+                    ng-show="editForm.score.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.score.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_score">Passed</label>
+            <input type="checkbox" class="form-control" name="passed" id="field_passed"
+                    ng-model="activityTrace.passed"
+                     >
+            <div ng-show="editForm.score.$invalid">
+
+
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

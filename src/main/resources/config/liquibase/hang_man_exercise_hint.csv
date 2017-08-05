@@ -1,0 +1,74 @@
+id;text;x;y;ord;hang_man_exercise_id
+1;Los tonos en rosa saturado generalmente corresponden a Hielo/Nieve;462;565;1;2
+2;Observar la cercanía entre las curvas de nivel;164;232;1;3
+3;Las distancias entre las curvas de nivel es mayor, por lo que hay menos pendiente;282;565;2;3
+4;Vegetación que conserva sus hojas en invierno;234;72;1;4
+5;Otro tipo de vegetación que conserva sus hojas en invierno (perenne);641;910;2;4
+6;Patrones libres de vegetación, irregulares. ;541;56;1;5
+7;El asfalto generalmente se ve en tonos grisáceos en SPOT;819;485;2;5
+8;La irregularidad de los patrones indican una topografía accidentada.;707;330;3;5
+9;Diferenciar de la vegetación caducifolia;729;195;1;6
+10;Las proyecciones de sombra pueden servir para medir distancias, y estimar la altura de los árboles.;506;166;1;7
+11;Es propicio medir las sombras en lugares planos, ya que sobre pendientes, la sombra puede distorsionar la estimación de altura.;636;329;2;7
+12;Los fondo de valle son generalmente zonas post-incendiadas;540;11;1;9
+13;Los tonos naranjas opacos, tendiendo a verde  generalmente corresponden a bosque de Ñire ;558;424;2;9
+14;Estos lugares han sido alterados;635;856;3;9
+15;1;222;989;1;10
+16;2;664;88;2;10
+17;3;665;1017;3;10
+18;El ñire rebrota de cepa después de un incendio;696;137;1;11
+19;Según las edades del ñire podría estimarse la antiguedad de un incendios;147;885;2;11
+20;Tonos rojos en pendiente. Aparentemente cobertura lejana de intervención antrópica.;25;26;1;12
+21;Esta textura y tono son típicos de las zonas de altas montañas;686;662;2;12
+22;Estos tonos entre el anaranjado y el verde son característicos de otra especie;518;291;3;12
+23;El Coihue generalmente se puede ver mejor en una imagen Landsat 7 de invierno, que una SPOT de verano;675;483;1;13
+24;La Araucaria se sigue viendo en tonos rojizos en falso color, en temporada invernal;420;766;2;13
+25;Las líneas dibujadas por las sobras ayudan a interpretar los fondos de arroyos entre laderas;172;767;1;15
+26;El bosque dificulta apreciar las formas dendríticas de los flujos de agua que bajan por las montañas;NULL;NULL;2;15
+27;El agua generalmente se ve en tonos oscuros;NULL;NULL;1;16
+28;Presencia de Bosque de Lenga;157;314;1;19
+29;Presencia de Bosque de Ñire;234;272;2;19
+30;Estepa lindante con el bosque;237;621;3;19
+31;Estepa o zona húmeda en fondo de valle;333;1016;1;20
+32;Límite del bosque cercano a la Estepa;180;539;2;20
+33;Montañas con bosque y valles con estepas;570;59;3;20
+34;Forestaciones;162;419;1;21
+35;Forestaciones más grandes;396;573;2;21
+36;Infraestructura de una localidad;669;739;3;21
+37;Cultivos en fondos de valle;359;973;4;21
+38;La topografía influye en la densidad con la que se ven las plantaciones;315;784;1;22
+39;La vegetación del suelo, influye en la percepción del tamaño de los árboles por la menor densidad de la forestación;358;502;2;22
+40;En Patagonia los turnos de corta podrían llegar a ser de 42 a 45 años;NULL;NULL;3;22
+41;Al estar en el Ecotono, la vegetación de transición que se ve verde corresponde a herbácea subarbustiva.;490;271;1;23
+42;Generalmente los mallines se rodean de laderas de diferentes pendientes;728;869;1;24
+43;La línea de las cárcavas marcan el paso más corto que toma el agua de lluvia que desciende;574;509;1;25
+44;Los mallines están a menor altura con relación a una ladera;709;936;2;25
+45;Árboles con diámetro de copa mayores a los de los pinos de la plantación;NULL;NULL;1;27
+46;Son de diferente tamaño a los pinos y a los otros árboles de mayor diámetro de copa;NULL;NULL;1;28
+47;La proyección de sombra puede ser útil para estimar las alturas;NULL;NULL;2;28
+48;Comparar con otras coberturas también es útil para estimar alturas;NULL;NULL;3;28
+49;Los tonos oscuros en color real pueden deberse a la presencia de agua;559;357;1;29
+50;Los verdes generalmente están relacionados con la reflectividad de vegetación, aunque puede deberse a las características de un mineral del suelo desnudo;545;706;2;29
+51;Los mallines generalmente son zonas húmedas durante todo, o gran parte del año;826;43;1;30
+52;Las texturas finas y tonos saturados del naranja, denotan presencia de mallines;104;636;2;30
+53;La forma irregular de los caminos revelan una topografía irregular.;NULL;NULL;3;30
+54;Tono verde con menos brillo que alrededor;328;532;1;31
+55;Verde más claro;560;507;2;31
+56;Se observan tonos intermedios;198;507;3;31
+57;Las cimas de montañas puede distinguirse por la cercanías del erial a la Lenga.;NULL;NULL;1;32
+58;Los ríos de forma irregular (meandrosos), son característicos de zonas planas.;359;729;2;32
+59;En las imágenes de invierno en falso color puede confundirse el agua con sombra.;482;289;1;33
+60;Si limita con un mallin es muy probable que sea una parte húmeda;538;417;1;34
+61;Se nota una pendiente con exposición Sur-Este;440;433;2;34
+62;Pendiente con exposición Nor-Oeste;520;594;3;34
+63;En bajas alturas es donde se satura el suelo por acumulación de agua;461;558;4;34
+64;El Bosque de Araucaria es de tonos rojizos;442;12;1;37
+65;La Lenga achaparrada tiene texturas más homogéneas en tonos anaranjados;322;243;2;37
+66;El Ñire tiene tonos más opacos del anaranjado, tendiendo a verde;711;120;3;37
+67;En cercanías a espejos de agua y es muy probable observar Coihue;NULL;NULL;4;37
+68;Los tonos rojos y coberturas dispuestas en forma regular generalmente son de forestaciones;NULL;NULL;1;38
+69;Los caminos toman los tonos similares a los eriales y forma de líneas regulares o irregulares ;945;70;2;38
+70;Copas globosas;537;541;1;40
+71;Las proyecciones de sombra de las copas globosas son mayores que la de las forestaciones;468;545;2;40
+72;Las Araucarias tienen grandes copas, y son globosas.;NULL;NULL;1;41
+73;"Las copas globosas de las Araucarias se ven como si estuvieran ""despeinadas""";NULL;NULL;2;41

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         name="CM1"
+         updateCheck="false"
+         maxBytesLocalHeap="16M">
+
+    <!--
+      This is a default configuration, it is re-configured by the CacheConfiguration Spring Bean, using the
+      properties from the resources/config/*.yml files.
+    -->
+
+    <diskStore path="java.io.tmpdir"/>
+
+    <defaultCache
+            eternal="false"
+            overflowToDisk="false"
+            />
+
+    <cache name="com.ciis.buenojo.domain.User"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.ciis.buenojo.domain.Authority"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.ciis.buenojo.domain.User.authorities"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.ciis.buenojo.domain.PersistentToken"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.ciis.buenojo.domain.User.persistentTokens"
+           timeToLiveSeconds="3600">
+    </cache>
+    
+    <cache name="com.ciis.buenojo.domain.MultipleChoiceQuestion" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    <cache name="com.ciis.buenojo.domain.Exercise" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    <cache name="com.ciis.buenojo.domain.ExerciseTip" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    <cache name="com.ciis.buenojo.domain.Level" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    
+    <cache name="com.ciis.buenojo.domain.ImageResource" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    
+    <cache name="com.ciis.buenojo.domain.CurrentSession" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    
+    <cache name="com.ciis.buenojo.domain.MultipleChoiceAnswer" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    
+    <cache name="com.ciis.buenojo.domain.Enrollment" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    
+    <cache name="com.ciis.buenojo.domain.UserProfile" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    
+    <cache name="com.ciis.buenojo.domain.Course" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    <cache name="com.ciis.buenojo.domain.CourseLevelMap" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    
+    <cache name="com.ciis.buenojo.domain.Exercise.levels" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    
+    <cache name="com.ciis.buenojo.domain.MultipleChoiceExerciseContainer" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    <cache name="com.ciis.buenojo.domain.CourseLevelSession" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    
+    <cache name="com.ciis.buenojo.domain.ExerciseTip.exercises" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    <cache name="com.ciis.buenojo.domain.ExerciseTip.exerciseTips" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    <cache name="com.ciis.buenojo.domain.Exercise.exerciseTips" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    <cache name="com.ciis.buenojo.domain.MultipleChoiceExerciseContainer.multipleChoiceQuestions" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    
+    <cache name="com.ciis.buenojo.domain.Course.levels" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    
+    <cache name="com.ciis.buenojo.domain.Level.exercises" eternal="false"
+            overflowToDisk="false">
+    </cache>
+    
+    
+    
+    </ehcache>

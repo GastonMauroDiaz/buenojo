@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span>HangManExerciseHint</span> {{hangManExerciseHint.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Text</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{hangManExerciseHint.text}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>X</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{hangManExerciseHint.x}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Y</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{hangManExerciseHint.y}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>hangManExercise</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="hangManExercise.detail({id:hangManExerciseHint.hangManExercise.id})">{{hangManExerciseHint.hangManExercise.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

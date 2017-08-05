@@ -1,0 +1,48 @@
+
+<div>
+    <h2><span>TagPair</span> {{tagPair.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>TagSlotId</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{tagPair.tagSlotId}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>tag</span>
+                </td>
+                <td>
+                    <span ng-repeat="tag in tagPair.tags">
+                        <a class="form-control-static" ui-sref="tag.detail({id: {{tag.id}}})">{{tag.id}}</a>{{$last ? '' : ', '}}
+                    <span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>imageCompletionSolution</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="imageCompletionSolution.detail({id:tagPair.imageCompletionSolution.id})">{{tagPair.imageCompletionSolution.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

@@ -1,0 +1,769 @@
+<!doctype html>
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>BuenOjo</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width">
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<!-- build:css assets/styles/vendor.css -->
+<!-- bower:css -->
+<link rel="stylesheet" href="bower_components/vis/dist/vis.min.css" />
+<link rel="stylesheet" href="bower_components/openlayers3/build/ol.css" />
+<!-- endbower -->
+<!-- endbuild -->
+<!-- build:css assets/styles/main.css -->
+<link rel="stylesheet" href="assets/styles/main.css">
+<link rel="stylesheet" href="assets/styles/graph.css">
+<!-- endbuild -->
+</head>
+<body ng-app="buenOjoApp">
+	<!--[if lt IE 9]> <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]-->
+	<!-- <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div> -->
+	<div ui-view="navbar" ng-cloak=""></div>
+	<div class="container-fluid">
+		<div ui-view="content"></div>
+
+	</div>
+
+	<!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>-->
+
+	<!-- build:js scripts/vendor.js -->
+	<!-- bower:js -->
+	<script src="bower_components/modernizr/modernizr.js"></script>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-aria/angular-aria.js"></script>
+	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
+	<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+	<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+	<script src="bower_components/json3/lib/json3.js"></script>
+	<script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+	<script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+	<script src="bower_components/sockjs-client/dist/sockjs.js"></script>
+	<script src="bower_components/stomp-websocket/lib/stomp.min.js"></script>
+	<script src="bower_components/vis/dist/vis.min.js"></script>
+	<script src="bower_components/lodash/lodash.js"></script>
+	<script src="bower_components/graphlib/dist/graphlib.core.js"></script>
+	<script src="bower_components/dagre/dist/dagre.core.js"></script>
+	<script src="bower_components/dagre/dist/dagre.core.min.js"></script>
+	<script src="bower_components/moment/moment.js"></script>
+	<script src="bower_components/humanize-duration/humanize-duration.js"></script>
+	<script src="bower_components/angular-timer/dist/angular-timer.js"></script>
+	<script src="bower_components/d3/d3.js"></script>
+	<script src="bower_components/dagre-d3/dist/dagre-d3.core.js"></script>
+	<script src="bower_components/jquery-ui/jquery-ui.js"></script>
+	<script src="bower_components/angular-dragdrop/src/angular-dragdrop.js"></script>
+	<script src="bower_components/openlayers3/build/ol.js"></script>
+	<script src="bower_components/angular-openlayers-directive/dist/angular-openlayers-directive.min.js"></script>
+	<script src="bower_components/ev-emitter/ev-emitter.js"></script>
+	<script src="bower_components/imagesloaded/imagesloaded.js"></script>
+	<script src="bower_components/moment-duration-format/lib/moment-duration-format.js"></script>
+	<!-- endbower -->
+
+
+	<!-- build:js({.tmp,src/main/webapp}) scripts/app.js -->
+
+	<script src="scripts/components/ui/popover.directive.js"></script>
+	<script src="scripts/components/ui/xngfocus.directive.js"></script>
+	<script src="scripts/components/ui/imageLoaded.directive.js"></script>
+	<script src="scripts/components/ui/donutChartSpec.directive.js"></script>
+	<script src="scripts/components/ui/imageDidLoad.directive.js"></script>
+	<script src="scripts/components/ui/vibrate/jquery.vibrate.min.js"></script>
+
+
+	<script src="scripts/app/app.js"></script>
+	<script src="scripts/app/app.constants.js"></script>
+	<script src="scripts/components/auth/auth.service.js"></script>
+	<script src="scripts/components/auth/principal.service.js"></script>
+	<script src="scripts/components/auth/authority.directive.js"></script>
+	<script src="scripts/components/auth/services/account.service.js"></script>
+	<script src="scripts/components/auth/services/activate.service.js"></script>
+	<script src="scripts/components/auth/services/password.service.js"></script>
+	<script src="scripts/components/auth/services/register.service.js"></script>
+	<script src="scripts/components/form/form.directive.js"></script>
+	<script src="scripts/components/form/maxbytes.directive.js"></script>
+	<script src="scripts/components/form/minbytes.directive.js"></script>
+	<script src="scripts/components/form/pager.directive.js"></script>
+	<script src="scripts/components/form/pagination.directive.js"></script>
+	<script src="scripts/components/admin/audits.service.js"></script>
+	<script src="scripts/components/admin/logs.service.js"></script>
+	<script src="scripts/components/admin/configuration.service.js"></script>
+	<script src="scripts/components/admin/monitoring.service.js"></script>
+	<script src="scripts/components/interceptor/auth.interceptor.js"></script>
+	<script
+		src="scripts/components/interceptor/errorhandler.interceptor.js"></script>
+	<script
+		src="scripts/components/interceptor/notification.interceptor.js"></script>
+	<script src="scripts/components/navbar/navbar.directive.js"></script>
+	<script src="scripts/components/navbar/navbar.controller.js"></script>
+	<script src="scripts/components/user/user.service.js"></script>
+	<script src="scripts/components/util/truncate.filter.js"></script>
+	<script src="scripts/components/util/base64.service.js"></script>
+	<script src="scripts/components/util/capitalize.filter.js"></script>
+	<script src="scripts/components/alert/alert.service.js"></script>
+	<script src="scripts/components/alert/alert.directive.js"></script>
+	<script src="scripts/components/util/parse-links.service.js"></script>
+	<script src="scripts/components/util/dateutil.service.js"></script>
+	<script src="scripts/components/util/buenOjoMathUtils.service.js"></script>
+	<script src="scripts/app/account/account.js"></script>
+	<script src="scripts/app/account/activate/activate.js"></script>
+	<script src="scripts/app/account/activate/activate.controller.js"></script>
+	<script src="scripts/appCustom/account/login/login.js"></script>
+	<script src="scripts/appCustom/account/login/login.controller.js"></script>
+	<script src="scripts/components/ui/scalemeter.directive.js"></script>
+
+	<script src="scripts/components/authority/authority.service.js"></script>
+
+	<script src="scripts/app/account/password/password.js"></script>
+	<script src="scripts/app/account/password/password.controller.js"></script>
+	<script src="scripts/app/account/password/password.directive.js"></script>
+	<script src="scripts/appCustom/account/register/register.js"></script>
+	<script src="scripts/appCustom/account/register/register.controller.js"></script>
+	<script src="scripts/app/account/settings/settings.js"></script>
+	<script src="scripts/app/account/settings/settings.controller.js"></script>
+	<script
+		src="scripts/app/account/reset/finish/reset.finish.controller.js"></script>
+	<script src="scripts/app/account/reset/finish/reset.finish.js"></script>
+	<script
+		src="scripts/app/account/reset/request/reset.request.controller.js"></script>
+	<script src="scripts/app/account/reset/request/reset.request.js"></script>
+	<script src="scripts/app/admin/admin.js"></script>
+	<script src="scripts/app/admin/audits/audits.js"></script>
+	<script src="scripts/app/admin/audits/audits.controller.js"></script>
+	<script src="scripts/app/admin/configuration/configuration.js"></script>
+	<script
+		src="scripts/app/admin/configuration/configuration.controller.js"></script>
+	<script src="scripts/app/admin/docs/docs.js"></script>
+	<script src="scripts/app/admin/health/health.js"></script>
+	<script src="scripts/app/admin/health/health.controller.js"></script>
+	<script src="scripts/app/admin/health/health.modal.controller.js"></script>
+	<script src="scripts/app/admin/logs/logs.js"></script>
+	<script src="scripts/app/admin/logs/logs.controller.js"></script>
+	<script src="scripts/app/admin/metrics/metrics.js"></script>
+	<script src="scripts/app/admin/metrics/metrics.controller.js"></script>
+	<script src="scripts/app/admin/metrics/metrics.modal.controller.js"></script>
+	<script
+		src="scripts/app/admin/user-management/user-management-detail.controller.js"></script>
+	<script
+		src="scripts/app/admin/user-management/user-management.controller.js"></script>
+	<script src="scripts/app/admin/user-management/user-management.js"></script>
+	<script src="scripts/app/entities/entity.js"></script>
+	<script src="scripts/app/error/error.js"></script>
+	<script src="scripts/app/main/main.js"></script>
+	<script src="scripts/app/main/main.controller.js"></script>
+	<script src="scripts/appCustom/mainAdmin/mainAdmin.js"></script>
+	<script src="scripts/appCustom/mainAdmin/mainAdmin.controller.js"></script>
+	<script src="scripts/appCustom/mainStudent/mainStudent.js"></script>
+	<script src="scripts/appCustom/mainStudent/mainStudent.controller.js"></script>
+
+	<script src="scripts/components/auth/services/sessions.service.js"></script>
+	<script src="scripts/components/auth/provider/auth.session.service.js"></script>
+	<script src="scripts/app/account/sessions/sessions.js"></script>
+	<script src="scripts/app/account/sessions/sessions.controller.js"></script>
+	<script src="scripts/app/admin/tracker/tracker.js"></script>
+	<script src="scripts/app/admin/tracker/tracker.controller.js"></script>
+	<script src="scripts/components/tracker/tracker.service.js"></script>
+	<script src="scripts/app/entities/userProfile/userProfile.js"></script>
+	<script
+		src="scripts/app/entities/userProfile/userProfile.controller.js"></script>
+	<script
+		src="scripts/app/entities/userProfile/userProfile-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/userProfile/userProfile-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/userProfile/userProfile.service.js"></script>
+	<script src="scripts/app/entities/course/course.js"></script>
+	<script src="scripts/app/entities/course/course.controller.js"></script>
+	<script src="scripts/app/entities/course/course-dialog.controller.js"></script>
+	<script src="scripts/app/entities/course/course-detail.controller.js"></script>
+	<script src="scripts/appCustom/entities/course/course.js"></script>
+	<script src="scripts/appCustom/entities/course/course.controller.js"></script>
+	<script
+		src="scripts/appCustom/entities/course/course-dialog.controller.js"></script>
+	<script
+		src="scripts/appCustom/entities/course/course-detail.controller.js"></script>
+	<script src="scripts/components/entities/course/course.service.js"></script>
+
+	<script src="scripts/app/entities/imageResource/imageResource.js"></script>
+	<script
+		src="scripts/app/entities/imageResource/imageResource.controller.js"></script>
+	<script
+		src="scripts/app/entities/imageResource/imageResource-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/imageResource/imageResource-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/imageResource/imageResource.service.js"></script>
+	<script src="scripts/app/entities/exercise/exercise.js"></script>
+	<script src="scripts/app/entities/exercise/exercise.controller.js"></script>
+	<script
+		src="scripts/app/entities/exercise/exercise-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/exercise/exercise-detail.controller.js"></script>
+	<script src="scripts/components/entities/exercise/exercise.service.js"></script>
+	<script src="scripts/app/entities/level/level.js"></script>
+	<script src="scripts/app/entities/level/level.controller.js"></script>
+	<script src="scripts/app/entities/level/level-dialog.controller.js"></script>
+	<script src="scripts/app/entities/level/level-detail.controller.js"></script>
+	<script src="scripts/components/entities/level/level.service.js"></script>
+
+
+	<!-- exerciseTip -->
+	<script src="scripts/app/entities/exerciseTip/exerciseTip.js"></script>
+	<script
+		src="scripts/app/entities/exerciseTip/exerciseTip.controller.js"></script>
+	<script
+		src="scripts/app/entities/exerciseTip/exerciseTip-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/exerciseTip/exerciseTip-upload-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/exerciseTip/exerciseTip-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/exerciseTip/exerciseTip.service.js"></script>
+
+	<!-- tag -->
+	<script src="scripts/app/entities/tag/tag.js"></script>
+	<script src="scripts/app/entities/tag/tag.controller.js"></script>
+	<script src="scripts/app/entities/tag/tag-dialog.controller.js"></script>
+	<script src="scripts/app/entities/tag/tag-detail.controller.js"></script>
+	<script src="scripts/components/entities/tag/tag.service.js"></script>
+	<script src="scripts/app/entities/tag/tag-upload.controller.js"></script>
+
+	<!-- tagPair -->
+	<script src="scripts/app/entities/tagPair/tagPair.js"></script>
+	<script src="scripts/app/entities/tagPair/tagPair.controller.js"></script>
+	<script src="scripts/app/entities/tagPair/tagPair-dialog.controller.js"></script>
+	<script src="scripts/app/entities/tagPair/tagPair-detail.controller.js"></script>
+	<script src="scripts/components/entities/tagPair/tagPair.service.js"></script>
+
+	<!-- tagcircle -->
+
+	<script src="scripts/app/entities/tagCircle/tagCircle.controller.js"></script>
+	<script src="scripts/app/entities/tagCircle/tagCircle.js"></script>
+	<script
+		src="scripts/app/entities/tagCircle/tagCircle-detail.controller.js"></script>
+	<script
+		src="scripts/app/entities/tagCircle/tagCircle-dialog.controller.js"></script>
+	<script
+		src="scripts/components/entities/tagCircle/tagCircle.service.js"></script>
+	<script src="scripts/app/entities/tagCircle/tagCircle-upload.controller.js"></script>
+
+		<script src="scripts/app/entities/tagPool/tagPool-detail.controller.js"></script>
+		<script src="scripts/app/entities/tagPool/tagPool-dialog.controller.js"></script>
+		<script src="scripts/app/entities/tagPool/tagPool.controller.js"></script>
+		<script src="scripts/app/entities/tagPool/tagPool.js"></script>
+		<script src="scripts/components/entities/tagPool/tagPool.service.js"></script>
+
+	<!-- tagcloud -->
+	<script src="scripts/components/entities/tagCloud/tagCloud.service.js"></script>
+
+	<!-- imageCompletionExercise -->
+	<script
+		src="scripts/app/entities/imageCompletionExercise/imageCompletionExercise.js"></script>
+	<script
+		src="scripts/app/entities/imageCompletionExercise/imageCompletionExercise.controller.js"></script>
+	<script
+		src="scripts/app/entities/imageCompletionExercise/imageCompletionExercise-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/imageCompletionExercise/imageCompletionExercise-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/imageCompletionExercise/imageCompletionExercise.service.js"></script>
+	<script
+		src="scripts/components/entities/exerciseTip/ImageCompletionExerciseTip.service.js"></script>
+	<script
+		src="scripts/appCustom/entities/imageCompletionExercise/imageCompletionExerciseGame.js"></script>
+	<script
+		src="scripts/appCustom/entities/imageCompletionExercise/imageCompletionExerciseGame.controller.js"></script>
+	<script
+		src="scripts/appCustom/entities/imageCompletionExercise/imageCompletionExerciseList.controller.js"></script>
+
+	<!-- imageCompletionSolution -->
+	<script
+		src="scripts/app/entities/imageCompletionSolution/imageCompletionSolution.js"></script>
+	<script
+		src="scripts/app/entities/imageCompletionSolution/imageCompletionSolution.controller.js"></script>
+	<script
+		src="scripts/app/entities/imageCompletionSolution/imageCompletionSolution-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/imageCompletionSolution/imageCompletionSolution-detail.controller.js"></script>
+	<script
+		src="scripts/app/entities/imageCompletionSolution/imageCompletionSolution-upload-dialog.controller.js"></script>
+	<script
+		src="scripts/components/entities/imageCompletionSolution/imageCompletionSolution.service.js"></script>
+
+
+	<!-- enrollment -->
+	<script src="scripts/app/entities/enrollment/enrollment.js"></script>
+	<script src="scripts/app/entities/enrollment/enrollment.controller.js"></script>
+	<script
+		src="scripts/app/entities/enrollment/enrollment-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/enrollment/enrollment-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/enrollment/enrollment.service.js"></script>
+	<script
+		src="scripts/app/entities/enrollment/enrollment-delete-dialog.controller.js"></script>
+
+
+	<!-- satelliteImage -->
+	<script src="scripts/app/entities/satelliteImage/satelliteImage.js"></script>
+	<script
+		src="scripts/app/entities/satelliteImage/satelliteImage.controller.js"></script>
+	<script
+		src="scripts/app/entities/satelliteImage/satelliteImage-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/satelliteImage/satelliteImage-detail.controller.js"></script>
+	<script
+		src="scripts/app/entities/satelliteImage/satelliteImage-upload.controller.js"></script>
+	<script
+		src="scripts/components/entities/satelliteImage/satelliteImage.service.js"></script>
+
+
+	<script
+		src="scripts/app/entities/level/level-delete-dialog.controller.js"></script>
+	<script src="scripts/app/entities/courseLevelMap/courseLevelMap.js"></script>
+	<script
+		src="scripts/app/entities/courseLevelMap/courseLevelMap.controller.js"></script>
+	<script
+		src="scripts/appCustom/entities/courseLevelMapGraph/courseLevelMapGraph.js"></script>
+	<script
+		src="scripts/appCustom/entities/courseLevelMapGraph/courseLevelMapGraph.controller.js"></script>
+
+	<script
+		src="scripts/app/entities/courseLevelMap/courseLevelMap-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/courseLevelMap/courseLevelMap-delete-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/courseLevelMap/courseLevelMap-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/courseLevelMap/courseLevelMap.service.js"></script>
+	<script
+		src="scripts/app/entities/courseLevelSession/courseLevelSession.js"></script>
+	<script
+		src="scripts/app/entities/courseLevelSession/courseLevelSession.controller.js"></script>
+	<script
+		src="scripts/app/entities/courseLevelSession/courseLevelSession-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/courseLevelSession/courseLevelSession-delete-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/courseLevelSession/courseLevelSession-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/courseLevelSession/courseLevelSession.service.js"></script>
+
+
+	<!-- multiple choice exercise -->
+	<script
+		src="scripts/app/entities/multipleChoiceQuestion/multipleChoiceQuestion.js"></script>
+	<script
+		src="scripts/app/entities/multipleChoiceQuestion/multipleChoiceQuestion.controller.js"></script>
+	<script
+		src="scripts/app/entities/multipleChoiceQuestion/multipleChoiceQuestion-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/multipleChoiceQuestion/multipleChoiceQuestion-delete-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/multipleChoiceQuestion/multipleChoiceQuestion-detail.controller.js"></script>
+	<script
+		src="scripts/appCustom/entities/multipleChoiceQuestion/multipleChoiceQuestionList.js"></script>
+	<script
+		src="scripts/appCustom/entities/multipleChoiceQuestion/multipleChoiceQuestionList.controller.js"></script>
+	<script
+		src="scripts/appCustom/entities/multipleChoiceQuestion/multipleChoiceQuestionPlay.js"></script>
+	<script
+		src="scripts/appCustom/entities/multipleChoiceQuestion/multipleChoiceQuestionPlay.controller.js"></script>
+	<script
+		src="scripts/appCustom/entities/multipleChoiceQuestion/multipleChoiceQuestionPlayRandom.js"></script>
+	<script
+		src="scripts/appCustom/entities/multipleChoiceQuestion/multipleChoiceQuestionPlayRandom.controller.js"></script>
+	<script
+		src="scripts/components/entities/multipleChoiceQuestion/multipleChoiceQuestion.service.js"></script>
+	<script
+		src="scripts/app/entities/multipleChoiceAnswer/multipleChoiceAnswer.js"></script>
+	<script
+		src="scripts/app/entities/multipleChoiceAnswer/multipleChoiceAnswer.controller.js"></script>
+	<script
+		src="scripts/app/entities/multipleChoiceAnswer/multipleChoiceAnswer-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/multipleChoiceAnswer/multipleChoiceAnswer-delete-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/multipleChoiceAnswer/multipleChoiceAnswer-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/multipleChoiceAnswer/multipleChoiceAnswer.service.js"></script>
+	<script
+		src="scripts/app/entities/multipleChoiceExerciseContainer/multipleChoiceExerciseContainer.js"></script>
+	<script
+		src="scripts/appCustom/entities/multipleChoiceExerciseContainer/multipleChoiceExerciseContainer.js"></script>
+	<script
+		src="scripts/appCustom/entities/multipleChoiceExerciseContainer/multipleChoiceExerciseContainerPlay.controller.js"></script>
+	<script
+		src="scripts/app/entities/multipleChoiceExerciseContainer/multipleChoiceExerciseContainer.controller.js"></script>
+	<script
+		src="scripts/appCustom/entities/multipleChoiceExerciseContainer/multipleChoiceExerciseContainer.controller.js"></script>
+
+	<script
+		src="scripts/app/entities/multipleChoiceExerciseContainer/multipleChoiceExerciseContainer-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/multipleChoiceExerciseContainer/multipleChoiceExerciseContainer-delete-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/multipleChoiceExerciseContainer/multipleChoiceExerciseContainer-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/multipleChoiceExerciseContainer/multipleChoiceExerciseContainer.service.js"></script>
+
+	<!--	hangManGameContainer -->
+	<script
+		src="scripts/appCustom/entities/hangManGamePlayContainer/hangManGamePlayContainer.js"></script>
+
+	<script
+		src="scripts/appCustom/entities/hangManGamePlayContainer/hangManGamePlayContainer.controller.js"></script>
+	<script
+		src="scripts/appCustom/entities/hangManGamePlayContainer/hangManPlay.controller.js"></script>
+	<!-- <script src="scripts/appCustom/entities/hangManGamePlayContainer/hangManGameContainer-detail.controller.js"></script>
+
+<script src="scripts/appCustom/entities/hangManGamePlayContainer/hangManGameContainer.js"></script>
+ -->
+	<!-- exercise tip view -->
+	<script
+		src="scripts/appCustom/entities/exerciseTip/exerciseTip-view.controller.js"></script>
+
+	<!-- map panel  -->
+	<script
+		src="scripts/appCustom/entities/imageCompletionExercise/ICEMapView.controller.js"></script>
+
+
+	<!-- session -->
+	<script src="scripts/app/entities/currentSession/currentSession.js"></script>
+	<script
+		src="scripts/app/entities/currentSession/currentSession.controller.js"></script>
+	<script
+		src="scripts/app/entities/currentSession/currentSession-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/currentSession/currentSession-delete-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/currentSession/currentSession-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/currentSession/currentSession.service.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationBeacon/photoLocationBeacon.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationBeacon/photoLocationBeacon.controller.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationBeacon/photoLocationBeacon-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationBeacon/photoLocationBeacon-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/photoLocationBeacon/photoLocationBeacon.service.js"></script>
+
+	<!-- session custom-->
+	<script
+		src="scripts/appCustom/entities/currentSession/currentSession.js"></script>
+	<script
+		src="scripts/appCustom/entities/currentSession/currentSession.controller.js"></script>
+	<script
+		src="scripts/appCustom/entities/currentSession/currentSession-dialog.controller.js"></script>
+	<script
+		src="scripts/appCustom/entities/currentSession/currentSession-delete-dialog.controller.js"></script>
+	<script
+		src="scripts/appCustom/entities/currentSession/currentSession-detail.controller.js"></script>
+
+
+
+	<script
+		src="scripts/appCustom/entities/course/courseTab/courseTab.controller.js"></script>
+	<script
+		src="scripts/appCustom/entities/course/courseTab/tabs/tabRecorrido.controller.js"></script>
+	<script
+		src="scripts/appCustom/entities/course/courseTab/tabs/tabList.controller.js"></script>
+
+	<script
+		src="scripts/components/entities/courseInformation/courseInformation.service.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationSightPair/photoLocationSightPair.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationSightPair/photoLocationSightPair.controller.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationSightPair/photoLocationSightPair-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationSightPair/photoLocationSightPair-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/photoLocationSightPair/photoLocationSightPair.service.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationSightPair/photoLocationSightPair-upload-dialog.controller.js"></script>
+
+	<script
+		src="scripts/app/entities/photoLocationKeyword/photoLocationKeyword.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationKeyword/photoLocationKeyword.controller.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationKeyword/photoLocationKeyword-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationKeyword/photoLocationKeyword-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/photoLocationKeyword/photoLocationKeyword.service.js"></script>
+	<script
+		src="scripts/appCustom/entities/course/courseTab/tabs/tabInformation.controller.js"></script>
+	<script
+		src="scripts/appCustom/entities/course/courseTab/tabs/tabEtapas.controller.js"></script>
+	<script src="scripts/appCustom/entities/course/courseTab/courseTab.js"></script>
+	<script
+		src="scripts/appCustom/entities/course/courseTab/tabs/tabRecorrido.js"></script>
+	<script
+		src="scripts/appCustom/entities/course/courseTab/tabs/tabInformation.js"></script>
+	<script
+		src="scripts/appCustom/entities/course/courseTab/tabs/tabEtapas.js"></script>
+	<script src="scripts/components/auth/services/loginModal.service.js"></script>
+	<script src="scripts/components/auth/services/registerModal.service.js"></script>
+
+	<script
+		src="scripts/app/entities/photoLocationImage/photoLocationImage.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationImage/photoLocationImage.controller.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationImage/photoLocationImage-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationImage/photoLocationImage-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/photoLocationImage/photoLocationImage.service.js"></script>
+
+	<script
+		src="scripts/app/entities/photoLocationSatelliteImage/photoLocationSatelliteImage.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationSatelliteImage/photoLocationSatelliteImage.controller.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationSatelliteImage/photoLocationSatelliteImage-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationSatelliteImage/photoLocationSatelliteImage-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/photoLocationSatelliteImage/photoLocationSatelliteImage.service.js"></script>
+
+	<script
+		src="scripts/app/entities/photoLocationExercise/photoLocationExercise.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationExercise/photoLocationExercise.controller.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationExercise/photoLocationExercise-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationExercise/photoLocationExercise-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/photoLocationExercise/photoLocationExercise.service.js"></script>
+	<script
+		src="scripts/app/entities/hangManOptionListItem/hangManOptionListItem.js"></script>
+	<script
+		src="scripts/app/entities/hangManOptionListItem/hangManOptionListItem.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManOptionListItem/hangManOptionListItem-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManOptionListItem/hangManOptionListItem-delete-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManOptionListItem/hangManOptionListItem-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/hangManOptionListItem/hangManOptionListItem.service.js"></script>
+	<script
+		src="scripts/app/entities/hangManGameContainer/hangManGameContainer.js"></script>
+	<script
+		src="scripts/app/entities/hangManGameContainer/hangManGameContainer.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManGameContainer/hangManGameContainer-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManGameContainer/hangManGameContainer-delete-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManGameContainer/hangManGameContainer-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/hangManGameContainer/hangManGameContainer.service.js"></script>
+	<script src="scripts/app/entities/hangManExercise/hangManExercise.js"></script>
+	<script
+		src="scripts/app/entities/hangManExercise/hangManExercise.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManExercise/hangManExercise-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManExercise/hangManExercise-delete-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManExercise/hangManExercise-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/hangManExercise/hangManExercise.service.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseDelimitedArea/hangManExerciseDelimitedArea.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseDelimitedArea/hangManExerciseDelimitedArea.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseDelimitedArea/hangManExerciseDelimitedArea-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseDelimitedArea/hangManExerciseDelimitedArea-delete-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseDelimitedArea/hangManExerciseDelimitedArea-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/hangManExerciseDelimitedArea/hangManExerciseDelimitedArea.service.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseHint/hangManExerciseHint.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseHint/hangManExerciseHint.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseHint/hangManExerciseHint-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseHint/hangManExerciseHint-delete-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseHint/hangManExerciseHint-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/hangManExerciseHint/hangManExerciseHint.service.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseOption/hangManExerciseOption.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseOption/hangManExerciseOption.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseOption/hangManExerciseOption-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseOption/hangManExerciseOption-delete-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseOption/hangManExerciseOption-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/hangManExerciseOption/hangManExerciseOption.service.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseImageResource/hangManExerciseImageResource.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseImageResource/hangManExerciseImageResource.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseImageResource/hangManExerciseImageResource-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseImageResource/hangManExerciseImageResource-delete-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/hangManExerciseImageResource/hangManExerciseImageResource-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/hangManExerciseImageResource/hangManExerciseImageResource.service.js"></script>
+	<script
+		src="scripts/appCustom/entities/hangManGamePlayContainer/hangManGameContainer-detail.controller.js"></script>
+
+	<!-- Score -->
+	<script src="scripts/appCustom/entities/score/score.controller.js"></script>
+	<script src="scripts/appCustom/entities/score/score.js"></script>
+
+<!-- Control Panel -->
+	<script src="scripts/appCustom/entities/controlPanel/controlPanel.controller.js"></script>
+	<script src="scripts/appCustom/entities/controlPanel/controlPanel.js"></script>
+
+
+	<!-- MultipleChoice -->
+
+
+	<script
+		src="scripts/app/entities/photoLocationExtraImage/photoLocationExtraImage.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationExtraImage/photoLocationExtraImage.controller.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationExtraImage/photoLocationExtraImage-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationExtraImage/photoLocationExtraImage-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/photoLocationExtraImage/photoLocationExtraImage.service.js"></script>
+	<script
+		src="scripts/components/entities/photoLocationExtraImage/photoLocationExtraImageExercise.service.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationExtraImage/photoLocationExtraImage-upload-dialog.controller.js"></script>
+	<script
+		src="scripts/components/entities/photoLocationExtraSatelliteImage/photoLocationExtraSatelliteImageExercise.service.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationExtraSatelliteImage/photoLocationExtraSatelliteImage.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationExtraSatelliteImage/photoLocationExtraSatelliteImage.controller.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationExtraSatelliteImage/photoLocationExtraSatelliteImage-dialog.controller.js"></script>
+
+	<script
+		src="scripts/app/entities/photoLocationExtraSatelliteImage/photoLocationExtraSatelliteImage-upload-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/photoLocationExtraSatelliteImage/photoLocationExtraSatelliteImage-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/photoLocationExtraSatelliteImage/photoLocationExtraSatelliteImage.service.js"></script>
+
+	<script
+		src="scripts/app/entities/multipleChoiceSubjectSpecific/multipleChoiceSubjectSpecific-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/multipleChoiceSubjectSpecific/multipleChoiceSubjectSpecific-delete-dialog.controller.js"></script>
+	<script
+		src="scripts/app/entities/multipleChoiceSubjectSpecific/multipleChoiceSubjectSpecific-detail.controller.js"></script>
+	<script
+		src="scripts/components/entities/multipleChoiceSubjectSpecific/multipleChoiceSubjectSpecific.service.js"></script>
+	<script
+		src="scripts/app/entities/multipleChoiceExerciseContainer/multipleChoiceExerciseContainer-dialog.controller.js"></script>
+
+	<!--  PhotoLocationExerciseGame -->
+	<script src="scripts/appCustom/entities/photoLocationExercise/photoLocationExerciseList.controller.js"></script>
+	<script
+		src="scripts/appCustom/entities/photoLocationExercise/photoLocationExerciseGame.controller.js"></script>
+	<script
+		src="scripts/appCustom/entities/photoLocationExercise/photoLocationExerciseGame.js"></script>
+	<script
+		src="scripts/components/entities/photoLocationExercise/photoLocationExerciseMock.service.js"></script>
+	<script
+		src="scripts/components/entities/photoLocationExercise/photoLocationExerciseGame.service.js"></script>
+
+	<script src="scripts/components/util/buenOjoUtils.service.js"></script>
+	<!-- activity -->
+<script src="scripts/app/entities/activity/activity.js"></script>
+<script src="scripts/app/entities/activity/activity.controller.js"></script>
+<script src="scripts/app/entities/activity/activity-dialog.controller.js"></script>
+<script src="scripts/app/entities/activity/activity-detail.controller.js"></script>
+<script src="scripts/components/entities/activity/activity.service.js"></script>
+<script src="scripts/app/entities/activityTrace/activityTrace.js"></script>
+<script src="scripts/app/entities/activityTrace/activityTrace.controller.js"></script>
+<script src="scripts/app/entities/activityTrace/activityTrace-dialog.controller.js"></script>
+<script src="scripts/app/entities/activityTrace/activityTrace-detail.controller.js"></script>
+<script src="scripts/components/entities/activityTrace/activityTrace.service.js"></script>
+
+<!-- result -->
+<script src="scripts/components/entities/result/result.controller.js"></script>
+<script src="scripts/components/entities/result/result.js"></script>
+<script src="scripts/components/entities/result/courseFinished.controller.js"></script>
+<script src="scripts/components/entities/result/exerciseFinished.controller.js"></script>
+<script src="scripts/app/entities/userProfile/userProfile.controller.js"></script>
+<script src="scripts/app/entities/userProfile/userProfile-dialog.controller.js"></script>
+<script src="scripts/app/entities/userProfile/userProfile-detail.controller.js"></script>
+<script src="scripts/components/entities/userProfile/userProfile.service.js"></script>
+
+<!-- custom user profile -->
+<script src="scripts/appCustom/entities/userProfile/userProfile-dialog.controller.js"></script>
+
+<!-- course panel -->
+<script src="scripts/appCustom/entities/coursePanel/coursePanel.controller.js"></script>
+<script src="scripts/appCustom/entities/coursePanel/coursePanel.js"></script>
+<script src="scripts/appCustom/entities/coursePanel/panelTabs/courseEnrollmentsPanel.controller.js"></script>
+<script src="scripts/appCustom/entities/coursePanel/panelTabs/courseInformationPanel.controller.js"></script>
+<script src="scripts/appCustom/entities/coursePanel/panelTabs/courseStatisticsPanel.controller.js"></script>
+<script src="scripts/appCustom/entities/coursePanel/enrollmentStatus/enrollmentStatusTab.controller.js"></script>
+<script src="scripts/components/entities/courseStatistics/courseStatistics.service.js"></script>
+<script src="scripts/app/entities/loaderTrace/loaderTrace.js"></script>
+<script src="scripts/app/entities/loaderTrace/loaderTrace.controller.js"></script>
+<script src="scripts/app/entities/loaderTrace/loaderTrace-dialog.controller.js"></script>
+<script src="scripts/app/entities/loaderTrace/loaderTrace-detail.controller.js"></script>
+<script src="scripts/components/entities/loaderTrace/loaderTrace.service.js"></script>
+
+<!-- loaders -->
+<script src="scripts/components/entities/ExerciseDataSet/exerciseDataSet.service.js"></script>
+<script src="scripts/app/entities/dataSet/dataSet.js"></script>
+<script src="scripts/app/entities/dataSet/dataSet.controller.js"></script>
+<script src="scripts/app/entities/dataSet/loaderResult.controller.js"></script>
+<script src="scripts/app/entities/dataSet/datasetConfirm.controller.js"></script>
+
+
+
+<script src="scripts/app/entities/loadedExercise/loadedExercise.js"></script>
+<script src="scripts/app/entities/loadedExercise/loadedExercise.controller.js"></script>
+<script src="scripts/app/entities/loadedExercise/loadedExercise-dialog.controller.js"></script>
+<script src="scripts/app/entities/loadedExercise/loadedExercise-detail.controller.js"></script>
+<script src="scripts/components/entities/loadedExercise/loadedExercise.service.js"></script>
+<!-- endbuild -->
+
+
+</body>
+</html>

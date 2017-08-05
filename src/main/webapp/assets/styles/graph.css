@@ -1,0 +1,36 @@
+/* This sets the color for "TK" nodes to a light blue green. */
+
+
+g.type-Node.red > rect  {
+  fill: red;
+}
+
+g.type-Node.grey > rect  {
+  fill: grey;
+}
+
+g.type-Node.lime > rect  {
+  fill: lime;
+}
+
+g.type-Node.yellow > rect  {
+  fill: yellow;
+}
+
+
+text {
+  font-weight: 300;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serf;
+  font-size: 14px;
+}
+
+.node rect {
+  stroke: #999;
+  fill: #fff;
+  stroke-width: 1px;
+}
+
+.edgePath path {
+  stroke: #333;
+  stroke-width: 0.5px;
+}

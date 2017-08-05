@@ -1,0 +1,55 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myEnrollmentLabel">Crear o Editar un Enrollment</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="enrollment.id" readonly />
+        </div>
+        <div class="form-group">
+            <label for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="enrollment.status" id="field_status">
+                <option value="Started">Started</option>
+                <option value="InProgress">InProgress</option>
+                <option value="Finished">Finished</option>
+                <option value="Cancelled">Cancelled</option>
+                <option value="InActive">InActive</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="field_course">course</label>
+            <select class="form-control" id="field_course" name="course" ng-model="enrollment.course" ng-options="course as course.name for course in courses track by course.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_user">user</label>
+            <select class="form-control" id="field_user" name="user" ng-model="enrollment.user" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="field_current_level">Current Level</label>
+            <select class="form-control" id="field_current_level" name="currentLevel" ng-model="enrollment.currentLevel" ng-options="level as level.name for level in enrollment.course.levels track by level.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Cargar</span>
+        </button>
+    </div>
+</form>

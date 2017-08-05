@@ -1,0 +1,81 @@
+<div>
+    <h2>PhotoLocationSatelliteImages</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="photoLocationSatelliteImage.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear una nueva entidad PhotoLocationSatelliteImage</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deletePhotoLocationSatelliteImageConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(photoLocationSatelliteImage.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title">Confirme eliminación</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Est&aacute; seguro de querer eliminar estePhotoLocationSatelliteImage?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Eliminar</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>keyword</th>
+                    <th>satelliteImage</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="photoLocationSatelliteImage in photoLocationSatelliteImages track by photoLocationSatelliteImage.id">
+                    <td><a ui-sref="photoLocationSatelliteImage.detail({id:photoLocationSatelliteImage.id})">{{photoLocationSatelliteImage.id}}</a></td>
+                    <td>
+                        <span ng-repeat="keyword in photoLocationSatelliteImage.keywords">
+                            <a class="form-control-static" ui-sref="photoLocationKeyword.detail({id: {{keyword.id}}})">{{keyword.id}}</a>{{$last ? '' : ', '}}
+                        <span>
+                    </td>
+                    <td>
+                        <a ui-sref="satelliteImage.detail({id:photoLocationSatelliteImage.satelliteImage.id})">{{photoLocationSatelliteImage.satelliteImage.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="photoLocationSatelliteImage.detail({id:photoLocationSatelliteImage.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="photoLocationSatelliteImage.edit({id:photoLocationSatelliteImage.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(photoLocationSatelliteImage.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,154 @@
+id;option_group;option_type;option_text
+1;Varios;si/no;Si
+2;Varios;si/no;No
+3;Varios;Comparativa;Mayor
+4;Varios;Comparativa;Menor
+5;Varios;Comparativa;Igual
+6;Varios;Cantidades relativas;Mucho
+7;Varios;Cantidades relativas;Poco
+8;Varios;Cantidades relativas;Nada
+9;Ubicación;Provincias;Neuquén
+10;Ubicación;Provincias;Río Negro
+11;Ubicación;Provincias;Chubut
+12;Ubicación;Provincias;Santa Cruz
+13;Ubicación;Provincias;Tierra del Fuego
+14;Ubicación;Puntos Cardinales;Norte
+15;Ubicación;Puntos Cardinales;Noreste
+16;Ubicación;Puntos Cardinales;Este
+17;Ubicación;Puntos Cardinales;Sureste
+18;Ubicación;Puntos Cardinales;Sur
+19;Ubicación;Puntos Cardinales;Suroeste
+20;Ubicación;Puntos Cardinales;Oeste
+21;Ubicación;Puntos Cardinales;Noroeste
+22;Ubicación;Puntos Cardinales;Ninguna
+23;Topografía;Tipo de relieve;Montañas
+24;Topografía;Tipo de relieve;Cordillera
+25;Topografía;Tipo de relieve;Cerros o colinas o sierras
+26;Topografía;Tipo de relieve;Mesetas
+27;Topografía;Tipo de relieve;Llanuras
+28;Topografía;Posición topográfica;Valle
+29;Topografía;Posición topográfica;Ladera baja
+30;Topografía;Posición topográfica;Ladera media
+31;Topografía;Posición topográfica;Ladera alta
+32;Topografía;Posición topográfica;Cumbre
+33;Topografía;Pendiente;Escarpado
+34;Topografía;Pendiente;Pendiente fuerte
+35;Topografía;Pendiente;Pendiente suave
+36;Topografía;Pendiente;Sin pendiente
+37;Topografía;Concavidad;Cóncavo
+38;Topografía;Concavidad;Convexo
+39;Topografía;Concavidad;Llano
+40;Topografía;Altitudes;500 m snm
+41;Topografía;Altitudes;10000 m snm
+42;Topografía;Altitudes;2000 m snm
+43;Topografía;Altitudes;0 m snm
+44;Topografía;Altitudes;4000 m snm
+45;Climatología;Rangos de precipitaciones;> 3000
+46;Climatología;Rangos de precipitaciones;1000 - 3000
+47;Climatología;Rangos de precipitaciones;250 - 1000
+48;Climatología;Rangos de precipitaciones;< 250
+49;Climatología;Temperaturas;Muy frío
+50;Climatología;Temperaturas;Frío
+51;Climatología;Temperaturas;Templado
+52;Climatología;Temperaturas;Cálido
+53;Paisaje;Tipo de paisaje;Cordillera
+54;Paisaje;Tipo de paisaje;Ecotono
+55;Paisaje;Tipo de paisaje;Estepa
+56;Coberturas;Coberturas de bosque Alto;Alerce
+57;Coberturas;Coberturas de bosque Alto;Araucaria
+58;Coberturas;Coberturas de bosque Alto;Chacay
+59;Coberturas;Coberturas de bosque Alto;Ciprés
+60;Coberturas;Coberturas de bosque Alto;Coihue
+61;Coberturas;Coberturas de bosque Alto;Guindo
+62;Coberturas;Coberturas de bosque Alto;Lenga
+63;Coberturas;Coberturas de bosque Alto;Maitén
+64;Coberturas;Coberturas de bosque Alto;Mirtáceas
+65;Coberturas;Coberturas de bosque Alto;Ñire
+66;Coberturas;Coberturas de bosque Alto;Radal
+67;Coberturas;Coberturas de bosque Alto;Roble Pellín
+68;Coberturas;Coberturas de bosque Alto;Raulí
+69;Coberturas;Coberturas de bosque Alto;Mixto Alto
+70;Coberturas;Coberturas de bosque Alto;Ninguna
+71;Coberturas;Coberturas sin bosque;Erial
+72;Coberturas;Coberturas sin bosque;Agua
+73;Coberturas;Coberturas sin bosque;Arbustal
+74;Coberturas;Coberturas sin bosque;Cultivo
+75;Coberturas;Coberturas sin bosque;Infraestructura
+76;Coberturas;Coberturas sin bosque;Estepa
+77;Coberturas;Coberturas sin bosque;Pradera
+78;Coberturas;Coberturas sin bosque;Hielo/Nieve
+79;Coberturas;Coberturas sin bosque;Mallín
+80;Coberturas;Coberturas sin bosque;Turbera
+81;Car de bosque;Rangos de altura;< 3 m
+82;Car de bosque;Rangos de altura;3 - 7 m
+83;Car de bosque;Rangos de altura;> 7 m
+84;Car de bosque;Formas de copa;Globosa
+85;Car de bosque;Formas de copa;Cónica
+86;Car de bosque;Formas de copa;Irregular
+87;Car de bosque;Diámetros de copa;Grande (> 10 m)
+88;Car de bosque;Diámetros de copa;Mediano (5 - 10 m)
+89;Car de bosque;Diámetros de copa;Chica (< 5 m)
+90;Car de bosque;Diámetros de copa;Variable
+91;Car de bosque;Edades;40 años
+92;Car de bosque;Edades;300 años
+93;Car de bosque;Edades;15 años
+94;Car de bosque;Fases de desarrollo;Brinzal
+95;Car de bosque;Fases de desarrollo;Latizal
+96;Car de bosque;Fases de desarrollo;Bosque adulto
+97;Otros rasgos;Rasgos de incendio;Troncos caídos
+98;Otros rasgos;Rasgos de incendio;Bosque con límites abruptos
+99;Otros rasgos;Rasgos de antropización;Cultivos
+100;Otros rasgos;Rasgos de antropización;Cortinas
+101;Otros rasgos;Rasgos de antropización;Infraestructura
+102;Otros rasgos;Rasgos de antropización;Forestaciones
+103;Otros rasgos;Rasgos de antropización;Caminos
+104;Otros rasgos;Rasgos de topografía;Caminos ondulados
+105;Otros rasgos;Rasgos de topografía;Caminos rectilíneos
+106;Otros rasgos;Rasgos de topografía;Ríos meándricos
+107;Otros rasgos;Rasgos de topografía;Ríos dendríticos
+108;Otros rasgos;Rasgos de topografía;Sombras
+109;Otros rasgos;Rasgos de topografía;Cárcavas
+110;Colores;Tono dominante;Amarillo
+111;Colores;Tono dominante;Azul
+112;Colores;Tono dominante;Rojo
+113;Colores;Tono dominante;Verde
+114;Colores;Tono dominante;Anaranjado
+115;Colores;Tono dominante;Violeta
+116;Colores;Tono dominante;Sin dominante
+117;Colores;Texturas;Textura gruesa
+118;Colores;Texturas;Textura media
+119;Colores;Texturas;Textura fina
+120;Colores;Brillo;Brillo alto
+121;Colores;Brillo;Brillo medio
+122;Colores;Brillo;Brillo bajo
+123;Colores;Saturación;Muy saturado
+124;Colores;Saturación;Saturación media
+125;Colores;Saturación;Poco saturado
+126;Texturas;Bosque Oquedal;Globosa regular
+127;Texturas;Bosque Oquedal;Globosa irregular
+128;Texturas;Bosque Oquedal;Globosa en matriz de tono claro
+129;Texturas;Bosque juvenil;Granular
+130;Texturas;Bosque juvenil;Granular suave
+131;Texturas;Bosque juvenil;Granular suave
+132;Texturas;Brinzal;Suave
+133;Texturas;Brinzal;Suave regular
+134;Texturas;Brinzal;Suave irregular
+135;Texturas;Arbustal/ Matorral;Granular
+136;Texturas;Arbustal/ Matorral;Globoso
+137;Texturas;Arbustal/ Matorral;Granular suave regular
+138;Texturas;Arbustal/ Matorral;Globoso regular
+139;Texturas;Arbustal/ Matorral;Globosa irregular
+140;Coberturas;Coberturas de bosque Bajo;Mixto bajo
+141;Coberturas;Coberturas de bosque Bajo;Lenga achaparrada
+142;Coberturas;Coberturas de bosque Bajo;Maitén bajo
+143;Coberturas;Coberturas de bosque Bajo;Ciprés juvenil
+144;Coberturas;Coberturas de bosque Bajo;Brinzal de Coihue
+145;Coberturas;Coberturas de bosque Bajo;Brinzal de Guindo
+146;Coberturas;Coberturas de bosque Bajo;Brinzal de Lenga
+147;Coberturas;Coberturas de bosque Bajo;Brinzal de Raulí
+148;Coberturas;Coberturas de bosque Bajo;Brinzal de Roble Pellín
+149;Coberturas;Coberturas de bosque Bajo;Ñire bajo
+150;Coberturas;Coberturas de bosque Bajo;Lenga marginal
+151;Coberturas;Coberturas de bosque Bajo;Mirtáceas bajas
+152;Coberturas;Coberturas de bosque Bajo;Chacay bajo
+153;Coberturas;Coberturas de bosque Bajo;Araucaria juvenil

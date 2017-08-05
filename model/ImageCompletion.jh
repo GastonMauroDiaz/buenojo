@@ -1,0 +1,90 @@
+/** A drag and drop Image Completion Exercise
+*/
+
+entity ImageCompletionExercise {
+
+}
+/**
+  Pairs up a tag with the corresponding slot where "id" is the number of tagSlotId and the tag is the tag ID
+  "id" "etiqueta"
+  "0" "13"
+  "1" "3"
+  "2" "21"
+  "3" "24"
+  "4" "26"
+*/
+entity TagPair {
+  tagSlotId Integer required
+}
+
+entity ImageCompletionSolution {
+
+}
+
+/** A tag that can be dragged to the image
+*/
+entity Tag {
+  name String required,
+}
+
+/** The tag pool where you get your similar choices from */
+entity TagPool {
+  /** how similar this tag is to some other. 1 very similar, 3 not so similar */
+
+  similarity Integer required
+}
+
+relationship ManyToOne {
+   TagPool{tag} to TagPool
+}
+relationship ManyToOne {
+  TagPool{similarTag} to TagPool
+}
+
+/**
+  Represents an satellite image resource in the system.
+*/
+entity SatelliteImage {
+  meters Double required,
+  lon Double required,
+  lat Double required,
+  resolution Double required,
+  name String required,
+  image ImageBlob required,
+  copyright String required,
+  imageType SatelliteImageType required,
+}
+
+
+/**
+ Represents a circle that must be placed on top of the satellite images of an
+ imageCompletionExercise
+ */
+
+entity TagCircle {
+	number Integer required min(0) max(6),
+	y Integer required min(0),
+	x Integer required min(0),
+	radioPx Float required min(0)
+}
+
+relationship OneToMany {
+  ImageCompletionSolution{tagPair} to TagPair{imageCompletionSolution}
+}
+relationship ManyToMany {
+  TagPair{tag} to Tag{tagPair}
+}
+relationship OneToOne {
+  ImageCompletionExercise{imageCompletionSolution} to ImageCompletionSolution{imageCompletionExercise}
+}
+relationship OneToMany {
+  Course to Tag{course}
+}
+
+relationship ManyToMany {
+  ImageCompletionExercise{SatelliteImage} to SatelliteImage{imageCompletionExercise}
+}
+
+relationship OneToMany {
+	ImageCompletionExercise{tagCircle} to TagCircle{imageCompletionExercise}
+}

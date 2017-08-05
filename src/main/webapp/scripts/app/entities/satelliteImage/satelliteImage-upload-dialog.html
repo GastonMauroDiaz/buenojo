@@ -1,0 +1,39 @@
+<form name="uploadForm" novalidate ng-submit="upload(satelliteImageUpload.imageFile,satelliteImageUpload.csvFile)" show-validation>
+
+    <div class="modal-header">
+
+
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myTagLabel">Subir Imagen Satelital con metadatos</h4>
+
+        <jh-alert-error></jh-alert-error>
+    </div>
+    <div class="modal-body">
+
+	     <div class="form-group">
+	        	<label for="image">Image</label>
+		        <input type="file" ngf-select  id="imageFile" name="imageFile" ng-model="satelliteImageUpload.imageFile" accept=".png,.jpg" ngf-max-size="10MB" required>
+		        <p class="help-block"
+		           ng-show="!satelliteImageUpload.imageFile">
+		                    Este campo es obligatorio.
+		       	</p>
+	      </div>
+	      <div class="form-group">
+	        	<label for="csv">CSV Metadata</label>
+		        <input type="file" ngf-select id="metadata" name="metadata" ng-model="satelliteImageUpload.csvFile" accept=".csv" ngf-max-size="1MB" required>
+		        <p class="help-block"
+		           ng-show="!satelliteImageUpload.csvFile">
+		                    Este campo es obligatorio.
+		       	</p>
+	      </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        </button>
+        <button type="submit"  ng-disabled=" !satelliteImageUpload.csvFile ||!satelliteImageUpload.imageFile|| uploadForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Cargar</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,90 @@
+<div>
+    <h2>Áreas circulares para etiquetas</h2>
+    <h5>TagCircle</h5>
+    
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="tagCircle.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear área circulares </span>
+                </button>
+            </div>
+            <div class="col-md-5">
+              <button class="btn btn-primary" ui-sref="tagCircle.upload">
+                <span class="glyphicon glyphicon-flash"></span> <span>Crear área circulares desde CSV</span>
+              </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteTagCircleConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(tagCircle.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title">Confirmar borrado</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Estás seguro de querer borrar este TagCircle?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Eliminar</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Number</th>
+                    <th>Y</th>
+                    <th>X</th>
+                    <th>RadioPx</th>
+                    <th>imageCompletionExercise</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="tagCircle in tagCircles track by tagCircle.id">
+                    <td><a ui-sref="tagCircle.detail({id:tagCircle.id})">{{tagCircle.id}}</a></td>
+                    <td>{{tagCircle.number}}</td>
+                    <td>{{tagCircle.y}}</td>
+                    <td>{{tagCircle.x}}</td>
+                    <td>{{tagCircle.radioPx}}</td>
+                    <td>
+                        <a ui-sref="imageCompletionExercise.detail({id:tagCircle.imageCompletionExercise.id})">{{tagCircle.imageCompletionExercise.id}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="tagCircle.detail({id:tagCircle.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="tagCircle.edit({id:tagCircle.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(tagCircle.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+id;name;description;start_date;end_date;course_open;priority;banner_id
+1116;TERCER CURSO DE BUEN OJO;Este es el tercer curso de Buen Ojo y este es su titulo largo;NULL;NULL;f;2;NULL
+1115;SEGUNDO CURSO DE BUEN OJO;Este es el segundo curso de Buen Ojo y este es su titulo largo;NULL;NULL;t;3;NULL
+1032;PRIMER CURSO DE BUEN OJO;Este es el primer curso de Buen Ojo y este es su titulo largo;NULL;NULL;t;4;NULL
+1117;CUARTO CURSO DE BUEN OJO;Este es el segundo curso de Buen Ojo y este es su titulo largo;NULL;NULL;f;1;NULL

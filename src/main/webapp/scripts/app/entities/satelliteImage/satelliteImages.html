@@ -1,0 +1,92 @@
+<div>
+    <h2>SatelliteImages</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="satelliteImage.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear una imagen satelital</span>
+                </button>
+                <button class="btn btn-primary" ui-sref="satelliteImage.upload">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear una imagen satelital desde CSV</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteSatelliteImageConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(satelliteImage.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title">Confirmar borrado</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Estás seguro de querer borrar esta Imagen Satelital?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Eliminar</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Meters</th>
+                    <th>Lon</th>
+                    <th>Lat</th>
+                    <th>Resolution</th>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Copyright</th>
+                    <th>ImageType</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="satelliteImage in satelliteImages track by satelliteImage.id">
+                    <td><a ui-sref="satelliteImage.detail({id:satelliteImage.id})">{{satelliteImage.id}}</a></td>
+                    <td>{{satelliteImage.meters}}</td>
+                    <td>{{satelliteImage.lon}}</td>
+                    <td>{{satelliteImage.lat}}</td>
+                    <td>{{satelliteImage.resolution}}</td>
+                    <td>{{satelliteImage.name}}</td>
+                    <td>
+                        <img src="{{satelliteImage.image.hiResImagePath}}" style="max-height: 30px;" ng-if="satelliteImage.image"/> {{satelliteImage.imageContentType}} {{byteSize(satelliteImage.image)}}
+                    </td>
+                    <td>{{satelliteImage.copyright}}</td>
+                    <td translate="{{'buenOjoApp.SatelliteImageType.' + satelliteImage.imageType}}">{{satelliteImage.imageType}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="satelliteImage.detail({id:satelliteImage.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="satelliteImage.edit({id:satelliteImage.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(satelliteImage.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+/**
+  Represents an image resource in the system.
+*/
+entity ImageResource {
+
+  name String required,
+  loResImage ImageBlob required,
+  hiResImage ImageBlob required
+}

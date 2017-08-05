@@ -1,0 +1,132 @@
+<div>
+    <h2>ExerciseTips</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="exerciseTip.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear una nueva entidad ExerciseTip</span>
+                </button>
+                 <button class="btn btn-primary" ui-sref="exerciseTip.upload">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Upload ExerciseTips from CSV</span>
+                </button>
+                <button type="submit"
+                                ng-click="deleteAll()"
+                                class="btn btn-danger btn-sm"
+                                ng-show="exerciseTips.length>0">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete all ExerciseTips</span>
+		        </button>
+            </div>
+        </div>
+    </div>
+	<div class="modal fade" id="deleteAllExerciseTipsConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteAllForm" ng-submit="confirmDeleteAll()">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title"> Delete ALL exercise tips</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete all ExerciseTips?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Eliminar</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deleteExerciseTipConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(exerciseTip.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title">Confirmar borrado</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Estás seguro de querer borrar este ExerciseTip?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Eliminar</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>TipDetail</th>
+                    <th>Tag</th>
+                    <th>Regions</th>
+                    <th>Images</th>
+                    <th>ImageTypes</th>
+                    <th>Course<th>
+                    <th></th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="exerciseTip in exerciseTips track by exerciseTip.id">
+                    <td><a ui-sref="exerciseTip.detail({id:exerciseTip.id})">{{exerciseTip.id}}</a></td>
+                    <td>{{exerciseTip.detail}}</td>
+                    <td>{{exerciseTip.tag.name}}</td>
+                    <td> 
+                    	<span ng-repeat="region in exerciseTip.regions">
+	                        {{region}}{{$last ? '' : ', '}}
+	                    </span></td>
+                    <td>
+                    <span ng-repeat="imageResource in exerciseTip.images">
+                        <a class="form-control-static" ui-sref="imageResource.detail({id: imageResource.id})">{{imageResource.id}}</a>{{$last ? '' : ', '}}
+                    </span>
+                    	
+                    </td>
+                    <td>
+	                    <span ng-repeat="type in exerciseTip.imageTypes">
+	                        {{type}}{{$last ? '' : ', '}}
+	                    </span>
+                    </td>
+                    <td>
+                    	<span>
+                    		<a class="form-control-static" ng-model="course" ui-sref="course.detail({id: exerciseTip.tag.course.id})">{{exerciseTip.tag.course.id}}</a>
+                    	</span>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="exerciseTip.detail({id:exerciseTip.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="exerciseTip.edit({id:exerciseTip.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(exerciseTip.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

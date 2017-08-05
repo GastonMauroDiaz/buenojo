@@ -1,0 +1,61 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+			Salir del juego
+		<hr/>
+		</div>
+	</div>
+<div class="row">
+		<div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+			<h1>{{multipleChoiceQuestion.question}}</h1>
+			<h3>{{multipleChoiceQuestion.question}}</h3>
+			<hr/>
+		</div>
+		<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+				<h3>&nbsp;</h3>
+				<h1>
+					<timer interval="1000" countdown="60">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>
+				</h1>
+				<hr/>
+		</div>
+		
+</div>
+<div class="row">
+<div class="col-sm-8 col-xs-8 col-md-8 col-lg-8"></div>
+<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+		<table class="table table-striped">
+				<tbody>
+
+					<tr
+						ng-repeat="multipleChoiceAnswer in multipleChoiceAnswers track by multipleChoiceAnswer.id">
+						<td ng-if="isSingle==true">
+							<div class="radio">
+								<label for="opt{{multipleChoiceAnswer.id}}"> <input
+									type="radio" name="opt{{multipleChoiceAnswer.id}}"
+									id="opt{{multipleChoiceAnswer.id}}" />
+									{{multipleChoiceAnswer.answer}}
+								</label>
+							</div>
+						</td>
+						<td ng-if="isSingle==false">
+							<div class="checkbox">
+								<label for="chk{{multipleChoiceAnswer.id}}"> <input
+									type="checkbox" name="chk{{multipleChoiceAnswer.id}}"
+									id="chk{{multipleChoiceAnswer.id}}" />
+									{{multipleChoiceAnswer.answer}}
+								</label>
+
+							</div>
+						</td>
+
+
+					</tr>
+				</tbody>
+			</table>
+
+</div>
+</div>
+</div>
+
+
+	

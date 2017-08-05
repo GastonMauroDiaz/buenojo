@@ -1,0 +1,78 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myHangManExerciseLabel">Crear o Editar un HangManExercise</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="hangManExercise.id" readonly />
+        </div>
+        <div class="form-group">
+            <label for="field_task">Task</label>
+            <input type="text" class="form-control" name="task" id="field_task"
+                    ng-model="hangManExercise.task"
+                    required ng-minlength="15" ng-maxlength="100" />
+            <div ng-show="editForm.task.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.task.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.task.$error.minlength" translate-value-min="15">
+                    Este campo es obligatorio to be at least 15 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.task.$error.maxlength" translate-value-max="100">
+                    This field cannot be longer than 100 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_exerciseOrder">ExerciseOrder</label>
+            <input type="number" class="form-control" name="exerciseOrder" id="field_exerciseOrder"
+                    ng-model="hangManExercise.exerciseOrder"
+                    min="1" max="10" />
+            <div ng-show="editForm.exerciseOrder.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.exerciseOrder.$error.min" translate-value-min="1">
+                    This field should be more than 1.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.exerciseOrder.$error.max" translate-value-max="10">
+                    This field cannot be more than 10.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.exerciseOrder.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_image">image</label>
+            <select class="form-control" id="field_image" name="image" ng-model="hangManExercise.image" ng-options="imageResource as imageResource.id for imageResource in images | orderBy:'id' track by imageResource.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_highlightedArea">highlightedArea</label>
+            <select class="form-control" id="field_highlightedArea" name="highlightedArea" ng-model="hangManExercise.highlightedArea" ng-options="imageResource as imageResource.id for imageResource in highlightedareas | orderBy:'id' track by imageResource.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Cargar</span>
+        </button>
+    </div>
+</form>

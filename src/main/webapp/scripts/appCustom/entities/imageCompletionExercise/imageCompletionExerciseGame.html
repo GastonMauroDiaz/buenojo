@@ -1,0 +1,197 @@
+<div class="container-fluid">
+    <div class="row low-bordered">
+        <div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 color-controls no-padding">
+            <div class="col-xs-12  no-padding">
+                <span class="pull-right">color de los círculos</span>
+            </div>
+            <div class="col-xs-12 pull-right no-padding">
+                <div ng-repeat="colorClass in colorPickerClasses" class="pull-right col-xs-1 color-selector-box-wrapper">
+                    <div ng-click="selectColor($index)" ng-class="['color-selector-box',colorClass]"></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-7 col-xs-7 col-md-7 col-lg-7 ice-header">
+            <div class="tab-align right">
+                <ul class="nav nav-tabs tab-align" ng-class="[imageCompletionExercise.satelliteImages.length>5?'left':'right',(imageCompletionExercise.satelliteImages.length<=5)?'pad-right-margin':'']">
+                    <li ng-click="tabChanged($index)" role="presentation" ng-repeat="satelliteImage in imageCompletionExercise.satelliteImages" ng-class="{active: $first, 'no-left-margin': $first}">
+                        <a data-toggle="tab" showtab="" href="{{'#tab'+($index+1)}}">{{'Imagen '+($index+1)}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-1 col-xs-1 col-md-1 col-lg-1 exit-game-panel">
+            <div ng-click="quitExercise()" class="exit-game-button no-padding pull-right">
+                Salir del ejercio &nbsp;
+                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 tagCol">
+            <div class="row tagRow" ng-repeat="tag in tagCloud track by tag.id" ng-if="$even">
+                <div ng-model="tagCloud[$index]" class="col-sm-6 col-xs-6 tagDiv center leftTag" jqyoui-draggable="{index: $index, placeholder: 'keep', animate: true}" data-drag="true" data-jqyoui-options="{revert: true, 'cursorAt': {left: 34, top: 34}}" id="{{tag.id}}" draggable>
+                    <span>{{tag.name.toUpperCase()}}</span>
+                </div>
+                <div ng-model="tagCloud[$index+1]" class="col-sm-6 col-xs-6 tagDiv center rightTab" jqyoui-draggable="{index: $index, placeholder: 'keep', animate: true}" data-drag="true" data-jqyoui-options="{revert: true, 'cursorAt': {left: 34, top: 34}}" ng-show="{{tagCloud[$index+1]}}" id="{{tagCloud[$index+1].id}}" draggable>
+                    <span>{{tagCloud[$index+1].name.toUpperCase()}}</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6 image-col no-padding">
+            <div class="tab-content ice-tab-content">
+
+                <div ng-repeat="satelliteImage in imageCompletionExercise.satelliteImages" id="{{'tab'+($index+1)}}" ng-class="['tab-pane','image-frame',$first? 'in active' : '']">
+
+                    <img ng-src="{{satelliteImage.image.hiResImagePath}}" style="max-height: 512px; max-width: 512px;"/>
+                </div>
+
+            </div>
+            <div class="image-overlay">
+                <!-- DO NOT ADD NG-MODEL DIRECTIVE DRAG&DROP WILL DESTROY YOUR DIV -->
+
+                    <div ng-repeat="tagCircle in imageCompletionExercise.tagCircles" id="{{'circle-'+$index}}" ng-class="['tag-circle', TagCircleState.classForState(tagCircle.state)]" ng-style="tagCircle.cssStyle" data-drop="{{tagCircle.state === TagCircleState.PLAIN || tagCircle.state === TagCircleState.HOVER}}" jqyoui-droppable="{index: $index, onDrop : 'tagDropped(tagCircle)' , onOver : 'dragOver(tagCircle)', onOut: 'dragOut(tagCircle)'}">
+                        <div class="badge center" ng-show="tagCircle.state === TagCircleState.WRONG || tagCircle.state === TagCircleState.CORRECT">
+                            <span ng-class="[tagCircle.state===TagCircleState.CORRECT?'glyphicon glyphicon-ok':'glyphicon glyphicon-remove']" aria-hidden="true"></span>
+                        </div>
+
+                    </div>
+                    <div class="tag-circle-label" ng-repeat="tagCircle in imageCompletionExercise.tagCircles" ng-style="tagCircle.textCSS" ng-show="tagCircle.state===TagCircleState.CORRECT||tagCircle.state===TagCircleState.WRONG">
+                      <span class="center">{{tagCircle.text}}</span>
+                    </div>
+
+
+
+
+                <!-- 	<div ng-repeat="tagCircle in imageCompletionExercise.tagCircles" ng-class="[tag-circle-text, center]">{{answers[$index].tag.name}}</div> -->
+
+            </div>
+            <div class="compass">
+                <img src="{{compassPath}}" class="img-responsive"></img>
+
+            </div>
+            <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6 scale-meter center no-padding">
+                <scale-meter properties="scaleProperties" width="400" height="20"></scale-meter>
+            </div>
+
+        </div>
+        <div class="col-lg-3 right-col">
+            <div ui-view="map-view" class="col-lg-12 map-view no-padding"></div>
+
+            <div ui-view="tip" class="col-lg-12 tip-view no-padding"></div>
+
+        </div>
+
+    </div>
+
+    <div class="row ">
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 copyright center no-padding">
+            {{copyright}}</div>
+
+    </div>
+</div>
+<div class="modal fade" id="exitExerciseConfirmation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="exitForm" ng-submit="confirmQuit()">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancelQuit()">&times;</button>
+                    <h4 class="modal-title">Salir del ejercicio</h4>
+                </div>
+                <div class="modal-body">
+                    <p>¿estas seguro que quieres salir del ejercicio?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-success" data-dismiss="modal" ng-click="cancelQuit()">
+                        <!-- 	<span class="glyphicon glyphicon-ban-circle"></span>&nbsp; -->
+                        <span>No, seguir aprendiendo</span>
+                    </button>
+                    <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;
+                        <span>Si, deseo salir</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exerciseFailedDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="exitForm" ng-submit="confirmQuit()">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Ejercicio no resuelto!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Tuviste más de una respuesta incorrecta.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-success" data-dismiss="modal" ng-click="keepLearning()">
+                        <!-- <span class="glyphicon glyphicon-ban-circle"></span>&nbsp; -->
+                        <span>seguir aprendiendo</span>
+                    </button>
+                    <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;
+                        <span>deseo salir</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exerciseSolvedDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="exitForm" ng-submit="confirmQuit()">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Ejercicio resuelto!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>¡Felicitaciones! resolviste el ejecicio sin errores.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-success" data-dismiss="modal" ng-click="keepLearning()">
+                        <span class="glyphicon glyphicon-ok"></span>&nbsp;
+                        <span>seguir aprendiendo</span>
+                    </button>
+                    <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;
+                        <span>deseo salir</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exerciseSolvedWithErrorsDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="exitForm" ng-submit="confirmQuit()">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Ejercicio resuelto!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>¡Felicitaciones! resolviste el ejecicio con un error</p>
+                    <p>¡Estuviste cerca! Los tips te ayudarán a mejorar</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="keepLearning()">
+                        <span class="glyphicon glyphicon-ok"></span>&nbsp;
+                        <span>seguir aprendiendo</span>
+                    </button>
+                    <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;
+                        <span>deseo salir</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

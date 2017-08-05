@@ -1,0 +1,44 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myExerciseTipLabel">Crear o Editar un ExerciseTip</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="exerciseTip.id" readonly>
+        </div>
+        <div class="form-group">
+            <label for="field_hint">Hint</label>
+            <input type="text" class="form-control" name="hint" id="field_hint"
+                    ng-model="exerciseTip.hint"
+                    required>
+            <div ng-show="editForm.hint.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.hint.$error.required">
+                    Este campo es obligatorio.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_tipDetail">TipDetail</label>
+            <input type="text" class="form-control" name="tipDetail" id="field_tipDetail"
+                    ng-model="exerciseTip.tipDetail"
+                    >
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Cargar</span>
+        </button>
+    </div>
+</form>

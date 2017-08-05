@@ -1,0 +1,101 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myLoaderTraceLabel">Create or edit a LoaderTrace</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="loaderTrace.id" readonly>
+        </div>
+        <div class="form-group">
+            <label for="field_loaderResult">LoaderResult</label>
+            <select class="form-control" name="loaderResult" ng-model="loaderTrace.loaderResult" id="field_loaderResult" required>
+                <option value="Done">Done</option>
+                <option value="Failed">Failed</option>
+                <option value="Unknown">Unknown</option>
+            </select>
+            <div ng-show="editForm.loaderResult.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.loaderResult.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_author">Author</label>
+            <input type="text" class="form-control" name="author" id="field_author"
+                    ng-model="loaderTrace.author"
+                    required>
+            <div ng-show="editForm.author.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.author.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_loaderType">LoaderType</label>
+            <select class="form-control" name="loaderType" ng-model="loaderTrace.loaderType" id="field_loaderType" required>
+                <option value="ImageCompletion">ImageCompletion</option>
+                <option value="PhotoLocation">PhotoLocation</option>
+                <option value="HangMan">HangMan</option>
+                <option value="MultipleChoice">MultipleChoice</option>
+            </select>
+            <div ng-show="editForm.loaderType.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.loaderType.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_date">Date</label>
+            <input type="datetime-local" class="form-control" name="date" id="field_date"
+                    ng-model="loaderTrace.date" ng-model-options="{timezone: 'UTC'}"
+                    required>
+            <div ng-show="editForm.date.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.date.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.date.$error.datetimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_resultLog">ResultLog</label>
+            <input type="text" class="form-control" name="resultLog" id="field_resultLog"
+                    ng-model="loaderTrace.resultLog"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_datasetName">DatasetName</label>
+            <input type="text" class="form-control" name="datasetName" id="field_datasetName"
+                    ng-model="loaderTrace.datasetName"
+                    required>
+            <div ng-show="editForm.datasetName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.datasetName.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

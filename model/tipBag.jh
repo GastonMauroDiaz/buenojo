@@ -1,0 +1,12 @@
+entity ImageCompletionTip {
+  tip String required,
+  region Region required,
+  tag Tag required,
+  imageType SatelliteImageType required,
+}
+enum Region {
+  NORTE, MEDIO, SUR, GENERAL
+}
+enum SatelliteImageType {
+  landsatCR, landsatFC, spotMS, spotPS, bing, bing_inv, esriTopo, general
+}

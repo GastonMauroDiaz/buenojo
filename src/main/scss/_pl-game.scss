@@ -1,0 +1,265 @@
+$pl-satellite-image-width: 395px;
+$pl-scale-meter-height: 20px;
+$pl-heading-height: 82px;
+$pl-photo-height: 415px;
+$pl-photo-width: 630px;
+$pl-satellite-image-height: ($pl-satellite-image-width + $pl-scale-meter-height);
+.pl-carousel-control {
+  height:23px;
+  width: 100%;
+  background-color: gray;
+  position: relative;
+  color: $buenojo-main-color;
+  opacity: 1;
+}
+.pl-control-down{
+  margin-top: 3px;
+}
+.pl-control-up {
+  margin-bottom: 3px;
+
+}
+.pl-indicators {
+  position: absolute;
+  margin: 0px 0px 0px 0px;
+  width: 5px;
+  height: 100%;
+  z-index: 10;
+
+}
+.pl-indicators.left {
+  left: -8px;
+  right: auto;
+}
+.pl-indicators.right {
+  left: auto;
+  right: -8px;
+}
+
+.pl-indicators > li {
+  border-radius: 0;
+  height: 30px;
+  width: 5px;
+  border: 0px;
+  margin: 0px 0px 0px 0px;
+  background-color: $buenojo-gray-color;
+}
+
+.pl-indicators > li.active {
+  border-radius: 0;
+  height: 30px;
+  width: 5px;
+  border-color:transparent;
+  background-color: $buenojo-main-color;
+  margin: 0px 0px 0px 0px;
+
+}
+.pl-copyright-margin {
+  margin-top: 110px;
+}
+.pl-timer-circle {
+  border: solid 4px $buenojo-main-color;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+
+  font-family: "Lato", Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: large;
+  color: $buenojo-main-color;
+
+  margin-top: 38px;
+
+}
+.pl-photo-panel {
+  width: $pl-photo-width;
+  padding-left: 0px;
+  margin-left: 15px;
+}
+
+.pl-photo{
+  height: $pl-photo-height !important;
+  width: $pl-photo-width!important;
+}
+.pl-photo-container {
+  position:absolute;
+  left: 0px;
+  top: 0px;
+  height: $pl-photo-height !important;
+}
+.pl-photo-item {
+  height: $pl-photo-height !important;
+}
+.pl-satellite-image-panel{
+  width:$pl-satellite-image-width;
+  height:($pl-satellite-image-height+$pl-scale-meter-height);
+}
+.pl-satellite-image {
+  width: $pl-satellite-image-width;
+  height:$pl-satellite-image-height;
+}
+.pl-tab-control {
+  height: $pl-heading-height !important;
+
+}
+.pl-nav-tabs {
+  border: none !important;
+}
+.pl-button {
+  border: 0px;
+  width: 150px;
+  height: 35px;
+}
+.pl-exchange-button  {
+
+  background-color: $buenojo-light-gray-color;
+  color: $buenojo-gray-color;
+}
+.pl-left-panel {
+  width: 1094px;
+  height: $pl-heading-height;
+}
+.pl-right-panel {
+  width: 150px;
+}
+
+
+.pl-result-overlay {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.pl-overlay-wrong {
+  background-color: rgba($buenojo-red-color,.2);
+}
+
+.pl-overlay-correct {
+  background-color: rgba($buenojo-green-color,.3);
+}
+
+.pl-overlay-sign {
+
+  border-radius: 50%;
+  background-color: white;
+  font-size: 3em;
+  width: 70px;
+  height: 70px;
+}
+.pl-badge-correct {
+  .badge {
+
+    background-color: $buenojo-green-color !important;
+    z-index: 999;
+  }
+}
+.pl-badge-incorrect {
+  .badge {
+    background-color: $buenojo-red-color !important;
+    z-index: 999;
+
+  }
+}
+.pl-wrong {
+  color: $buenojo-red-color !important;
+  z-index: 999;
+}
+.pl-correct {
+  color: $buenojo-green-color !important;
+}
+.pl-sight-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left:0;
+  top: 0;
+  z-index: 10;
+
+}
+.pl-sight {
+  position:absolute;
+  height: 40px;
+  width: 40px;
+  z-index: 2;
+  background-size: 40px 40px !important;
+  &:focus { /*remove the blue glow*/
+		-webkit-box-shadow: none;
+    	box-shadow: none;
+    	outline: 0px;
+	}
+}
+.blue-sight {
+
+  background:transparent url('../images/photolocation/mira_azul.png') center center no-repeat;
+}
+.yellow-sight {
+
+  background:transparent url('../images/photolocation/mira_amarilla.png') center center no-repeat;
+}
+.red-sight {
+  background:transparent url('../images/photolocation/mira_roja.png') center center no-repeat;
+}
+.violet-sight {
+  background:transparent url('../images/photolocation/mira_violeta.png') center center no-repeat;
+}
+.green-sight {
+  background:transparent url('../images/photolocation/mira_verde.png') center center no-repeat;
+}
+.black-sight {
+  background:transparent url('../images/photolocation/mira_negra.png') center center no-repeat;
+}
+.pl-tab-content{
+  position:absolute;
+  left: 0px;
+  top: 0px;
+  z-index:0;
+}
+
+
+#pl-exchange-button  {
+  margin-bottom: 10px;
+}
+#pl-camera-control-container {
+  height: 220px;
+
+  border-bottom: 1px solid $buenojo-light-gray-color;
+}
+#pl-camera-control {
+  height:82px;
+  margin-top:130px;
+  background:transparent url('../images/photolocation/indicador_blanco_gris50.png') center center no-repeat;
+  background-size: 50%;
+  &:focus { /*remove the blue glow*/
+		-webkit-box-shadow: none;
+    	box-shadow: none;
+    	outline: 0px;
+	}
+  &:hover {
+    background:transparent url('../images/photolocation/indicador_gris50_blanco.png') center center no-repeat;
+    background-size: 50%;
+  }
+}
+.pl-compass {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 30px;
+	height: 30px;
+	z-index: 40;
+}
+#pl-camera-control.ui-draggable-dragging{
+  border-radius: 50%;
+	opacity: 0.5;
+	width: 67px;
+	float: center;
+}
+#pl-beacon {
+  position: absolute;
+  width: 30px;
+  height: 22px;
+  background-size: 30px 22px !important;
+  background:transparent url('../images/photolocation/indicador_blanco_gris50.png') center center no-repeat;
+}

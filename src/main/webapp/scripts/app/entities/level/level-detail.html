@@ -1,0 +1,100 @@
+
+<div>
+    <h2><span>Level</span> {{level.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr>
+                <td>
+                    <span>Nombre</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{level.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Descripci&oacute;n</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{level.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Curso</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="course.detail({id:level.course.id})">{{level.course.name}}</a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <label for="field_actividades">Actividades</label>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tipo</th>
+                        <th>ejercicio</th>
+                        <th>nivel</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="activity in level.activities track by activity.id">
+                        <td><a ui-sref="activity.detail({id:activity.id})">{{activity.id}}</a></td>
+                        <td translate="{{'buenOjoApp.ExerciseType.' + activity.type}}">{{activity.type}}</td>
+                        <td>
+                          <a ng-click="goToExercise(activity)">{{activity.exerciseId}}</a>
+                        </td>
+                        <td>
+                            <a ui-sref="level.detail({id:activity.level.id})">{{activity.level.id}}</a>
+                        </td>
+                        <td>
+                            <button type="submit"
+                                    ui-sref="activity.detail({id:activity.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="activity.edit({id:activity.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                            </button>
+                            <button type="submit"
+                                    ng-click="delete(activity.id)"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <nav>
+                <ul class="pager">
+                    <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a href="#">&lt;&lt;</a></li>
+                    <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a href="#">&lt;</a></li>
+                    <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a href="#">&gt;</a></li>
+                    <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a href="#">&gt;&gt;</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

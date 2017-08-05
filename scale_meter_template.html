@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="512" height="20"></canvas>
+    <script>
+      var canvas        = element[0];
+      var width         = canvas.offsetWidth;
+      var height        = canvas.offsetHeight;
+      var context       = canvas.getContext('2d');
+      var scaleLineY    = height - (height * 0.25);
+      var scaleHeight   = 7;
+      var resolution    = 13.53;
+      var meters        = 13890.6250000068;
+      var scaleMeters   = 5000;
+      var segments      = 5;
+      var segmentMeters = Math.floor(scaleMeters/segments);
+      var segmentPixels = Math.floor(segmentMeters/resolution);
+      var scalePixels   = segmentPixels * segments;
+      var textFont      = '5pt Arial';
+      var unit          = 'm';
+      var lineColor     = 'black'
+      var textPadding   = -10;
+
+      context.beginPath();
+      //base line
+      context.strokeStyle = lineColor;
+      context.moveTo(0, scaleLineY);
+      context.lineTo(scalePixels, scaleLineY);
+
+      // segments
+      var i=0;
+
+      for(i=0;i<=segments;i++){
+        var segmentLineX = i*segmentPixels;
+
+        context.moveTo(segmentLineX,scaleLineY);
+        context.lineTo(segmentLineX,scaleLineY-scaleHeight);
+        context.font = textFont;
+        context.fillText((i*segmentMeters)+unit,segmentLineX+(i==0?0:textPadding) , scaleLineY-scaleHeight);
+      }
+      context.lineWidth = 0.5;
+
+
+      context.stroke();
+
+
+    </script>
+  </body>
+</html>

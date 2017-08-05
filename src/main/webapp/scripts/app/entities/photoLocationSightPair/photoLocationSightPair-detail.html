@@ -1,0 +1,86 @@
+
+<div>
+    <h2><span>PhotoLocationSightPair</span> {{photoLocationSightPair.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Number</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{photoLocationSightPair.number}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>SatelliteX</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{photoLocationSightPair.satelliteX}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>SatelliteY</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{photoLocationSightPair.satelliteY}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>SatelliteTolerance</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{photoLocationSightPair.satelliteTolerance}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>TerrainX</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{photoLocationSightPair.terrainX}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>TerrainY</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{photoLocationSightPair.terrainY}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>TerrainTolerance</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{photoLocationSightPair.terrainTolerance}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>exercise</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="photoLocationExercise.detail({id:photoLocationSightPair.exercise.id})">{{photoLocationSightPair.exercise.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

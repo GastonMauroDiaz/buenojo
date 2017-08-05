@@ -1,0 +1,117 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myCourseLevelSessionLabel">Crear o Editar un CourseLevelSession</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="courseLevelSession.id" readonly />
+        </div>
+        <div class="form-group">
+            <label for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="courseLevelSession.status" id="field_status" required>
+                <option value="NotStarted">NotStarted</option>
+                <option value="InProgress">InProgress</option>
+                <option value="Done">Done</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+            <div ng-show="editForm.status.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.status.$error.required">
+                    Este campo es obligatorio.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_percentage">Percentage</label>
+            <input type="number" class="form-control" name="percentage" id="field_percentage"
+                    ng-model="courseLevelSession.percentage"
+                    required min="0" max="100" />
+            <div ng-show="editForm.percentage.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.percentage.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.percentage.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.percentage.$error.max" translate-value-max="100">
+                    This field cannot be more than 100.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.percentage.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_experiencePoints">ExperiencePoints</label>
+            <input type="number" class="form-control" name="experiencePoints" id="field_experiencePoints"
+                    ng-model="courseLevelSession.experiencePoints"
+                    required min="0" />
+            <div ng-show="editForm.experiencePoints.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.experiencePoints.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.experiencePoints.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.experiencePoints.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_exerciseCompletedCount">ExerciseCompletedCount</label>
+            <input type="number" class="form-control" name="exerciseCompletedCount" id="field_exerciseCompletedCount"
+                    ng-model="courseLevelSession.exerciseCompletedCount"
+                    required min="0" />
+            <div ng-show="editForm.exerciseCompletedCount.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.exerciseCompletedCount.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.exerciseCompletedCount.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.exerciseCompletedCount.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_courseLevelMap">courseLevelMap</label>
+            <select class="form-control" id="field_courseLevelMap" name="courseLevelMap" ng-model="courseLevelSession.courseLevelMap" ng-options="courseLevelMap as courseLevelMap.id for courseLevelMap in courselevelmaps | orderBy:'id' track by courseLevelMap.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_user">user</label>
+            <select class="form-control" id="field_user" name="user" ng-model="courseLevelSession.user" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Cargar</span>
+        </button>
+    </div>
+</form>

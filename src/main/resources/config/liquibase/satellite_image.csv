@@ -1,0 +1,44 @@
+id;meters;lon;lat;resolution;name;image_id;copyright;image_type
+1004;13890.625;-73.040853242763;-50.4417446363473;13.5650634765625;bing_RE13-57;1187;(c) 2015 Bing, Microsoft Corporation, Digital Globe, HERE.;Bing
+1008;13890.6250000068;-73.0408532427631;-50.4417446363472;13.5650634765691;landsatCR_2_RE13-57;1190;Datos capturados entre Agosto y Septiembre de 1999 y 2003. 15m de resolución espacial. Falso color con infrarrojo cercano. (c) USGS/NASA Landsat;LandsatCR
+1010;13890.6250000068;-73.0408532427631;-50.4417446363472;13.5650634765691;landsatFC_2_RE13-57;1191;Datos capturados entre Agosto y Septiembre de 1999 y 2003. 15m de resolución espacial. Falso color con infrarrojo cercano. (c) USGS/NASA Landsat;LandsatFC
+1012;13890.6250000068;-73.0408532427631;-50.4417446363472;13.5650634765691;spotMS_2_RE13-57;1192;Datos capturados entre Agosto y Septiembre de 1999 y 2003. 15m de resolución espacial. Falso color con infrarrojo cercano. (c) USGS/NASA Landsat;SpotMS
+1198;18520.8333333351;-71.45282455706;-39.6975818191672;18.0867513020851;landsatCR_4_RE18-09;1197;Datos capturados el 01/09/2009. 30m de resolución espacial. Falso color con infrarrojo cercano. (c) USGS/NASA Landsat;LandsatCR
+1200;18520.8333333351;-71.45282455706;-39.6975818191672;18.0867513020851;landsatFC_4_RE18-09;1199;Datos capturados el 01/09/2009. 30m de resolución espacial. Falso color con infrarrojo cercano. (c) USGS/NASA Landsat;LandsatFC
+1202;18520.8333333351;-71.45282455706;-39.6975818191672;18.0867513020851;spotMS_5_RE18-09;1201;Datos capturados NA. NAm de resolución espacial. NA. NA;SpotMS
+1204;18520.8333333335;-71.45282455706;-39.6975818191672;18.0867513020835;bing_RE18-09;1203;(c) 2015 Bing, Microsoft Corporation, Digital Globe, HERE.;Bing
+1206;18520.8333333335;-71.45282455706;-39.6975818191672;18.0867513020835;esriTopo_RE18-09;1205;(c) 2015 Esri, DeLorme, FAO, USGS, NOAA.;EsriTopo
+1229;7408.33333333419;-71.7011990262043;-46.5443487740572;7.23470052083417;spotMS_2_RE7-23;1228;Datos capturados entre Agosto y Septiembre de 1999 y 2003. 15m de resolución espacial. Falso color con infrarrojo cercano. (c) USGS/NASA Landsat;SpotMS
+1231;7408.33333333419;-71.7011990262043;-46.5443487740572;7.23470052083417;landsatCR_3_RE7-23;1230;Datos capturados entre Agosto y Septiembre de 1999 y 2003. 15m de resolución espacial. Falso color con infrarrojo cercano. (c) USGS/NASA Landsat;LandsatCR
+1233;7408.33333333419;-71.7011990262043;-46.5443487740572;7.23470052083417;landsatFC_2_RE7-23;1232;Datos capturados entre Agosto y Septiembre de 1999 y 2003. 15m de resolución espacial. Falso color con infrarrojo cercano. (c) USGS/NASA Landsat;LandsatFC
+1235;7408.33333333419;-71.7011990262043;-46.5443487740572;7.23470052083417;landsatFC_3_RE7-23;1234;Datos capturados entre Agosto y Septiembre de 1999 y 2003. 15m de resolución espacial. Falso color con infrarrojo cercano. (c) USGS/NASA Landsat;LandsatFC
+1237;7408.33333333349;-71.7011990262043;-46.5443487740572;7.23470052083348;bing_RE7-23;1236;(c) 2015 Bing, Microsoft Corporation, Digital Globe, HERE.;Bing
+1239;7408.33333333419;-71.7011990262043;-46.5443487740572;7.23470052083417;landsatCR_2_RE7-23;1238;Datos capturados entre Agosto y Septiembre de 1999 y 2003. 15m de resolución espacial. Falso color con infrarrojo cercano. (c) USGS/NASA Landsat;LandsatCR
+1267;13890.6250000009;-71.5030116761024;-44.7906011687373;13.5650634765634;landsatFC_3_RE13-57;1266;Datos capturados entre Agosto y Septiembre de 1999 y 2003. 15m de resolución espacial. Falso color con infrarrojo cercano. (c) USGS/NASA Landsat;LandsatFC
+1269;13890.6250000009;-71.5030116761024;-44.7906011687373;13.5650634765634;spotMS_3_RE13-57;1268;Datos capturados entre Agosto y Septiembre de 1999 y 2003. 15m de resolución espacial. Falso color con infrarrojo cercano. (c) USGS/NASA Landsat;SpotMS
+1273;13890.6250000009;-71.5030116761024;-44.7906011687373;13.5650634765634;landsatCR_3_RE13-57;1272;Datos capturados entre Agosto y Septiembre de 1999 y 2003. 15m de resolución espacial. Falso color con infrarrojo cercano. (c) USGS/NASA Landsat;LandsatCR
+1296;13890.625;-71.5030116761024;-44.7906011687373;13.5650634765625;esriTopo_RE13-57_1024_3;1295;(c) 2015 Esri, DeLorme, FAO, USGS, NOAA.;EsriTopo
+1299;13890.6250000051;-72.9528975232507;-49.2886076358934;13.5650634765675;spotPS_9_RE13-57_1024_4;1298;Datos capturados NA. NAm de resolución espacial. NA. NA;SpotPS
+1304;13890.625;-72.9528975232506;-49.2886076358935;13.5650634765625;esriTopo_RE13-57_1024_4;1303;(c) 2015 Esri, DeLorme, FAO, USGS, NOAA.;EsriTopo
+1306;13890.625;-72.9528975232506;-49.2886076358935;13.5650634765625;bing_inv_RE13-57_1024_4;1305;(c) 2015 Bing, Microsoft Corporation, Digital Globe, HERE.;Bing
+1308;13890.6250000051;-72.9528975232507;-49.2886076358934;13.5650634765675;spotMS_2_RE13-57_1024_4;1307;Datos capturados entre Agosto y Septiembre de 1999 y 2003. 15m de resolución espacial. Falso color con infrarrojo cercano. (c) USGS/NASA Landsat;SpotMS
+1310;13890.6250000051;-72.9528975232507;-49.2886076358934;13.5650634765675;landsatFC_2_RE13-57_1024_4;1309;Datos capturados entre Agosto y Septiembre de 1999 y 2003. 15m de resolución espacial. Falso color con infrarrojo cercano. (c) USGS/NASA Landsat;LandsatFC
+1312;13890.6250000051;-72.9528975232507;-49.2886076358934;13.5650634765675;landsatCR_2_RE13-57_1024_4;1311;Datos capturados entre Agosto y Septiembre de 1999 y 2003. 15m de resolución espacial. Falso color con infrarrojo cercano. (c) USGS/NASA Landsat;LandsatCR
+1006;13890.625;-73.040853242763;-50.4417446363473;13.5650634765625;esriTopo_RE13-57;1189;(c) 2015 Esri, DeLorme, FAO, USGS, NOAA.;EsriTopo
+1013;1098.02083333349;-71.3932033900666;-42.7743430376693;1.07228597005223;bing_RE1-07-9;1012;(c) 2015 Bing, Microsoft Corporation, Digital Globe, HERE.;Bing
+1015;4392.08333333349;-71.7678989579992;-42.6158249125048;4.28914388020848;bing_RE4-29-8;1014;(c) 2015 Bing, Microsoft Corporation, Digital Globe, HERE.;Bing
+1017;6588.125;-71.6676860225748;-42.6990644146158;6.4337158203125;bing_RE6-43-7;1016;(c) 2015 Bing, Microsoft Corporation, Digital Globe, HERE.;Bing
+1019;3294.0625;-71.4710230516366;-42.876934056622;3.21685791015625;bing_RE3-22-5;1018;(c) 2015 Bing, Microsoft Corporation, Digital Globe, HERE.;Bing
+1022;2196.04166666651;-71.4447618964922;-42.6913454162387;2.14457194010402;bing_RE2-14-2;1021;(c) 2015 Bing, Microsoft Corporation, Digital Globe, HERE.;Bing
+1024;4392.08333333349;-71.4939559814379;-42.7093925346454;4.28914388020848;bing_RE4-29-1;1023;(c) 2015 Bing, Microsoft Corporation, Digital Globe, HERE.;Bing
+1026;1098.02083333442;-71.3932033900665;-42.7743430376693;1.07228597005314;spotPS_14_RE1-07-9;1025;Datos capturados NA. NAm de resolución espacial. NA. NA;SpotPS
+1032;4392.08333333395;-71.7678989579992;-42.6158249125048;4.28914388020894;spotPS_14_RE4-29-8;1031;Datos capturados NA. NAm de resolución espacial. NA. NA;SpotPS
+1331;6588.12500000047;-71.6676860225748;-42.6990644146158;6.43371582031295;spotPS_14_RE6-43-7;1330;Datos capturados NA. NAm de resolución espacial. NA. NA;SpotPS
+1333;2635.25000000023;-71.6005689230217;-42.7991529652639;2.57348632812523;spotPS_14_RE2-57-6;1332;Datos capturados NA. NAm de resolución espacial. NA. NA;SpotPS
+1335;3294.0625000007;-71.4710230516366;-42.876934056622;3.21685791015693;spotPS_14_RE3-22-5;1334;Datos capturados NA. NAm de resolución espacial. NA. NA;SpotPS
+1337;2196.04166666721;-71.3400466483281;-42.5582784339939;2.1445719401047;spotPS_14_RE2-14-4;1336;Datos capturados NA. NAm de resolución espacial. NA. NA;SpotPS
+1339;2196.04166666674;-71.4113639328515;-42.5855379749167;2.14457194010424;spotPS_14_RE2-14-3;1338;Datos capturados NA. NAm de resolución espacial. NA. NA;SpotPS
+1341;2196.04166666651;-71.4447618964922;-42.6913454162387;2.14457194010402;spotPS_14_RE2-14-2;1340;Datos capturados NA. NAm de resolución espacial. NA. NA;SpotPS
+1343;4392.08333333442;-71.4939559814379;-42.7093925346454;4.28914388020939;spotPS_14_RE4-29-1;1342;Datos capturados NA. NAm de resolución espacial. NA. NA;SpotPS
+1379;878.416666666511;-71.4920893422118;-42.7763264241265;0.857828776041515;bing_IMG_9394;1378;(c) 2015 Bing, Microsoft Corporation, Digital Globe, HERE.;Bing
+1381;878.416666666511;-71.4920893422118;-42.7763264241265;0.857828776041515;esriTopo_IMG_9394;1380;(c) 2015 Esri, DeLorme, FAO, USGS, NOAA.;EsriTopo

@@ -1,0 +1,36 @@
+
+<form name="editForm" role="form" novalidate ng-submit="upload(file,exercise)" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myPhotoLocationSightPairLabel">Crear o Editar un PhotoLocationSightPair</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="field_exercise">Ejercicio</label>
+            <select class="form-control" id="field_exercise" name="exercise" ng-model="exercise" ng-options="photoLocationExercise as photoLocationExercise.id for photoLocationExercise in photolocationexercises track by photoLocationExercise.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+
+            <input type="file" ngf-select  name="uploadFile" ng-model="file" accept=".csv" ngf-max-size="1MB">
+            <p class="help-block"
+               ng-show="!file">
+                        Este campo es obligatorio.
+            </p>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        </button>
+        <button type="submit" ng-disabled="!file" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Cargar</span>
+        </button>
+    </div>
+</form>

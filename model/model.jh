@@ -1,0 +1,47 @@
+entity Course {
+  name String required,
+  description String required,
+  startDate DateTime,
+  endDate DateTime,
+  courseOpen Boolean
+
+}
+
+entity Level {
+  levelOrder Integer required min(0),
+  name String required,
+  description String
+
+}
+
+relationship OneToMany {
+  Course{level} to Level{course}
+
+}
+
+relationship ManyToMany {
+  Level{exercise} to Exercise{level}
+
+}
+/**
+  Abstract Exercise type. All exercise types have to extend this class
+*/
+entity Exercise {
+  name String required,
+  description String required,
+  totalScore Integer required min(0)
+
+}
+
+entity ExerciseTip {
+  /** the tip itself **/
+  hint String required,
+
+  /** further description of the tip itself **/
+  tipDetail String
+
+}
+relationship ManyToMany {
+
+  Exercise{tip} to ExerciseTip{exercise}
+}

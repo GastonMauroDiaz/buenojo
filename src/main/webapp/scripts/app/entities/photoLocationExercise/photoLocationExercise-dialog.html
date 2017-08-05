@@ -1,0 +1,250 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myPhotoLocationExerciseLabel">Crear o Editar un PhotoLocationExercise</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="photoLocationExercise.id" readonly />
+        </div>
+        <div class="form-group">
+            <label for="field_course">Curso</label>
+            <select class="form-control" id="field_course" name="terrainPhoto" ng-model="photoLocationExercise.course" ng-options="course as (course.id + ' '+course.name) for course in courses | orderBy:'id' track by course.id">
+                <option value=""></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="field_name">Nombre</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="photoLocationExercise.name"
+                    required>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required">
+                    Este campo es obligatorio.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_description">Descripci&oacute;n</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="photoLocationExercise.description"
+                    required>
+            <div ng-show="editForm.description.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.description.$error.required">
+                    Este campo es obligatorio.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_totalScore">Puntaje total</label>
+            <input type="number" class="form-control" name="totalScore" id="field_totalScore"
+                    ng-model="photoLocationExercise.totalScore"
+                    required min="0" />
+            <div ng-show="editForm.totalScore.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.totalScore.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.totalScore.$error.min" translate-value-min="0">
+                    Este campo debe ser mayor a 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.totalScore.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_lower_level">Nivel de paisaje inferior</label>
+            <input type="number" class="form-control" name="lowerLevel" id="field_lower_level"
+                    ng-model="photoLocationExercise.lowerLevel"
+                    required min="0" />
+            <div ng-show="editForm.lowerLevel.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.lowerLevel.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.lowerLevel.$error.min" translate-value-min="0">
+                    Este campo debe ser mayor a 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.lowerLevel.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_higher_level">Nivel de paisaje Superior</label>
+            <input type="number" class="form-control" name="higherLevel" id="field_higher_level"
+                    ng-model="photoLocationExercise.higherLevel"
+                    required min="0" />
+            <div ng-show="editForm.higherLevel.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.higherLevel.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.higherLevel.$error.min" translate-value-min="0">
+                    Este campo debe ser mayor a 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.higherLevel.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_difficulty">Dificultad</label>
+            <select class="form-control" name="difficulty" ng-model="photoLocationExercise.difficulty" id="field_difficulty" required>
+                <option value="Beginner">Principiante</option>
+                <option value="Intermediate">Medio</option>
+                <option value="Advanced">Avanzado</option>
+
+            </select>
+            <div ng-show="editForm.status.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.status.$error.required">
+                    Este campo es obligatorio.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_totalTimeInSeconds">Tiempo total en segundos</label>
+            <input type="number" class="form-control" name="totalTimeInSeconds" id="field_totalTimeInSeconds"
+                    ng-model="photoLocationExercise.totalTimeInSeconds"
+                    required min="0" />
+            <div ng-show="editForm.totalTimeInSeconds.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.totalTimeInSeconds.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.totalTimeInSeconds.$error.min" translate-value-min="0">
+                    Este campo debe ser mayor a 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.totalTimeInSeconds.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_beacon">Indicador</label>
+            <select class="form-control" id="field_beacon" name="beacon" ng-model="photoLocationExercise.beacon" ng-options="photoLocationBeacon as photoLocationBeacon.id+' x: '+photoLocationBeacon.x+' y:'+photoLocationBeacon.y+' tol: '+photoLocationBeacon.tolerance for photoLocationBeacon in beacons | orderBy:'id' track by photoLocationBeacon.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_landscapeKeyword">Palabras clave del paisaje</label>
+            <select class="form-control" id="field_landscapeKeyword" multiple name="landscapeKeyword" ng-model="photoLocationExercise.landscapeKeywords" ng-options="photoLocationKeyword as photoLocationKeyword.name for photoLocationKeyword in photolocationkeywords track by photoLocationKeyword.id"></select>
+        </div>
+        <div class="form-group">
+            <label for="field_terrainPhoto">Foto del terreno</label>
+            <select class="form-control" id="field_terrainPhoto" name="terrainPhoto" ng-model="photoLocationExercise.terrainPhoto" ng-options="photoLocationImage as (photoLocationImage.id + ' '+photoLocationImage.image.name) for photoLocationImage in terrainphotos | orderBy:'id' track by photoLocationImage.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_satelliteImage">Im&aacute;genes satelitales</label>
+            <select class="form-control" id="field_satelliteImage" multiple name="satelliteImage" ng-model="photoLocationExercise.satelliteImages" ng-options="photoLocationSatelliteImage as (photoLocationSatelliteImage.id+' '+photoLocationSatelliteImage.satelliteImage.name) for photoLocationSatelliteImage in photolocationsatelliteimages track by photoLocationSatelliteImage.id"></select>
+        </div>
+        <div class="form-group">
+            <label for="field_extra_photos_count">Cantidad de Im&aacute;genes Extra</label>
+            <input type="number" class="form-control" name="extraPhotosCount" id="field_extra_photos_count"
+                    ng-model="photoLocationExercise.extraPhotosCount"
+                    required min="0" max="5" />
+            <div ng-show="editForm.lowerLevel.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.lowerLevel.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.lowerLevel.$error.min" translate-value-min="0">
+                    Este campo debe ser mayor a 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.lowerLevel.$error.max" translate-value-max="5">
+                    Este campo debe ser menor a 5.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.lowerLevel.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="form-group">
+      <div class="table-responsive">
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>N&uacute;mero</th>
+                      <th>SatelliteX</th>
+                      <th>SatelliteY</th>
+                      <th>SatelliteTolerance</th>
+                      <th>TerrainX</th>
+                      <th>TerrainY</th>
+                      <th>TerrainTolerance</th>
+
+                      <th></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr ng-repeat="photoLocationSightPair in photoLocationExercise.sightPairs track by photoLocationSightPair.id">
+                      <td><a ui-sref="photoLocationSightPair.detail({id:photoLocationSightPair.id})">{{photoLocationSightPair.id}}</a></td>
+                      <td>{{photoLocationSightPair.number}}</td>
+                      <td>{{photoLocationSightPair.satelliteX}}</td>
+                      <td>{{photoLocationSightPair.satelliteY}}</td>
+                      <td>{{photoLocationSightPair.satelliteTolerance}}</td>
+                      <td>{{photoLocationSightPair.terrainX}}</td>
+                      <td>{{photoLocationSightPair.terrainY}}</td>
+                      <td>{{photoLocationSightPair.terrainTolerance}}</td>
+
+                      <td>
+                          <button type="submit"
+                                  ui-sref="photoLocationSightPair.detail({id:photoLocationSightPair.id})"
+                                  class="btn btn-info btn-sm">
+                              <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                          </button>
+                          <button type="submit"
+                                  ui-sref="photoLocationSightPair.edit({id:photoLocationSightPair.id})"
+                                  class="btn btn-primary btn-sm">
+                              <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                          </button>
+                          <button type="submit"
+                                  ng-click="delete(photoLocationSightPair.id)"
+                                  class="btn btn-danger btn-sm">
+                              <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                          </button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

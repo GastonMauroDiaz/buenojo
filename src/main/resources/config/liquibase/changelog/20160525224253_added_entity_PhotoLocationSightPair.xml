@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql,oracle"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle"/>
+
+    <!--
+        Added the entity PhotoLocationSightPair.
+    -->
+    <changeSet id="20160525224253" author="jhipster">
+        <createTable tableName="photo_location_sight_pair">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="number" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="satellite_x" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="satellite_y" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="satellite_tolerance" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="terrain_x" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="terrain_y" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="terrain_tolerance" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="exercise_id" type="bigint"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="exercise_id"
+                                 baseTableName="photo_location_sight_pair"
+                                 constraintName="fk_photolocationsightpair_exercise_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="photo_location_exercise"/>
+
+    </changeSet>
+</databaseChangeLog>

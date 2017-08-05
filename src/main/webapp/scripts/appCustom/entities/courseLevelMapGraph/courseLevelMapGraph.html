@@ -1,0 +1,63 @@
+<div>
+  <style id="css">
+/* This sets the color for "TK" nodes to a light blue green. */
+
+
+g.type-Node.red > rect  {
+  fill: red;
+}
+
+g.type-Node.grey > rect  {
+  fill: grey;
+}
+
+g.type-Node.lime > rect  {
+  fill: lime;
+}
+
+g.type-Node.yellow > rect  {
+  fill: yellow;
+}
+
+
+text {
+  font-weight: 300;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serf;
+  font-size: 14px;
+}
+
+.node rect {
+  stroke: #999;
+  fill: #fff;
+  stroke-width: 1px;
+}
+
+.edgePath path {
+  stroke: #333;
+  stroke-width: 0.5px;
+}
+</style>
+    <div id="mynetwork" class="container" style="height:450px"></div>
+    <svg id="svg-canvas" width=960 height=600></svg>
+
+<div>
+    <h2>CourseLevelSessions</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                  <button class="btn btn-primary" ng-click="enforceEnrollment()">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Clear</span>
+                </button>
+                <button class="btn btn-primary" ng-click="enforceEnrollmentRandom()">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Random</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+   </div>
+
+    
+    
+</div>

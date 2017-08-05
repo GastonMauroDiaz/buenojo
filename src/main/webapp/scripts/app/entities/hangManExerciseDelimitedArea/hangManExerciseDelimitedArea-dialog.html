@@ -1,0 +1,104 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myHangManExerciseDelimitedAreaLabel">Crear o Editar un HangManExerciseDelimitedArea</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="hangManExerciseDelimitedArea.id" readonly />
+        </div>
+        <div class="form-group">
+            <label for="field_x">X</label>
+            <input type="number" class="form-control" name="x" id="field_x"
+                    ng-model="hangManExerciseDelimitedArea.x"
+                    required min="0" max="1024" />
+            <div ng-show="editForm.x.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.x.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.x.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.x.$error.max" translate-value-max="1024">
+                    This field cannot be more than 1024.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.x.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_y">Y</label>
+            <input type="number" class="form-control" name="y" id="field_y"
+                    ng-model="hangManExerciseDelimitedArea.y"
+                    required min="0" max="1024" />
+            <div ng-show="editForm.y.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.y.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.y.$error.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.y.$error.max" translate-value-max="1024">
+                    This field cannot be more than 1024.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.y.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_radius">Radius</label>
+            <input type="number" class="form-control" name="radius" id="field_radius"
+                    ng-model="hangManExerciseDelimitedArea.radius"
+                    required min="10" max="512" />
+            <div ng-show="editForm.radius.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.radius.$error.required">
+                    Este campo es obligatorio.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.radius.$error.min" translate-value-min="10">
+                    This field should be more than 10.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.radius.$error.max" translate-value-max="512">
+                    This field cannot be more than 512.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.radius.$error.number">
+                    Este campo debe ser un n&uacute;mero.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_hangManExercise">hangManExercise</label>
+            <select class="form-control" id="field_hangManExercise" name="hangManExercise" ng-model="hangManExerciseDelimitedArea.hangManExercise" ng-options="hangManExercise as hangManExercise.id for hangManExercise in hangmanexercises | orderBy:'id' track by hangManExercise.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Cargar</span>
+        </button>
+    </div>
+</form>

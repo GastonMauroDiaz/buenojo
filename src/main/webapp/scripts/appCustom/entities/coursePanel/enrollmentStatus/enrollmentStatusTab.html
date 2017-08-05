@@ -1,0 +1,32 @@
+
+<div class="container-fluid">
+	<jh-alert></jh-alert>
+	<div>
+		<h2>{{enrollment.user.firstName}} {{enrollment.user.lastName}}</h2>
+		<h4>{{enrollment.course.name}}</h4>
+	</div>
+	<hr />
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" showtab="" href="#enrollmentTab1">INFORMACI&Oacute;N</a></li>
+  <li ><a  data-toggle="tab" showtab="" href="#enrollmentTab2">ETAPAS</a></li>
+  <li ><a data-toggle="tab" showtab="" href="#enrollmentTab3">PROGRESO</a></li>
+    <!-- <li ><a data-toggle="tab" showtab="" href="#tab4">JUEGOS</a></li> -->
+</ul>
+
+<div class="tab-content">
+  <div id="enrollmentTab1" class="tab-pane fade in active" >
+     <section  ng-include="'scripts/appCustom/entities/course/courseTab/tabs/tabInformation.html'" ng-controller="tabInformationController"  ></section >
+   </div>
+  <div id="enrollmentTab2" class="tab-pane fade" >
+     <section ng-include="'scripts/appCustom/entities/course/courseTab/tabs/tabEtapas.html'" ng-controller="tabEtapasController"></section>
+    </div>
+  <div id="enrollmentTab3" class="tab-pane fade" >
+        <section ng-include="'scripts/appCustom/entities/course/courseTab/tabs/tabRecorrido.html'" ng-controller="tabRecorridoController"></section>
+    </div>
+    <!-- <div id="tab4" class="tab-pane fade" >
+        <section ng-include="'scripts/appCustom/entities/course/courseTab/tabs/tabList.html'" ng-controller="tabListController"></section>
+    </div> -->
+</div>
+
+
+</div>

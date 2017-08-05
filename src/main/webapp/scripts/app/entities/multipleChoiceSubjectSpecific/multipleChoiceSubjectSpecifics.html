@@ -1,0 +1,52 @@
+<div>
+    <h2>MultipleChoiceSubjectSpecifics</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="multipleChoiceSubjectSpecific.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Crear una nueva entidad MultipleChoiceSubjectSpecific</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Text</th>
+                    <th>multipleChoiceSubject</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="multipleChoiceSubjectSpecific in multipleChoiceSubjectSpecifics track by multipleChoiceSubjectSpecific.id">
+                    <td><a ui-sref="multipleChoiceSubjectSpecific.detail({id:multipleChoiceSubjectSpecific.id})">{{multipleChoiceSubjectSpecific.id}}</a></td>
+                    <td>{{multipleChoiceSubjectSpecific.text}}</td>
+                    <td>
+                        <a ui-sref="multipleChoiceSubject.detail({id:multipleChoiceSubjectSpecific.multipleChoiceSubject.id})">{{multipleChoiceSubjectSpecific.multipleChoiceSubject.text}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="multipleChoiceSubjectSpecific.detail({id:multipleChoiceSubjectSpecific.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> Ver</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="multipleChoiceSubjectSpecific.edit({id:multipleChoiceSubjectSpecific.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Editar</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="multipleChoiceSubjectSpecific.delete({id:multipleChoiceSubjectSpecific.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Eliminar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
